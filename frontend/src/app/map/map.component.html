@@ -1,0 +1,252 @@
+<div class="map-wrapper">
+  <!-- Sidebar / Filter Panel -->
+  <aside class="map-sidebar">
+    <div class="sidebar-header">
+      <span class="logo">🗺️</span>
+      <span>Inspection Map</span>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label">Restaurant Name</label>
+      <input
+        type="text"
+        class="filter-input"
+        [(ngModel)]="nameSearch"
+        placeholder="Partial name search..."
+      />
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label">Date Range</label>
+      <input
+        type="date"
+        class="filter-input"
+        [(ngModel)]="startDate"
+      />
+      <input
+        type="date"
+        class="filter-input"
+        [(ngModel)]="endDate"
+      />
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label">Result</label>
+      <div class="radio-group">
+        <label class="radio-label">
+          <input type="radio" [(ngModel)]="resultsFilter" value="" /> Both
+        </label>
+        <label class="radio-label">
+          <input type="radio" [(ngModel)]="resultsFilter" value="Pass" /> Pass
+        </label>
+        <label class="radio-label">
+          <input type="radio" [(ngModel)]="resultsFilter" value="Fail" /> Fail
+        </label>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label">Risk Level</label>
+      <label class="checkbox-label">
+        <input type="checkbox" [(ngModel)]="riskHigh" />
+        <span class="risk-dot" style="background:#cc0000"></span>
+        Risk 1 (High)
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" [(ngModel)]="riskMedium" />
+        <span class="risk-dot" style="background:#ff6600"></span>
+        Risk 2 (Medium)
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" [(ngModel)]="riskLow" />
+        <span class="risk-dot" style="background:#ffcc00"></span>
+        Risk 3 (Low)
+      </label>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label">Neighborhood</label>
+      <div class="neighborhood-selector">
+        <button
+          class="neighborhood-toggle"
+          type="button"
+          (click)="neighborhoodOpen = !neighborhoodOpen"
+        >
+          <span>{{ selectedNeighborhoods.length ? selectedNeighborhoods.length + ' selected' : 'All neighborhoods' }}</span>
+          <span class="toggle-chevron" [class.open]="neighborhoodOpen">&#9660;</span>
+        </button>
+
+        @if (neighborhoodOpen) {
+          <div class="neighborhood-panel">
+            <input
+              type="text"
+              class="filter-input neighborhood-search"
+              [(ngModel)]="neighborhoodSearch"
+              placeholder="Search neighborhoods..."
+            />
+            @if (selectedNeighborhoods.length) {
+              <button class="neighborhood-clear" type="button" (click)="clearNeighborhoods()">
+                Clear {{ selectedNeighborhoods.length }} selected
+              </button>
+            }
+            <div class="neighborhood-list">
+              @for (n of filteredNeighborhoods; track n) {
+                <label class="checkbox-label neighborhood-item">
+                  <input
+                    type="checkbox"
+                    [checked]="selectedNeighborhoods.includes(n)"
+                    (change)="toggleNeighborhood(n)"
+                  />
+                  {{ n }}
+                </label>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label">
+        Zip Code
+        @if (selectedNeighborhoods.length) {
+          <span class="zip-override-note">(overridden by neighborhood)</span>
+        }
+      </label>
+      <input
+        type="text"
+        class="filter-input"
+        [(ngModel)]="zip"
+        placeholder="e.g. 60614"
+        maxlength="5"
+        [disabled]="selectedNeighborhoods.length > 0"
+      />
+    </div>
+
+    <div class="filter-group">
+      <label class="filter-label">Facility Type</label>
+      <select class="filter-input" [(ngModel)]="facilityType">
+        <option value="">All types</option>
+        <option value="Restaurant">Restaurant</option>
+        <option value="Grocery Store">Grocery Store</option>
+        <option value="School">School</option>
+        <option value="Daycare Above and Under 2 Years">Daycare</option>
+        <option value="Bakery">Bakery</option>
+        <option value="Bar/Grill">Bar / Grill</option>
+        <option value="Coffee Shop">Coffee Shop</option>
+        <option value="Long Term Care">Long Term Care</option>
+      </select>
+    </div>
+
+    <button
+      class="apply-btn"
+      (click)="applyFilters()"
+      [disabled]="loading"
+    >
+      {{ loading ? 'Loading...' : 'Apply Filters' }}
+    </button>
+
+    @if (!loading && !errorMessage) {
+      <div class="result-count">
+        {{ locationCount }} location{{ locationCount !== 1 ? 's' : '' }}
+        <span class="count-sub">({{ resultCount }} inspection{{ resultCount !== 1 ? 's' : '' }})</span>
+        @if (resultCount === 500) {
+          <span class="max-notice">500 max</span>
+        }
+      </div>
+    }
+
+    @if (errorMessage) {
+      <div class="error-msg">{{ errorMessage }}</div>
+    }
+
+    <!-- Legend -->
+    <div class="legend">
+      <div class="legend-title">Legend</div>
+      <div class="legend-row"><span class="legend-dot" style="background:#cc0000"></span> Fail – High Risk</div>
+      <div class="legend-row"><span class="legend-dot" style="background:#ff6600"></span> Fail – Medium Risk</div>
+      <div class="legend-row"><span class="legend-dot" style="background:#ffcc00"></span> Fail – Low Risk</div>
+      <div class="legend-row"><span class="legend-dot" style="background:#2d6a2d"></span> Pass – High Risk</div>
+      <div class="legend-row"><span class="legend-dot" style="background:#5aad5a"></span> Pass – Medium Risk</div>
+      <div class="legend-row"><span class="legend-dot" style="background:#a8d8a8"></span> Pass – Low Risk</div>
+      <div class="legend-row"><span class="legend-dot" style="background:#888888"></span> Other</div>
+    </div>
+  </aside>
+
+  <!-- Map Container -->
+  <div class="map-area">
+    <div #mapContainer class="leaflet-map"></div>
+    @if (loading) {
+      <div class="map-loading-overlay">
+        <div class="spinner"></div>
+        <span>Loading inspections...</span>
+      </div>
+    }
+  </div>
+</div>
+
+<!-- Popup template instantiated per marker via createEmbeddedView -->
+<ng-template #popupTpl
+  let-id="id"
+  let-dbaName="dbaName"
+  let-address="address"
+  let-showNav="showNav"
+  let-navIdx="navIdx"
+  let-total="total"
+  let-dateStr="dateStr"
+  let-color="color"
+  let-result="result"
+  let-risk="risk"
+  let-inspType="inspType"
+  let-violationsHtml="violationsHtml">
+  <div style="width:400px;font-family:'Segoe UI',sans-serif;font-size:13px;line-height:1.6;color:#222">
+    <div style="font-size:15px;font-weight:700;margin-bottom:2px">{{ dbaName }}</div>
+    <div style="color:#666;font-size:12px;margin-bottom:4px">{{ address }}</div>
+
+    <div [id]="'map-nav-bar-' + id"
+         [style.display]="showNav ? 'flex' : 'none'"
+         style="align-items:center;justify-content:space-between;margin:8px 0;padding:6px 8px;background:#f0f4ff;border-radius:6px;gap:8px">
+      <button [id]="'map-prev-' + id"
+              [attr.data-popup-id]="id"
+              onclick="event.stopPropagation();window.__mapNav(this.dataset.popupId,-1)"
+              style="background:#0E3386;color:#fff;border:none;border-radius:4px;padding:4px 12px;cursor:pointer;font-size:15px;line-height:1;flex-shrink:0">&#9664;</button>
+      <span [id]="'map-nav-info-' + id" style="font-size:12px;color:#444;text-align:center;flex:1">
+        <b>{{ navIdx }}</b> of <b>{{ total }}</b> inspections
+      </span>
+      <button [id]="'map-next-' + id"
+              [attr.data-popup-id]="id"
+              onclick="event.stopPropagation();window.__mapNav(this.dataset.popupId,1)"
+              style="background:#0E3386;color:#fff;border:none;border-radius:4px;padding:4px 12px;cursor:pointer;font-size:15px;line-height:1;flex-shrink:0">&#9654;</button>
+    </div>
+
+    <hr style="margin:6px 0;border:none;border-top:1px solid #e0e0e0">
+
+    <table style="width:100%;border-collapse:collapse;font-size:13px">
+      <tr>
+        <td style="padding:2px 8px 2px 0;color:#555;white-space:nowrap;width:56px">Date</td>
+        <td [id]="'map-insp-date-' + id" style="padding:2px 0">{{ dateStr }}</td>
+      </tr>
+      <tr>
+        <td style="padding:2px 8px 2px 0;color:#555;white-space:nowrap">Result</td>
+        <td [id]="'map-insp-result-' + id" style="padding:2px 0">
+          <span [style.color]="color" style="font-weight:600">{{ result }}</span>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:2px 8px 2px 0;color:#555;white-space:nowrap">Risk</td>
+        <td [id]="'map-insp-risk-' + id" style="padding:2px 0">{{ risk }}</td>
+      </tr>
+      <tr>
+        <td style="padding:2px 8px 2px 0;color:#555;white-space:nowrap">Type</td>
+        <td [id]="'map-insp-type-' + id" style="padding:2px 0">{{ inspType }}</td>
+      </tr>
+    </table>
+
+    <div style="margin-top:8px;border-top:1px solid #e0e0e0;padding-top:8px">
+      <div style="font-weight:600;margin-bottom:6px;font-size:11px;text-transform:uppercase;letter-spacing:0.05em;color:#777">Comments</div>
+      <div [id]="'map-violations-' + id"
+           style="max-height:200px;overflow-y:auto;padding-right:4px"
+           [innerHTML]="violationsHtml"></div>
+    </div>
+  </div>
+</ng-template>

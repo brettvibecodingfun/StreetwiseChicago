@@ -1,0 +1,228 @@
+$bg:       oklch(12% 0.03 265);
+$bg-deep:  oklch(10% 0.025 265);
+$accent:   oklch(60% 0.28 250);
+$border:   rgba(255, 255, 255, 0.08);
+$fg1:      rgba(255, 255, 255, 0.96);
+$fg2:      rgba(255, 255, 255, 0.65);
+$fg3:      rgba(255, 255, 255, 0.38);
+$fg4:      rgba(255, 255, 255, 0.22);
+$glass2:   rgba(255, 255, 255, 0.07);
+
+.chat-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: $bg;
+  color: $fg1;
+  font-family: var(--font-sans);
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  border-bottom: 1px solid $border;
+  flex-shrink: 0;
+
+  .header-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, oklch(60% 0.28 250), oklch(55% 0.22 25));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .header-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: $fg1;
+    font-family: var(--font-display);
+  }
+
+  .header-sub {
+    font-size: 0.72rem;
+    color: $fg3;
+  }
+
+  .live-badge {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.72rem;
+    color: $fg3;
+
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: oklch(72% 0.22 155);
+      box-shadow: 0 0 8px oklch(72% 0.22 155);
+    }
+  }
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  &::-webkit-scrollbar { width: 4px; }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.15);
+    border-radius: 4px;
+  }
+}
+
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+
+  .suggestion-pill {
+    padding: 6px 14px;
+    background: $glass2;
+    border: 1px solid $border;
+    border-radius: 20px;
+    color: $fg2;
+    font-size: 0.8rem;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    transition: all 0.15s;
+
+    &:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.18);
+    }
+  }
+}
+
+.message-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+
+  &.user-wrap { align-items: flex-end; }
+
+  .msg-byline {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: $fg4;
+    padding-left: 2px;
+  }
+}
+
+.message {
+  max-width: 78%;
+  padding: 11px 16px;
+
+  pre {
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: $fg1;
+    line-height: 1.55;
+  }
+
+  &.bot {
+    border-radius: 16px 16px 16px 4px;
+    background: $glass2;
+    border: 1px solid $border;
+  }
+
+  &.user {
+    border-radius: 16px 16px 4px 16px;
+    background: $accent;
+    box-shadow: 0 0 30px oklch(60% 0.28 250 / 0.3);
+  }
+}
+
+.typing-dots {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 2px;
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: $accent;
+    animation: bounce 1.2s ease-in-out infinite;
+
+    &:nth-child(2) { animation-delay: 0.2s; }
+    &:nth-child(3) { animation-delay: 0.4s; }
+  }
+}
+
+.chat-input-row {
+  padding: 14px 20px;
+  border-top: 1px solid $border;
+  background: $bg-deep;
+  flex-shrink: 0;
+
+  .input-card {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+    background: $glass2;
+    border: 1px solid $border;
+    border-radius: 14px;
+    padding: 10px 14px;
+    transition: border-color 0.15s;
+
+    &:focus-within { border-color: rgba(255,255,255,0.18); }
+
+    textarea {
+      flex: 1;
+      resize: none;
+      border: none;
+      background: transparent;
+      color: $fg1;
+      font-size: 0.92rem;
+      font-family: var(--font-sans);
+      outline: none;
+      line-height: 1.5;
+      max-height: 120px;
+      overflow-y: auto;
+
+      &::placeholder { color: rgba(255,255,255,0.28); }
+    }
+
+    .send-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      border: none;
+      background: rgba(255,255,255,0.08);
+      cursor: default;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.2s;
+
+      &.ready {
+        background: $accent;
+        cursor: pointer;
+        box-shadow: 0 0 20px oklch(60% 0.28 250 / 0.4);
+      }
+
+      &:disabled:not(.ready) { opacity: 0.4; cursor: not-allowed; }
+    }
+  }
+}

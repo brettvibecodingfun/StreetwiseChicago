@@ -1,0 +1,4057 @@
+[
+  {
+    "label": "Ranalli's Lincoln Park",
+    "address": "1925 N Lincoln Ave, Chicago, IL 60614",
+    "category": "Restaurant",
+    "runs": [
+      {
+        "run": 1,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 14238,
+        "totalScore": 40.2,
+        "breakdown": {
+          "rideshare": {
+            "score": 3.6,
+            "count": 1746,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "1,746 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4.1,
+            "count": 1549,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "1,549 active businesses within 1 mile (713 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4.5,
+            "count": 25737,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "25,737 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 3.1,
+            "count": 60,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "60 street closure permits within 0.5 miles (2 event-related)"
+          },
+          "crime": {
+            "score": 4.7,
+            "count": 80,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "80 reported incidents vs 1,466 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 3.7,
+            "count": 347,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "347 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 3.5,
+            "count": 215354,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Fullerton — 215,354 avg monthly riders — 0.97 mi away (5 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 3.7,
+            "count": 72,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "72 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 4.5,
+            "count": 11,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "OZ (14 acres) 0.48 mi away · 11 parks nearby · Lake Michigan 0.43 mi away"
+          },
+          "propertySales": {
+            "score": 4.8,
+            "count": 996,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Neighborhood Average · 996 sales in assessor nbhd (3 yr) · median $712,500"
+          }
+        },
+        "timings": {
+          "parks": 520,
+          "foodInspections": 652,
+          "cta": 745,
+          "crime": 940,
+          "footTraffic6w": 1434,
+          "propertySales": 1450,
+          "permits": 1537,
+          "streetClosures": 1743,
+          "bizHighImpact": 2110,
+          "bizTotal": 2114,
+          "footTraffic": 3481,
+          "rideshare": 12655,
+          "_total": 12657
+        },
+        "error": null
+      },
+      {
+        "run": 2,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 13308,
+        "totalScore": 40.2,
+        "breakdown": {
+          "rideshare": {
+            "score": 3.6,
+            "count": 1746,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "1,746 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4.1,
+            "count": 1549,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "1,549 active businesses within 1 mile (713 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4.5,
+            "count": 25737,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "25,737 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 3.1,
+            "count": 60,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "60 street closure permits within 0.5 miles (2 event-related)"
+          },
+          "crime": {
+            "score": 4.7,
+            "count": 80,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "80 reported incidents vs 1,466 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 3.7,
+            "count": 347,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "347 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 3.5,
+            "count": 215354,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Fullerton — 215,354 avg monthly riders — 0.97 mi away (5 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 3.7,
+            "count": 72,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "72 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 4.5,
+            "count": 11,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "OZ (14 acres) 0.48 mi away · 11 parks nearby · Lake Michigan 0.43 mi away"
+          },
+          "propertySales": {
+            "score": 4.8,
+            "count": 996,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Neighborhood Average · 996 sales in assessor nbhd (3 yr) · median $712,500"
+          }
+        },
+        "timings": {
+          "parks": 355,
+          "foodInspections": 492,
+          "crime": 548,
+          "permits": 548,
+          "footTraffic6w": 557,
+          "bizHighImpact": 591,
+          "cta": 762,
+          "streetClosures": 857,
+          "bizTotal": 1081,
+          "propertySales": 1286,
+          "footTraffic": 1812,
+          "rideshare": 13216,
+          "_total": 13217
+        },
+        "error": null
+      },
+      {
+        "run": 3,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 1307,
+        "totalScore": 40.2,
+        "breakdown": {
+          "rideshare": {
+            "score": 3.6,
+            "count": 1746,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "1,746 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4.1,
+            "count": 1549,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "1,549 active businesses within 1 mile (713 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4.5,
+            "count": 25737,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "25,737 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 3.1,
+            "count": 60,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "60 street closure permits within 0.5 miles (2 event-related)"
+          },
+          "crime": {
+            "score": 4.7,
+            "count": 80,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "80 reported incidents vs 1,466 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 3.7,
+            "count": 347,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "347 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 3.5,
+            "count": 215354,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Fullerton — 215,354 avg monthly riders — 0.97 mi away (5 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 3.7,
+            "count": 72,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "72 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 4.5,
+            "count": 11,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "OZ (14 acres) 0.48 mi away · 11 parks nearby · Lake Michigan 0.43 mi away"
+          },
+          "propertySales": {
+            "score": 4.8,
+            "count": 996,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Neighborhood Average · 996 sales in assessor nbhd (3 yr) · median $712,500"
+          }
+        },
+        "timings": {
+          "parks": 371,
+          "bizTotal": 456,
+          "permits": 456,
+          "footTraffic6w": 495,
+          "bizHighImpact": 531,
+          "streetClosures": 646,
+          "foodInspections": 649,
+          "crime": 731,
+          "cta": 833,
+          "footTraffic": 879,
+          "rideshare": 1175,
+          "propertySales": 1235,
+          "_total": 1236
+        },
+        "error": null
+      },
+      {
+        "run": 4,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 1164,
+        "totalScore": 40.2,
+        "breakdown": {
+          "rideshare": {
+            "score": 3.6,
+            "count": 1746,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "1,746 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4.1,
+            "count": 1549,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "1,549 active businesses within 1 mile (713 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4.5,
+            "count": 25737,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "25,737 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 3.1,
+            "count": 60,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "60 street closure permits within 0.5 miles (2 event-related)"
+          },
+          "crime": {
+            "score": 4.7,
+            "count": 80,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "80 reported incidents vs 1,466 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 3.7,
+            "count": 347,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "347 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 3.5,
+            "count": 215354,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Fullerton — 215,354 avg monthly riders — 0.97 mi away (5 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 3.7,
+            "count": 72,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "72 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 4.5,
+            "count": 11,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "OZ (14 acres) 0.48 mi away · 11 parks nearby · Lake Michigan 0.43 mi away"
+          },
+          "propertySales": {
+            "score": 4.8,
+            "count": 996,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Neighborhood Average · 996 sales in assessor nbhd (3 yr) · median $712,500"
+          }
+        },
+        "timings": {
+          "parks": 208,
+          "crime": 258,
+          "footTraffic6w": 328,
+          "bizTotal": 336,
+          "foodInspections": 336,
+          "streetClosures": 340,
+          "bizHighImpact": 351,
+          "permits": 510,
+          "cta": 511,
+          "footTraffic": 642,
+          "propertySales": 1033,
+          "rideshare": 1137,
+          "_total": 1138
+        },
+        "error": null
+      },
+      {
+        "run": 5,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 1286,
+        "totalScore": 40.2,
+        "breakdown": {
+          "rideshare": {
+            "score": 3.6,
+            "count": 1746,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "1,746 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4.1,
+            "count": 1549,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "1,549 active businesses within 1 mile (713 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4.5,
+            "count": 25737,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "25,737 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 3.1,
+            "count": 60,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "60 street closure permits within 0.5 miles (2 event-related)"
+          },
+          "crime": {
+            "score": 4.7,
+            "count": 80,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "80 reported incidents vs 1,466 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 3.7,
+            "count": 347,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "347 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 3.5,
+            "count": 215354,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Fullerton — 215,354 avg monthly riders — 0.97 mi away (5 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 3.7,
+            "count": 72,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "72 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 4.5,
+            "count": 11,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "OZ (14 acres) 0.48 mi away · 11 parks nearby · Lake Michigan 0.43 mi away"
+          },
+          "propertySales": {
+            "score": 4.8,
+            "count": 996,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Neighborhood Average · 996 sales in assessor nbhd (3 yr) · median $712,500"
+          }
+        },
+        "timings": {
+          "parks": 249,
+          "foodInspections": 334,
+          "crime": 339,
+          "permits": 363,
+          "bizHighImpact": 472,
+          "bizTotal": 472,
+          "streetClosures": 475,
+          "footTraffic6w": 579,
+          "cta": 611,
+          "footTraffic": 783,
+          "propertySales": 1114,
+          "rideshare": 1266,
+          "_total": 1267
+        },
+        "error": null
+      }
+    ]
+  },
+  {
+    "label": "YooYee",
+    "address": "4925 N Broadway, Chicago, IL",
+    "category": "Restaurant",
+    "runs": [
+      {
+        "run": 1,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 10278,
+        "totalScore": 36.5,
+        "breakdown": {
+          "rideshare": {
+            "score": 3.3,
+            "count": 1446,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "1,446 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4,
+            "count": 1241,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "1,241 active businesses within 1 mile (484 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4.1,
+            "count": 20996,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "20,996 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 4.3,
+            "count": 69,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "69 street closure permits within 0.5 miles (6 event-related)"
+          },
+          "crime": {
+            "score": 4,
+            "count": 181,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "181 reported incidents vs 1,132 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 3.6,
+            "count": 300,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "300 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 3.6,
+            "count": 134084,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Wilson — 134,084 avg monthly riders — 0.56 mi away (5 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 3.4,
+            "count": 99,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "99 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 4.1,
+            "count": 14,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "BUTTERCUP (2 acres) 0.25 mi away · 14 parks nearby · Lake Michigan 0.73 mi away"
+          },
+          "propertySales": {
+            "score": 2.1,
+            "count": 3,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Commercial · 3 sales in assessor nbhd (3 yr) · median $157,450 · parcel last sold 2018 at $1"
+          }
+        },
+        "timings": {
+          "parks": 247,
+          "permits": 508,
+          "cta": 630,
+          "foodInspections": 676,
+          "streetClosures": 682,
+          "propertySales": 788,
+          "bizHighImpact": 938,
+          "bizTotal": 943,
+          "crime": 963,
+          "footTraffic6w": 1037,
+          "footTraffic": 2188,
+          "rideshare": 9309,
+          "_total": 9310
+        },
+        "error": null
+      },
+      {
+        "run": 2,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 2698,
+        "totalScore": 36.5,
+        "breakdown": {
+          "rideshare": {
+            "score": 3.3,
+            "count": 1446,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "1,446 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4,
+            "count": 1241,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "1,241 active businesses within 1 mile (484 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4.1,
+            "count": 20996,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "20,996 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 4.3,
+            "count": 69,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "69 street closure permits within 0.5 miles (6 event-related)"
+          },
+          "crime": {
+            "score": 4,
+            "count": 181,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "181 reported incidents vs 1,132 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 3.6,
+            "count": 300,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "300 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 3.6,
+            "count": 134084,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Wilson — 134,084 avg monthly riders — 0.56 mi away (5 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 3.4,
+            "count": 99,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "99 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 4.1,
+            "count": 14,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "BUTTERCUP (2 acres) 0.25 mi away · 14 parks nearby · Lake Michigan 0.73 mi away"
+          },
+          "propertySales": {
+            "score": 2.1,
+            "count": 3,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Commercial · 3 sales in assessor nbhd (3 yr) · median $157,450 · parcel last sold 2018 at $1"
+          }
+        },
+        "timings": {
+          "parks": 300,
+          "bizTotal": 456,
+          "crime": 456,
+          "footTraffic6w": 456,
+          "foodInspections": 477,
+          "cta": 666,
+          "rideshare": 691,
+          "propertySales": 695,
+          "permits": 712,
+          "streetClosures": 827,
+          "bizHighImpact": 1076,
+          "footTraffic": 2556,
+          "_total": 2557
+        },
+        "error": null
+      },
+      {
+        "run": 3,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 1148,
+        "totalScore": 36.5,
+        "breakdown": {
+          "rideshare": {
+            "score": 3.3,
+            "count": 1446,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "1,446 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4,
+            "count": 1241,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "1,241 active businesses within 1 mile (484 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4.1,
+            "count": 20996,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "20,996 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 4.3,
+            "count": 69,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "69 street closure permits within 0.5 miles (6 event-related)"
+          },
+          "crime": {
+            "score": 4,
+            "count": 181,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "181 reported incidents vs 1,132 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 3.6,
+            "count": 300,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "300 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 3.6,
+            "count": 134084,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Wilson — 134,084 avg monthly riders — 0.56 mi away (5 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 3.4,
+            "count": 99,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "99 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 4.1,
+            "count": 14,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "BUTTERCUP (2 acres) 0.25 mi away · 14 parks nearby · Lake Michigan 0.73 mi away"
+          },
+          "propertySales": {
+            "score": 2.1,
+            "count": 3,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Commercial · 3 sales in assessor nbhd (3 yr) · median $157,450 · parcel last sold 2018 at $1"
+          }
+        },
+        "timings": {
+          "parks": 227,
+          "foodInspections": 336,
+          "bizTotal": 341,
+          "crime": 390,
+          "bizHighImpact": 390,
+          "streetClosures": 391,
+          "permits": 502,
+          "footTraffic6w": 502,
+          "footTraffic": 575,
+          "cta": 595,
+          "propertySales": 663,
+          "rideshare": 1053,
+          "_total": 1054
+        },
+        "error": null
+      },
+      {
+        "run": 4,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 10377,
+        "totalScore": 36.5,
+        "breakdown": {
+          "rideshare": {
+            "score": 3.3,
+            "count": 1446,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "1,446 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4,
+            "count": 1241,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "1,241 active businesses within 1 mile (484 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4.1,
+            "count": 20996,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "20,996 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 4.3,
+            "count": 69,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "69 street closure permits within 0.5 miles (6 event-related)"
+          },
+          "crime": {
+            "score": 4,
+            "count": 181,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "181 reported incidents vs 1,132 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 3.6,
+            "count": 300,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "300 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 3.6,
+            "count": 134084,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Wilson — 134,084 avg monthly riders — 0.56 mi away (5 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 3.4,
+            "count": 99,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "99 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 4.1,
+            "count": 14,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "BUTTERCUP (2 acres) 0.25 mi away · 14 parks nearby · Lake Michigan 0.73 mi away"
+          },
+          "propertySales": {
+            "score": 2.1,
+            "count": 3,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Commercial · 3 sales in assessor nbhd (3 yr) · median $157,450 · parcel last sold 2018 at $1"
+          }
+        },
+        "timings": {
+          "parks": 164,
+          "foodInspections": 326,
+          "bizTotal": 337,
+          "streetClosures": 343,
+          "permits": 350,
+          "bizHighImpact": 353,
+          "footTraffic6w": 360,
+          "propertySales": 514,
+          "cta": 514,
+          "footTraffic": 668,
+          "crime": 857,
+          "rideshare": 10322,
+          "_total": 10323
+        },
+        "error": null
+      },
+      {
+        "run": 5,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 1112,
+        "totalScore": 36.5,
+        "breakdown": {
+          "rideshare": {
+            "score": 3.3,
+            "count": 1446,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "1,446 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4,
+            "count": 1241,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "1,241 active businesses within 1 mile (484 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4.1,
+            "count": 20996,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "20,996 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 4.3,
+            "count": 69,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "69 street closure permits within 0.5 miles (6 event-related)"
+          },
+          "crime": {
+            "score": 4,
+            "count": 181,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "181 reported incidents vs 1,132 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 3.6,
+            "count": 300,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "300 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 3.6,
+            "count": 134084,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Wilson — 134,084 avg monthly riders — 0.56 mi away (5 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 3.4,
+            "count": 99,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "99 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 4.1,
+            "count": 14,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "BUTTERCUP (2 acres) 0.25 mi away · 14 parks nearby · Lake Michigan 0.73 mi away"
+          },
+          "propertySales": {
+            "score": 2.1,
+            "count": 3,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Commercial · 3 sales in assessor nbhd (3 yr) · median $157,450 · parcel last sold 2018 at $1"
+          }
+        },
+        "timings": {
+          "parks": 426,
+          "foodInspections": 508,
+          "bizTotal": 515,
+          "permits": 515,
+          "bizHighImpact": 518,
+          "streetClosures": 522,
+          "crime": 527,
+          "footTraffic6w": 676,
+          "propertySales": 677,
+          "cta": 737,
+          "footTraffic": 785,
+          "rideshare": 1042,
+          "_total": 1043
+        },
+        "error": null
+      }
+    ]
+  },
+  {
+    "label": "Lottie's",
+    "address": "1925 W Cortland St, Chicago, IL 60622",
+    "category": "Bar",
+    "runs": [
+      {
+        "run": 1,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 8273,
+        "totalScore": 38.4,
+        "breakdown": {
+          "rideshare": {
+            "score": 2.6,
+            "count": 941,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "941 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4.2,
+            "count": 1883,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "1,883 active businesses within 1 mile (755 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4.6,
+            "count": 26539,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "26,539 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 4.2,
+            "count": 100,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "100 street closure permits within 0.5 miles (4 event-related)"
+          },
+          "crime": {
+            "score": 4.5,
+            "count": 88,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "88 reported incidents vs 1,066 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 3.8,
+            "count": 393,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "393 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 3.5,
+            "count": 119742,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Damen/Milwaukee — 119,742 avg monthly riders (3 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 3.2,
+            "count": 130,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "130 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 3.9,
+            "count": 16,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "PARK NO. 512 (3 acres) 0.46 mi away · 16 parks nearby"
+          },
+          "propertySales": {
+            "score": 3.9,
+            "count": 14,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Commercial · 14 sales in assessor nbhd (3 yr) · median $427,500 · parcel last sold 2001 at $450,000"
+          }
+        },
+        "timings": {
+          "parks": 279,
+          "foodInspections": 508,
+          "propertySales": 556,
+          "cta": 620,
+          "permits": 637,
+          "crime": 680,
+          "streetClosures": 871,
+          "bizTotal": 1226,
+          "bizHighImpact": 1411,
+          "footTraffic6w": 1744,
+          "footTraffic": 3126,
+          "rideshare": 8024,
+          "_total": 8025
+        },
+        "error": null
+      },
+      {
+        "run": 2,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 16928,
+        "totalScore": 38.4,
+        "breakdown": {
+          "rideshare": {
+            "score": 2.6,
+            "count": 941,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "941 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4.2,
+            "count": 1883,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "1,883 active businesses within 1 mile (755 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4.6,
+            "count": 26539,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "26,539 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 4.2,
+            "count": 100,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "100 street closure permits within 0.5 miles (4 event-related)"
+          },
+          "crime": {
+            "score": 4.5,
+            "count": 88,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "88 reported incidents vs 1,066 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 3.8,
+            "count": 393,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "393 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 3.5,
+            "count": 119742,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Damen/Milwaukee — 119,742 avg monthly riders (3 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 3.2,
+            "count": 130,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "130 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 3.9,
+            "count": 16,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "PARK NO. 512 (3 acres) 0.46 mi away · 16 parks nearby"
+          },
+          "propertySales": {
+            "score": 3.9,
+            "count": 14,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Commercial · 14 sales in assessor nbhd (3 yr) · median $427,500 · parcel last sold 2001 at $450,000"
+          }
+        },
+        "timings": {
+          "parks": 381,
+          "bizTotal": 494,
+          "foodInspections": 521,
+          "streetClosures": 570,
+          "crime": 589,
+          "permits": 605,
+          "bizHighImpact": 607,
+          "footTraffic6w": 629,
+          "cta": 800,
+          "propertySales": 829,
+          "footTraffic": 2373,
+          "rideshare": 16789,
+          "_total": 16789
+        },
+        "error": null
+      },
+      {
+        "run": 3,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 1200,
+        "totalScore": 38.4,
+        "breakdown": {
+          "rideshare": {
+            "score": 2.6,
+            "count": 941,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "941 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4.2,
+            "count": 1883,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "1,883 active businesses within 1 mile (755 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4.6,
+            "count": 26539,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "26,539 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 4.2,
+            "count": 100,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "100 street closure permits within 0.5 miles (4 event-related)"
+          },
+          "crime": {
+            "score": 4.5,
+            "count": 88,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "88 reported incidents vs 1,066 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 3.8,
+            "count": 393,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "393 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 3.5,
+            "count": 119742,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Damen/Milwaukee — 119,742 avg monthly riders (3 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 3.2,
+            "count": 130,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "130 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 3.9,
+            "count": 16,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "PARK NO. 512 (3 acres) 0.46 mi away · 16 parks nearby"
+          },
+          "propertySales": {
+            "score": 3.9,
+            "count": 14,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Commercial · 14 sales in assessor nbhd (3 yr) · median $427,500 · parcel last sold 2001 at $450,000"
+          }
+        },
+        "timings": {
+          "parks": 296,
+          "foodInspections": 447,
+          "bizHighImpact": 466,
+          "permits": 477,
+          "streetClosures": 483,
+          "footTraffic6w": 553,
+          "bizTotal": 570,
+          "cta": 628,
+          "crime": 662,
+          "propertySales": 781,
+          "footTraffic": 1081,
+          "rideshare": 1120,
+          "_total": 1120
+        },
+        "error": null
+      },
+      {
+        "run": 4,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 1020,
+        "totalScore": 38.4,
+        "breakdown": {
+          "rideshare": {
+            "score": 2.6,
+            "count": 941,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "941 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4.2,
+            "count": 1883,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "1,883 active businesses within 1 mile (755 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4.6,
+            "count": 26539,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "26,539 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 4.2,
+            "count": 100,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "100 street closure permits within 0.5 miles (4 event-related)"
+          },
+          "crime": {
+            "score": 4.5,
+            "count": 88,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "88 reported incidents vs 1,066 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 3.8,
+            "count": 393,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "393 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 3.5,
+            "count": 119742,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Damen/Milwaukee — 119,742 avg monthly riders (3 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 3.2,
+            "count": 130,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "130 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 3.9,
+            "count": 16,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "PARK NO. 512 (3 acres) 0.46 mi away · 16 parks nearby"
+          },
+          "propertySales": {
+            "score": 3.9,
+            "count": 14,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Commercial · 14 sales in assessor nbhd (3 yr) · median $427,500 · parcel last sold 2001 at $450,000"
+          }
+        },
+        "timings": {
+          "parks": 270,
+          "crime": 271,
+          "foodInspections": 275,
+          "permits": 316,
+          "bizTotal": 367,
+          "bizHighImpact": 434,
+          "footTraffic6w": 463,
+          "cta": 496,
+          "propertySales": 513,
+          "footTraffic": 744,
+          "rideshare": 990,
+          "streetClosures": 991,
+          "_total": 991
+        },
+        "error": null
+      },
+      {
+        "run": 5,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 1463,
+        "totalScore": 38.4,
+        "breakdown": {
+          "rideshare": {
+            "score": 2.6,
+            "count": 941,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "941 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4.2,
+            "count": 1883,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "1,883 active businesses within 1 mile (755 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4.6,
+            "count": 26539,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "26,539 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 4.2,
+            "count": 100,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "100 street closure permits within 0.5 miles (4 event-related)"
+          },
+          "crime": {
+            "score": 4.5,
+            "count": 88,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "88 reported incidents vs 1,066 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 3.8,
+            "count": 393,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "393 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 3.5,
+            "count": 119742,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Damen/Milwaukee — 119,742 avg monthly riders (3 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 3.2,
+            "count": 130,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "130 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 3.9,
+            "count": 16,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "PARK NO. 512 (3 acres) 0.46 mi away · 16 parks nearby"
+          },
+          "propertySales": {
+            "score": 3.9,
+            "count": 14,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Commercial · 14 sales in assessor nbhd (3 yr) · median $427,500 · parcel last sold 2001 at $450,000"
+          }
+        },
+        "timings": {
+          "parks": 487,
+          "crime": 941,
+          "foodInspections": 941,
+          "bizHighImpact": 941,
+          "permits": 941,
+          "footTraffic6w": 941,
+          "streetClosures": 942,
+          "bizTotal": 1006,
+          "footTraffic": 1111,
+          "propertySales": 1263,
+          "cta": 1292,
+          "rideshare": 1444,
+          "_total": 1444
+        },
+        "error": null
+      }
+    ]
+  },
+  {
+    "label": "Old Crow",
+    "address": "3506 N Clark St, Chicago, IL 60657",
+    "category": "Bar",
+    "runs": [
+      {
+        "run": 1,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 19782,
+        "totalScore": 41.6,
+        "breakdown": {
+          "rideshare": {
+            "score": 4.7,
+            "count": 3066,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "3,066 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4.3,
+            "count": 2119,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "2,119 active businesses within 1 mile (955 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4.6,
+            "count": 27336,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "27,336 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 5,
+            "count": 113,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "113 street closure permits within 0.5 miles (19 event-related)"
+          },
+          "crime": {
+            "score": 3.4,
+            "count": 253,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "253 reported incidents vs 1,000 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 4,
+            "count": 560,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "560 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 4.6,
+            "count": 209139,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Belmont-North Main — 209,139 avg monthly riders (8 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 2.9,
+            "count": 172,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "172 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 3.1,
+            "count": 15,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "GILL (JOSEPH) (2 acres) 0.53 mi away · 15 parks nearby · Lake Michigan 1.08 mi away"
+          },
+          "propertySales": {
+            "score": 5,
+            "count": 13,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Commercial · 13 sales in assessor nbhd (3 yr) · median $1,185,000"
+          }
+        },
+        "timings": {
+          "parks": 192,
+          "foodInspections": 355,
+          "cta": 588,
+          "streetClosures": 606,
+          "propertySales": 633,
+          "permits": 780,
+          "footTraffic6w": 782,
+          "crime": 884,
+          "bizTotal": 1703,
+          "bizHighImpact": 1723,
+          "footTraffic": 1748,
+          "rideshare": 18549,
+          "_total": 18550
+        },
+        "error": null
+      },
+      {
+        "run": 2,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 1799,
+        "totalScore": 41.6,
+        "breakdown": {
+          "rideshare": {
+            "score": 4.7,
+            "count": 3066,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "3,066 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4.3,
+            "count": 2119,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "2,119 active businesses within 1 mile (955 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4.6,
+            "count": 27336,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "27,336 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 5,
+            "count": 113,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "113 street closure permits within 0.5 miles (19 event-related)"
+          },
+          "crime": {
+            "score": 3.4,
+            "count": 253,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "253 reported incidents vs 1,000 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 4,
+            "count": 560,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "560 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 4.6,
+            "count": 209139,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Belmont-North Main — 209,139 avg monthly riders (8 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 2.9,
+            "count": 172,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "172 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 3.1,
+            "count": 15,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "GILL (JOSEPH) (2 acres) 0.53 mi away · 15 parks nearby · Lake Michigan 1.08 mi away"
+          },
+          "propertySales": {
+            "score": 5,
+            "count": 13,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Commercial · 13 sales in assessor nbhd (3 yr) · median $1,185,000"
+          }
+        },
+        "timings": {
+          "parks": 368,
+          "foodInspections": 472,
+          "crime": 503,
+          "bizTotal": 512,
+          "bizHighImpact": 544,
+          "permits": 675,
+          "cta": 810,
+          "propertySales": 810,
+          "footTraffic6w": 875,
+          "streetClosures": 933,
+          "footTraffic": 1413,
+          "rideshare": 1722,
+          "_total": 1723
+        },
+        "error": null
+      },
+      {
+        "run": 3,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 1816,
+        "totalScore": 41.6,
+        "breakdown": {
+          "rideshare": {
+            "score": 4.7,
+            "count": 3066,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "3,066 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4.3,
+            "count": 2119,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "2,119 active businesses within 1 mile (955 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4.6,
+            "count": 27336,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "27,336 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 5,
+            "count": 113,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "113 street closure permits within 0.5 miles (19 event-related)"
+          },
+          "crime": {
+            "score": 3.4,
+            "count": 253,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "253 reported incidents vs 1,000 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 4,
+            "count": 560,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "560 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 4.6,
+            "count": 209139,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Belmont-North Main — 209,139 avg monthly riders (8 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 2.9,
+            "count": 172,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "172 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 3.1,
+            "count": 15,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "GILL (JOSEPH) (2 acres) 0.53 mi away · 15 parks nearby · Lake Michigan 1.08 mi away"
+          },
+          "propertySales": {
+            "score": 5,
+            "count": 13,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Commercial · 13 sales in assessor nbhd (3 yr) · median $1,185,000"
+          }
+        },
+        "timings": {
+          "parks": 197,
+          "permits": 332,
+          "bizHighImpact": 339,
+          "bizTotal": 383,
+          "streetClosures": 384,
+          "footTraffic6w": 400,
+          "crime": 500,
+          "foodInspections": 500,
+          "footTraffic": 618,
+          "propertySales": 707,
+          "cta": 1020,
+          "rideshare": 1718,
+          "_total": 1718
+        },
+        "error": null
+      },
+      {
+        "run": 4,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 1792,
+        "totalScore": 41.6,
+        "breakdown": {
+          "rideshare": {
+            "score": 4.7,
+            "count": 3066,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "3,066 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4.3,
+            "count": 2119,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "2,119 active businesses within 1 mile (955 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4.6,
+            "count": 27336,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "27,336 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 5,
+            "count": 113,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "113 street closure permits within 0.5 miles (19 event-related)"
+          },
+          "crime": {
+            "score": 3.4,
+            "count": 253,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "253 reported incidents vs 1,000 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 4,
+            "count": 560,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "560 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 4.6,
+            "count": 209139,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Belmont-North Main — 209,139 avg monthly riders (8 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 2.9,
+            "count": 172,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "172 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 3.1,
+            "count": 15,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "GILL (JOSEPH) (2 acres) 0.53 mi away · 15 parks nearby · Lake Michigan 1.08 mi away"
+          },
+          "propertySales": {
+            "score": 5,
+            "count": 13,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Commercial · 13 sales in assessor nbhd (3 yr) · median $1,185,000"
+          }
+        },
+        "timings": {
+          "parks": 199,
+          "foodInspections": 376,
+          "permits": 376,
+          "footTraffic6w": 376,
+          "streetClosures": 430,
+          "propertySales": 622,
+          "footTraffic": 622,
+          "cta": 669,
+          "bizTotal": 685,
+          "bizHighImpact": 702,
+          "crime": 744,
+          "rideshare": 1741,
+          "_total": 1742
+        },
+        "error": null
+      },
+      {
+        "run": 5,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 31790,
+        "totalScore": 41.6,
+        "breakdown": {
+          "rideshare": {
+            "score": 4.7,
+            "count": 3066,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "3,066 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4.3,
+            "count": 2119,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "2,119 active businesses within 1 mile (955 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4.6,
+            "count": 27336,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "27,336 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 5,
+            "count": 113,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "113 street closure permits within 0.5 miles (19 event-related)"
+          },
+          "crime": {
+            "score": 3.4,
+            "count": 253,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "253 reported incidents vs 1,000 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 4,
+            "count": 560,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "560 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 4.6,
+            "count": 209139,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Belmont-North Main — 209,139 avg monthly riders (8 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 2.9,
+            "count": 172,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "172 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 3.1,
+            "count": 15,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "GILL (JOSEPH) (2 acres) 0.53 mi away · 15 parks nearby · Lake Michigan 1.08 mi away"
+          },
+          "propertySales": {
+            "score": 5,
+            "count": 13,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Commercial · 13 sales in assessor nbhd (3 yr) · median $1,185,000"
+          }
+        },
+        "timings": {
+          "parks": 255,
+          "bizTotal": 369,
+          "permits": 390,
+          "footTraffic6w": 453,
+          "foodInspections": 453,
+          "crime": 517,
+          "streetClosures": 517,
+          "propertySales": 626,
+          "cta": 775,
+          "bizHighImpact": 775,
+          "footTraffic": 857,
+          "rideshare": 31766,
+          "_total": 31767
+        },
+        "error": null
+      }
+    ]
+  },
+  {
+    "label": "Art Effect",
+    "address": "934 W Armitage Ave, Chicago, IL 60614",
+    "category": "Retail",
+    "runs": [
+      {
+        "run": 1,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 22158,
+        "totalScore": 42.7,
+        "breakdown": {
+          "rideshare": {
+            "score": 4.2,
+            "count": 2356,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "2,356 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4.2,
+            "count": 1805,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "1,805 active businesses within 1 mile (762 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4.7,
+            "count": 28741,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "28,741 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 4.4,
+            "count": 81,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "81 street closure permits within 0.5 miles (6 event-related)"
+          },
+          "crime": {
+            "score": 4.7,
+            "count": 64,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "64 reported incidents vs 1,222 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 4,
+            "count": 507,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "507 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 4.6,
+            "count": 215354,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Fullerton — 215,354 avg monthly riders (5 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 3.4,
+            "count": 100,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "100 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 3.7,
+            "count": 18,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "OZ (14 acres) 0.41 mi away · 18 parks nearby · Lake Michigan 1.20 mi away"
+          },
+          "propertySales": {
+            "score": 4.8,
+            "count": 995,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Residential – Nursing Home · 995 sales in assessor nbhd (3 yr) · median $710,000 · parcel last sold 2011 at $618,750"
+          }
+        },
+        "timings": {
+          "parks": 341,
+          "crime": 484,
+          "foodInspections": 536,
+          "permits": 549,
+          "cta": 678,
+          "propertySales": 843,
+          "footTraffic6w": 912,
+          "streetClosures": 1007,
+          "footTraffic": 2456,
+          "bizHighImpact": 2653,
+          "bizTotal": 2655,
+          "rideshare": 21579,
+          "_total": 21580
+        },
+        "error": null
+      },
+      {
+        "run": 2,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 20925,
+        "totalScore": 42.7,
+        "breakdown": {
+          "rideshare": {
+            "score": 4.2,
+            "count": 2356,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "2,356 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4.2,
+            "count": 1805,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "1,805 active businesses within 1 mile (762 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4.7,
+            "count": 28741,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "28,741 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 4.4,
+            "count": 81,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "81 street closure permits within 0.5 miles (6 event-related)"
+          },
+          "crime": {
+            "score": 4.7,
+            "count": 64,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "64 reported incidents vs 1,222 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 4,
+            "count": 507,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "507 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 4.6,
+            "count": 215354,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Fullerton — 215,354 avg monthly riders (5 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 3.4,
+            "count": 100,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "100 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 3.7,
+            "count": 18,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "OZ (14 acres) 0.41 mi away · 18 parks nearby · Lake Michigan 1.20 mi away"
+          },
+          "propertySales": {
+            "score": 4.8,
+            "count": 995,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Residential – Nursing Home · 995 sales in assessor nbhd (3 yr) · median $710,000 · parcel last sold 2011 at $618,750"
+          }
+        },
+        "timings": {
+          "parks": 458,
+          "footTraffic6w": 640,
+          "foodInspections": 645,
+          "bizHighImpact": 653,
+          "crime": 714,
+          "cta": 935,
+          "propertySales": 936,
+          "footTraffic": 1033,
+          "permits": 1059,
+          "bizTotal": 1330,
+          "streetClosures": 1358,
+          "rideshare": 20863,
+          "_total": 20864
+        },
+        "error": null
+      },
+      {
+        "run": 3,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 3641,
+        "totalScore": 42.7,
+        "breakdown": {
+          "rideshare": {
+            "score": 4.2,
+            "count": 2356,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "2,356 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4.2,
+            "count": 1805,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "1,805 active businesses within 1 mile (762 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4.7,
+            "count": 28741,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "28,741 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 4.4,
+            "count": 81,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "81 street closure permits within 0.5 miles (6 event-related)"
+          },
+          "crime": {
+            "score": 4.7,
+            "count": 64,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "64 reported incidents vs 1,222 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 4,
+            "count": 507,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "507 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 4.6,
+            "count": 215354,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Fullerton — 215,354 avg monthly riders (5 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 3.4,
+            "count": 100,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "100 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 3.7,
+            "count": 18,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "OZ (14 acres) 0.41 mi away · 18 parks nearby · Lake Michigan 1.20 mi away"
+          },
+          "propertySales": {
+            "score": 4.8,
+            "count": 995,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Residential – Nursing Home · 995 sales in assessor nbhd (3 yr) · median $710,000 · parcel last sold 2011 at $618,750"
+          }
+        },
+        "timings": {
+          "foodInspections": 467,
+          "crime": 479,
+          "parks": 496,
+          "permits": 545,
+          "bizHighImpact": 589,
+          "streetClosures": 617,
+          "bizTotal": 675,
+          "footTraffic6w": 720,
+          "cta": 777,
+          "propertySales": 1041,
+          "footTraffic": 2290,
+          "rideshare": 3507,
+          "_total": 3507
+        },
+        "error": null
+      },
+      {
+        "run": 4,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 1737,
+        "totalScore": 42.7,
+        "breakdown": {
+          "rideshare": {
+            "score": 4.2,
+            "count": 2356,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "2,356 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4.2,
+            "count": 1805,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "1,805 active businesses within 1 mile (762 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4.7,
+            "count": 28741,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "28,741 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 4.4,
+            "count": 81,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "81 street closure permits within 0.5 miles (6 event-related)"
+          },
+          "crime": {
+            "score": 4.7,
+            "count": 64,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "64 reported incidents vs 1,222 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 4,
+            "count": 507,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "507 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 4.6,
+            "count": 215354,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Fullerton — 215,354 avg monthly riders (5 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 3.4,
+            "count": 100,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "100 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 3.7,
+            "count": 18,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "OZ (14 acres) 0.41 mi away · 18 parks nearby · Lake Michigan 1.20 mi away"
+          },
+          "propertySales": {
+            "score": 4.8,
+            "count": 995,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Residential – Nursing Home · 995 sales in assessor nbhd (3 yr) · median $710,000 · parcel last sold 2011 at $618,750"
+          }
+        },
+        "timings": {
+          "parks": 230,
+          "bizTotal": 328,
+          "permits": 341,
+          "foodInspections": 397,
+          "crime": 412,
+          "footTraffic6w": 531,
+          "propertySales": 540,
+          "streetClosures": 829,
+          "bizHighImpact": 846,
+          "cta": 919,
+          "footTraffic": 1151,
+          "rideshare": 1572,
+          "_total": 1573
+        },
+        "error": null
+      },
+      {
+        "run": 5,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 2012,
+        "totalScore": 42.7,
+        "breakdown": {
+          "rideshare": {
+            "score": 4.2,
+            "count": 2356,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "2,356 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4.2,
+            "count": 1805,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "1,805 active businesses within 1 mile (762 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4.7,
+            "count": 28741,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "28,741 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 4.4,
+            "count": 81,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "81 street closure permits within 0.5 miles (6 event-related)"
+          },
+          "crime": {
+            "score": 4.7,
+            "count": 64,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "64 reported incidents vs 1,222 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 4,
+            "count": 507,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "507 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 4.6,
+            "count": 215354,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Fullerton — 215,354 avg monthly riders (5 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 3.4,
+            "count": 100,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "100 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 3.7,
+            "count": 18,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "OZ (14 acres) 0.41 mi away · 18 parks nearby · Lake Michigan 1.20 mi away"
+          },
+          "propertySales": {
+            "score": 4.8,
+            "count": 995,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Residential – Nursing Home · 995 sales in assessor nbhd (3 yr) · median $710,000 · parcel last sold 2011 at $618,750"
+          }
+        },
+        "timings": {
+          "parks": 222,
+          "permits": 379,
+          "crime": 379,
+          "bizHighImpact": 400,
+          "footTraffic6w": 411,
+          "bizTotal": 435,
+          "foodInspections": 521,
+          "streetClosures": 522,
+          "cta": 654,
+          "propertySales": 676,
+          "footTraffic": 716,
+          "rideshare": 1420,
+          "_total": 1420
+        },
+        "error": null
+      }
+    ]
+  },
+  {
+    "label": "Nordstrom Rack",
+    "address": "24 N State St, Chicago, IL 60602",
+    "category": "Retail",
+    "runs": [
+      {
+        "run": 1,
+        "ok": false,
+        "httpStatus": 0,
+        "wallMs": 65009,
+        "totalScore": null,
+        "breakdown": {},
+        "timings": {},
+        "error": "The operation was aborted due to timeout"
+      },
+      {
+        "run": 2,
+        "ok": false,
+        "httpStatus": 0,
+        "wallMs": 65001,
+        "totalScore": null,
+        "breakdown": {},
+        "timings": {},
+        "error": "The operation was aborted due to timeout"
+      },
+      {
+        "run": 3,
+        "ok": false,
+        "httpStatus": 0,
+        "wallMs": 65001,
+        "totalScore": null,
+        "breakdown": {},
+        "timings": {},
+        "error": "The operation was aborted due to timeout"
+      },
+      {
+        "run": 4,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 39991,
+        "totalScore": 36.9,
+        "breakdown": {
+          "rideshare": {
+            "score": 5,
+            "count": 5673,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "5,673 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 5,
+            "count": 6748,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "6,748 active businesses within 1 mile (2,564 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4,
+            "count": 20883,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "20,883 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 5,
+            "count": 275,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "275 street closure permits within 0.5 miles (55 event-related)"
+          },
+          "crime": {
+            "score": 1.1,
+            "count": 555,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "555 reported incidents vs 880 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 5,
+            "count": 2710,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "2,710 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 5,
+            "count": 304783,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Lake/State — 304,783 avg monthly riders (21 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 1.7,
+            "count": 441,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "441 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 2.7,
+            "count": 9,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "PARK NO. 546 (6 acres) 0.57 mi away · 9 parks nearby"
+          },
+          "propertySales": {
+            "score": 2.4,
+            "count": 122,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Neighborhood Average · 122 sales in assessor nbhd (3 yr) · median $186,500"
+          }
+        },
+        "timings": {
+          "parks": 402,
+          "streetClosures": 738,
+          "permits": 738,
+          "bizHighImpact": 769,
+          "bizTotal": 806,
+          "cta": 807,
+          "foodInspections": 1110,
+          "footTraffic": 1222,
+          "propertySales": 1440,
+          "crime": 1458,
+          "footTraffic6w": 4131,
+          "rideshare": 39915,
+          "_total": 39916
+        },
+        "error": null
+      },
+      {
+        "run": 5,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 5840,
+        "totalScore": 36.9,
+        "breakdown": {
+          "rideshare": {
+            "score": 5,
+            "count": 5673,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "5,673 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 5,
+            "count": 6748,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "6,748 active businesses within 1 mile (2,564 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4,
+            "count": 20883,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "20,883 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 5,
+            "count": 275,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "275 street closure permits within 0.5 miles (55 event-related)"
+          },
+          "crime": {
+            "score": 1.1,
+            "count": 555,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "555 reported incidents vs 880 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 5,
+            "count": 2710,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "2,710 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 5,
+            "count": 304783,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Lake/State — 304,783 avg monthly riders (21 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 1.7,
+            "count": 441,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "441 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 2.7,
+            "count": 9,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "PARK NO. 546 (6 acres) 0.57 mi away · 9 parks nearby"
+          },
+          "propertySales": {
+            "score": 2.4,
+            "count": 122,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Neighborhood Average · 122 sales in assessor nbhd (3 yr) · median $186,500"
+          }
+        },
+        "timings": {
+          "permits": 579,
+          "foodInspections": 587,
+          "crime": 681,
+          "bizTotal": 848,
+          "bizHighImpact": 869,
+          "parks": 874,
+          "cta": 979,
+          "footTraffic6w": 1142,
+          "propertySales": 1363,
+          "rideshare": 3147,
+          "streetClosures": 3804,
+          "footTraffic": 5762,
+          "_total": 5762
+        },
+        "error": null
+      }
+    ]
+  },
+  {
+    "label": "Epsilon",
+    "address": "35 W Wacker Drive, Chicago, IL",
+    "category": "Office",
+    "runs": [
+      {
+        "run": 1,
+        "ok": false,
+        "httpStatus": 0,
+        "wallMs": 65001,
+        "totalScore": null,
+        "breakdown": {},
+        "timings": {},
+        "error": "The operation was aborted due to timeout"
+      },
+      {
+        "run": 2,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 64960,
+        "totalScore": 38.5,
+        "breakdown": {
+          "rideshare": {
+            "score": 5,
+            "count": 9818,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "9,818 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 5,
+            "count": 7429,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "7,429 active businesses within 1 mile (2,849 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4.2,
+            "count": 22413,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "22,413 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 5,
+            "count": 224,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "224 street closure permits within 0.5 miles (11 event-related)"
+          },
+          "crime": {
+            "score": 0.8,
+            "count": 644,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "644 reported incidents vs 966 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 5,
+            "count": 2391,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "2,391 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 5,
+            "count": 304783,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Lake/State — 304,783 avg monthly riders (22 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 1.3,
+            "count": 547,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "547 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 2.2,
+            "count": 14,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "PARK NO. 546 (6 acres) 0.58 mi away · 14 parks nearby · Lake Michigan 1.14 mi away"
+          },
+          "propertySales": {
+            "score": 5,
+            "count": 53,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Commercial · 53 sales in assessor nbhd (3 yr) · median $875,000 · parcel last sold 2022 at $415,000,000"
+          }
+        },
+        "timings": {
+          "foodInspections": 408,
+          "crime": 472,
+          "bizTotal": 509,
+          "parks": 535,
+          "bizHighImpact": 541,
+          "cta": 681,
+          "propertySales": 754,
+          "footTraffic6w": 922,
+          "permits": 2150,
+          "streetClosures": 2770,
+          "footTraffic": 3685,
+          "rideshare": 64883,
+          "_total": 64883
+        },
+        "error": null
+      },
+      {
+        "run": 3,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 24284,
+        "totalScore": 38.5,
+        "breakdown": {
+          "rideshare": {
+            "score": 5,
+            "count": 9818,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "9,818 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 5,
+            "count": 7429,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "7,429 active businesses within 1 mile (2,849 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4.2,
+            "count": 22413,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "22,413 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 5,
+            "count": 224,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "224 street closure permits within 0.5 miles (11 event-related)"
+          },
+          "crime": {
+            "score": 0.8,
+            "count": 644,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "644 reported incidents vs 966 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 5,
+            "count": 2391,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "2,391 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 5,
+            "count": 304783,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Lake/State — 304,783 avg monthly riders (22 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 1.3,
+            "count": 547,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "547 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 2.2,
+            "count": 14,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "PARK NO. 546 (6 acres) 0.58 mi away · 14 parks nearby · Lake Michigan 1.14 mi away"
+          },
+          "propertySales": {
+            "score": 5,
+            "count": 53,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Commercial · 53 sales in assessor nbhd (3 yr) · median $875,000 · parcel last sold 2022 at $415,000,000"
+          }
+        },
+        "timings": {
+          "foodInspections": 666,
+          "parks": 685,
+          "permits": 731,
+          "propertySales": 742,
+          "cta": 803,
+          "streetClosures": 959,
+          "footTraffic6w": 968,
+          "footTraffic": 2931,
+          "crime": 3054,
+          "bizTotal": 3958,
+          "bizHighImpact": 3966,
+          "rideshare": 24122,
+          "_total": 24123
+        },
+        "error": null
+      },
+      {
+        "run": 4,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 5737,
+        "totalScore": 38.5,
+        "breakdown": {
+          "rideshare": {
+            "score": 5,
+            "count": 9818,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "9,818 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 5,
+            "count": 7429,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "7,429 active businesses within 1 mile (2,849 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4.2,
+            "count": 22413,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "22,413 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 5,
+            "count": 224,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "224 street closure permits within 0.5 miles (11 event-related)"
+          },
+          "crime": {
+            "score": 0.8,
+            "count": 644,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "644 reported incidents vs 966 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 5,
+            "count": 2391,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "2,391 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 5,
+            "count": 304783,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Lake/State — 304,783 avg monthly riders (22 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 1.3,
+            "count": 547,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "547 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 2.2,
+            "count": 14,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "PARK NO. 546 (6 acres) 0.58 mi away · 14 parks nearby · Lake Michigan 1.14 mi away"
+          },
+          "propertySales": {
+            "score": 5,
+            "count": 53,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Commercial · 53 sales in assessor nbhd (3 yr) · median $875,000 · parcel last sold 2022 at $415,000,000"
+          }
+        },
+        "timings": {
+          "parks": 494,
+          "bizTotal": 555,
+          "crime": 572,
+          "footTraffic6w": 579,
+          "bizHighImpact": 624,
+          "foodInspections": 626,
+          "cta": 683,
+          "propertySales": 872,
+          "permits": 1057,
+          "streetClosures": 1462,
+          "footTraffic": 1963,
+          "rideshare": 5536,
+          "_total": 5536
+        },
+        "error": null
+      },
+      {
+        "run": 5,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 5319,
+        "totalScore": 38.5,
+        "breakdown": {
+          "rideshare": {
+            "score": 5,
+            "count": 9818,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "9,818 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 5,
+            "count": 7429,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "7,429 active businesses within 1 mile (2,849 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4.2,
+            "count": 22413,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "22,413 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 5,
+            "count": 224,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "224 street closure permits within 0.5 miles (11 event-related)"
+          },
+          "crime": {
+            "score": 0.8,
+            "count": 644,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "644 reported incidents vs 966 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 5,
+            "count": 2391,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "2,391 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 5,
+            "count": 304783,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Lake/State — 304,783 avg monthly riders (22 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 1.3,
+            "count": 547,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "547 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 2.2,
+            "count": 14,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "PARK NO. 546 (6 acres) 0.58 mi away · 14 parks nearby · Lake Michigan 1.14 mi away"
+          },
+          "propertySales": {
+            "score": 5,
+            "count": 53,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Commercial · 53 sales in assessor nbhd (3 yr) · median $875,000 · parcel last sold 2022 at $415,000,000"
+          }
+        },
+        "timings": {
+          "parks": 363,
+          "crime": 461,
+          "footTraffic6w": 494,
+          "permits": 496,
+          "foodInspections": 547,
+          "bizTotal": 555,
+          "bizHighImpact": 650,
+          "propertySales": 806,
+          "cta": 819,
+          "streetClosures": 987,
+          "footTraffic": 1174,
+          "rideshare": 5176,
+          "_total": 5177
+        },
+        "error": null
+      }
+    ]
+  },
+  {
+    "label": "Convexitas",
+    "address": "444 W Lake Street River Point, Chicago, IL",
+    "category": "Office",
+    "runs": [
+      {
+        "run": 1,
+        "ok": false,
+        "httpStatus": 500,
+        "wallMs": 1120,
+        "totalScore": null,
+        "breakdown": {},
+        "timings": {},
+        "error": "Address not found. Please enter a valid Chicago address."
+      },
+      {
+        "run": 2,
+        "ok": false,
+        "httpStatus": 500,
+        "wallMs": 86,
+        "totalScore": null,
+        "breakdown": {},
+        "timings": {},
+        "error": "Address not found. Please enter a valid Chicago address."
+      },
+      {
+        "run": 3,
+        "ok": false,
+        "httpStatus": 500,
+        "wallMs": 63,
+        "totalScore": null,
+        "breakdown": {},
+        "timings": {},
+        "error": "Address not found. Please enter a valid Chicago address."
+      },
+      {
+        "run": 4,
+        "ok": false,
+        "httpStatus": 500,
+        "wallMs": 79,
+        "totalScore": null,
+        "breakdown": {},
+        "timings": {},
+        "error": "Address not found. Please enter a valid Chicago address."
+      },
+      {
+        "run": 5,
+        "ok": false,
+        "httpStatus": 500,
+        "wallMs": 65,
+        "totalScore": null,
+        "breakdown": {},
+        "timings": {},
+        "error": "Address not found. Please enter a valid Chicago address."
+      }
+    ]
+  },
+  {
+    "label": "2970 N Lake Shore Dr",
+    "address": "2970 N Lake Shore Drive, Chicago, IL",
+    "category": "Housing",
+    "runs": [
+      {
+        "run": 1,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 26677,
+        "totalScore": 36.6,
+        "breakdown": {
+          "rideshare": {
+            "score": 3.3,
+            "count": 1449,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "1,449 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4,
+            "count": 1379,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "1,379 active businesses within 1 mile (664 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 3.9,
+            "count": 19392,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "19,392 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 3.6,
+            "count": 52,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "52 street closure permits within 0.5 miles (4 event-related)"
+          },
+          "crime": {
+            "score": 3.9,
+            "count": 130,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "130 reported incidents vs 707 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 3.4,
+            "count": 191,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "191 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 3.8,
+            "count": 209139,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Belmont-North Main — 209,139 avg monthly riders — 0.85 mi away (3 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 3.3,
+            "count": 110,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "110 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 4.2,
+            "count": 8,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "EVERGREEN (0 acres) 0.48 mi away · 8 parks nearby · Lake Michigan 0.47 mi away"
+          },
+          "propertySales": {
+            "score": 3.2,
+            "count": 984,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Residential · 984 sales in assessor nbhd (3 yr) · median $295,250 · parcel last sold 2017 at $1"
+          }
+        },
+        "timings": {
+          "parks": 260,
+          "foodInspections": 528,
+          "permits": 594,
+          "crime": 632,
+          "streetClosures": 674,
+          "cta": 717,
+          "bizTotal": 848,
+          "bizHighImpact": 848,
+          "footTraffic6w": 848,
+          "footTraffic": 1579,
+          "propertySales": 8784,
+          "rideshare": 26092,
+          "_total": 26095
+        },
+        "error": null
+      },
+      {
+        "run": 2,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 2474,
+        "totalScore": 36.6,
+        "breakdown": {
+          "rideshare": {
+            "score": 3.3,
+            "count": 1449,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "1,449 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4,
+            "count": 1379,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "1,379 active businesses within 1 mile (664 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 3.9,
+            "count": 19393,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "19,393 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 3.6,
+            "count": 52,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "52 street closure permits within 0.5 miles (4 event-related)"
+          },
+          "crime": {
+            "score": 3.9,
+            "count": 130,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "130 reported incidents vs 707 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 3.4,
+            "count": 191,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "191 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 3.8,
+            "count": 209139,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Belmont-North Main — 209,139 avg monthly riders — 0.85 mi away (3 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 3.3,
+            "count": 110,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "110 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 4.2,
+            "count": 8,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "EVERGREEN (0 acres) 0.48 mi away · 8 parks nearby · Lake Michigan 0.47 mi away"
+          },
+          "propertySales": {
+            "score": 3.2,
+            "count": 984,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Residential · 984 sales in assessor nbhd (3 yr) · median $295,250 · parcel last sold 2017 at $1"
+          }
+        },
+        "timings": {
+          "parks": 483,
+          "foodInspections": 663,
+          "footTraffic6w": 799,
+          "permits": 875,
+          "streetClosures": 956,
+          "crime": 956,
+          "cta": 1061,
+          "footTraffic": 1185,
+          "propertySales": 1187,
+          "rideshare": 1554,
+          "bizTotal": 2414,
+          "bizHighImpact": 2414,
+          "_total": 2414
+        },
+        "error": null
+      },
+      {
+        "run": 3,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 4936,
+        "totalScore": 36.6,
+        "breakdown": {
+          "rideshare": {
+            "score": 3.3,
+            "count": 1449,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "1,449 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4,
+            "count": 1379,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "1,379 active businesses within 1 mile (664 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 3.9,
+            "count": 19393,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "19,393 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 3.6,
+            "count": 52,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "52 street closure permits within 0.5 miles (4 event-related)"
+          },
+          "crime": {
+            "score": 3.9,
+            "count": 130,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "130 reported incidents vs 707 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 3.4,
+            "count": 191,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "191 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 3.8,
+            "count": 209139,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Belmont-North Main — 209,139 avg monthly riders — 0.85 mi away (3 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 3.3,
+            "count": 110,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "110 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 4.2,
+            "count": 8,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "EVERGREEN (0 acres) 0.48 mi away · 8 parks nearby · Lake Michigan 0.47 mi away"
+          },
+          "propertySales": {
+            "score": 3.2,
+            "count": 984,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Residential · 984 sales in assessor nbhd (3 yr) · median $295,250 · parcel last sold 2017 at $1"
+          }
+        },
+        "timings": {
+          "parks": 146,
+          "bizHighImpact": 238,
+          "bizTotal": 252,
+          "crime": 297,
+          "foodInspections": 390,
+          "permits": 455,
+          "cta": 465,
+          "streetClosures": 476,
+          "footTraffic6w": 523,
+          "footTraffic": 1166,
+          "rideshare": 1980,
+          "propertySales": 4910,
+          "_total": 4911
+        },
+        "error": null
+      },
+      {
+        "run": 4,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 13537,
+        "totalScore": 36.6,
+        "breakdown": {
+          "rideshare": {
+            "score": 3.3,
+            "count": 1449,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "1,449 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4,
+            "count": 1379,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "1,379 active businesses within 1 mile (664 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 3.9,
+            "count": 19393,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "19,393 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 3.6,
+            "count": 52,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "52 street closure permits within 0.5 miles (4 event-related)"
+          },
+          "crime": {
+            "score": 3.9,
+            "count": 130,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "130 reported incidents vs 707 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 3.4,
+            "count": 191,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "191 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 3.8,
+            "count": 209139,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Belmont-North Main — 209,139 avg monthly riders — 0.85 mi away (3 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 3.3,
+            "count": 110,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "110 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 4.2,
+            "count": 8,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "EVERGREEN (0 acres) 0.48 mi away · 8 parks nearby · Lake Michigan 0.47 mi away"
+          },
+          "propertySales": {
+            "score": 3.2,
+            "count": 984,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Residential · 984 sales in assessor nbhd (3 yr) · median $295,250 · parcel last sold 2017 at $1"
+          }
+        },
+        "timings": {
+          "parks": 287,
+          "crime": 391,
+          "foodInspections": 401,
+          "bizTotal": 433,
+          "permits": 442,
+          "propertySales": 456,
+          "streetClosures": 459,
+          "bizHighImpact": 482,
+          "cta": 573,
+          "footTraffic6w": 776,
+          "footTraffic": 789,
+          "rideshare": 13475,
+          "_total": 13476
+        },
+        "error": null
+      },
+      {
+        "run": 5,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 1531,
+        "totalScore": 36.6,
+        "breakdown": {
+          "rideshare": {
+            "score": 3.3,
+            "count": 1449,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "1,449 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4,
+            "count": 1379,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "1,379 active businesses within 1 mile (664 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 3.9,
+            "count": 19393,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "19,393 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 3.6,
+            "count": 52,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "52 street closure permits within 0.5 miles (4 event-related)"
+          },
+          "crime": {
+            "score": 3.9,
+            "count": 130,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "130 reported incidents vs 707 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 3.4,
+            "count": 191,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "191 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 3.8,
+            "count": 209139,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Belmont-North Main — 209,139 avg monthly riders — 0.85 mi away (3 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 3.3,
+            "count": 110,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "110 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 4.2,
+            "count": 8,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "EVERGREEN (0 acres) 0.48 mi away · 8 parks nearby · Lake Michigan 0.47 mi away"
+          },
+          "propertySales": {
+            "score": 3.2,
+            "count": 984,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Residential · 984 sales in assessor nbhd (3 yr) · median $295,250 · parcel last sold 2017 at $1"
+          }
+        },
+        "timings": {
+          "parks": 365,
+          "bizTotal": 367,
+          "bizHighImpact": 367,
+          "footTraffic6w": 378,
+          "foodInspections": 388,
+          "streetClosures": 393,
+          "permits": 393,
+          "crime": 406,
+          "cta": 556,
+          "propertySales": 684,
+          "footTraffic": 744,
+          "rideshare": 1464,
+          "_total": 1465
+        },
+        "error": null
+      }
+    ]
+  },
+  {
+    "label": "4953 N Seeley Ave",
+    "address": "4953 N Seeley Ave, Chicago, IL 60625",
+    "category": "Housing",
+    "runs": [
+      {
+        "run": 1,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 6318,
+        "totalScore": 38.4,
+        "breakdown": {
+          "rideshare": {
+            "score": 2.8,
+            "count": 1047,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "1,047 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4.1,
+            "count": 1412,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "1,412 active businesses within 1 mile (532 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4,
+            "count": 20911,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "20,911 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 5,
+            "count": 76,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "76 street closure permits within 0.5 miles (12 event-related)"
+          },
+          "crime": {
+            "score": 4.4,
+            "count": 77,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "77 reported incidents vs 810 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 3.7,
+            "count": 322,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "322 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 2.2,
+            "count": 53954,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Western-Brown — 53,954 avg monthly riders — 0.59 mi away (4 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 3.7,
+            "count": 67,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "67 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 4.1,
+            "count": 10,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "WINNEMAC (23 acres) 0.14 mi away · 10 parks nearby"
+          },
+          "propertySales": {
+            "score": 4.4,
+            "count": 353,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Residential – 2-Flat · 353 sales in assessor nbhd (3 yr) · median $585,000 · parcel last sold 2018 at $828,000"
+          }
+        },
+        "timings": {
+          "parks": 200,
+          "foodInspections": 319,
+          "crime": 397,
+          "permits": 415,
+          "cta": 526,
+          "propertySales": 526,
+          "bizTotal": 585,
+          "footTraffic6w": 600,
+          "streetClosures": 634,
+          "bizHighImpact": 1572,
+          "footTraffic": 1918,
+          "rideshare": 5765,
+          "_total": 5767
+        },
+        "error": null
+      },
+      {
+        "run": 2,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 19125,
+        "totalScore": 38.4,
+        "breakdown": {
+          "rideshare": {
+            "score": 2.8,
+            "count": 1047,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "1,047 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4.1,
+            "count": 1412,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "1,412 active businesses within 1 mile (532 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4,
+            "count": 20911,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "20,911 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 5,
+            "count": 76,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "76 street closure permits within 0.5 miles (12 event-related)"
+          },
+          "crime": {
+            "score": 4.4,
+            "count": 77,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "77 reported incidents vs 812 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 3.7,
+            "count": 322,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "322 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 2.2,
+            "count": 53954,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Western-Brown — 53,954 avg monthly riders — 0.59 mi away (4 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 3.7,
+            "count": 67,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "67 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 4.1,
+            "count": 10,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "WINNEMAC (23 acres) 0.14 mi away · 10 parks nearby"
+          },
+          "propertySales": {
+            "score": 4.4,
+            "count": 353,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Residential – 2-Flat · 353 sales in assessor nbhd (3 yr) · median $585,000 · parcel last sold 2018 at $828,000"
+          }
+        },
+        "timings": {
+          "parks": 282,
+          "bizTotal": 476,
+          "crime": 476,
+          "permits": 476,
+          "bizHighImpact": 477,
+          "foodInspections": 490,
+          "cta": 624,
+          "footTraffic": 662,
+          "propertySales": 828,
+          "streetClosures": 1229,
+          "footTraffic6w": 2079,
+          "rideshare": 19004,
+          "_total": 19005
+        },
+        "error": null
+      },
+      {
+        "run": 3,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 1463,
+        "totalScore": 38.4,
+        "breakdown": {
+          "rideshare": {
+            "score": 2.8,
+            "count": 1047,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "1,047 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4.1,
+            "count": 1412,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "1,412 active businesses within 1 mile (532 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4,
+            "count": 20911,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "20,911 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 5,
+            "count": 76,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "76 street closure permits within 0.5 miles (12 event-related)"
+          },
+          "crime": {
+            "score": 4.4,
+            "count": 77,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "77 reported incidents vs 812 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 3.7,
+            "count": 322,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "322 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 2.2,
+            "count": 53954,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Western-Brown — 53,954 avg monthly riders — 0.59 mi away (4 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 3.7,
+            "count": 67,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "67 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 4.1,
+            "count": 10,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "WINNEMAC (23 acres) 0.14 mi away · 10 parks nearby"
+          },
+          "propertySales": {
+            "score": 4.4,
+            "count": 353,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Residential – 2-Flat · 353 sales in assessor nbhd (3 yr) · median $585,000 · parcel last sold 2018 at $828,000"
+          }
+        },
+        "timings": {
+          "parks": 339,
+          "bizTotal": 401,
+          "footTraffic6w": 402,
+          "foodInspections": 484,
+          "permits": 547,
+          "streetClosures": 586,
+          "bizHighImpact": 587,
+          "rideshare": 649,
+          "propertySales": 662,
+          "cta": 680,
+          "footTraffic": 849,
+          "crime": 1329,
+          "_total": 1330
+        },
+        "error": null
+      },
+      {
+        "run": 4,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 901,
+        "totalScore": 38.4,
+        "breakdown": {
+          "rideshare": {
+            "score": 2.8,
+            "count": 1047,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "1,047 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4.1,
+            "count": 1412,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "1,412 active businesses within 1 mile (532 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4,
+            "count": 20911,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "20,911 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 5,
+            "count": 76,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "76 street closure permits within 0.5 miles (12 event-related)"
+          },
+          "crime": {
+            "score": 4.4,
+            "count": 77,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "77 reported incidents vs 812 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 3.7,
+            "count": 322,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "322 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 2.2,
+            "count": 53954,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Western-Brown — 53,954 avg monthly riders — 0.59 mi away (4 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 3.7,
+            "count": 67,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "67 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 4.1,
+            "count": 10,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "WINNEMAC (23 acres) 0.14 mi away · 10 parks nearby"
+          },
+          "propertySales": {
+            "score": 4.4,
+            "count": 353,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Residential – 2-Flat · 353 sales in assessor nbhd (3 yr) · median $585,000 · parcel last sold 2018 at $828,000"
+          }
+        },
+        "timings": {
+          "parks": 204,
+          "bizTotal": 324,
+          "foodInspections": 324,
+          "crime": 328,
+          "streetClosures": 369,
+          "bizHighImpact": 376,
+          "footTraffic6w": 388,
+          "cta": 499,
+          "propertySales": 499,
+          "permits": 554,
+          "footTraffic": 630,
+          "rideshare": 809,
+          "_total": 810
+        },
+        "error": null
+      },
+      {
+        "run": 5,
+        "ok": true,
+        "httpStatus": 200,
+        "wallMs": 5008,
+        "totalScore": 38.4,
+        "breakdown": {
+          "rideshare": {
+            "score": 2.8,
+            "count": 1047,
+            "label": "Rideshare Demand",
+            "emoji": "🚗",
+            "description": "1,047 pickups within 0.5 miles (10 AM–10 PM sample in March 2026)"
+          },
+          "business": {
+            "score": 4.1,
+            "count": 1412,
+            "label": "Business Activity",
+            "emoji": "🏪",
+            "description": "1,412 active businesses within 1 mile (532 dining, entertainment & hospitality)"
+          },
+          "footTraffic": {
+            "score": 4,
+            "count": 20920,
+            "label": "Foot Traffic",
+            "emoji": "🚶",
+            "description": "20,920 311 service requests within 1 mile in the past year"
+          },
+          "streetClosures": {
+            "score": 5,
+            "count": 76,
+            "label": "Street Closures",
+            "emoji": "🚧",
+            "description": "76 street closure permits within 0.5 miles (12 event-related)"
+          },
+          "crime": {
+            "score": 4.4,
+            "count": 77,
+            "label": "Crime Safety",
+            "emoji": "🔒",
+            "description": "77 reported incidents vs 810 local 311 calls within 0.5 miles (last 6 weeks)"
+          },
+          "development": {
+            "score": 3.7,
+            "count": 322,
+            "label": "Development Activity",
+            "emoji": "🏗️",
+            "description": "322 new-construction/renovation permits within 0.5 mi (last 5 yrs)"
+          },
+          "transit": {
+            "score": 2.2,
+            "count": 53954,
+            "label": "Transit Access",
+            "emoji": "🚇",
+            "description": "Western-Brown — 53,954 avg monthly riders — 0.59 mi away (4 stations nearby)"
+          },
+          "foodSafety": {
+            "score": 3.7,
+            "count": 67,
+            "label": "Neighborhood Food Safety",
+            "emoji": "🍽️",
+            "description": "67 failed inspections within 0.5 miles in the past 3 years"
+          },
+          "parks": {
+            "score": 4.1,
+            "count": 10,
+            "label": "Outdoor & Green Space",
+            "emoji": "🌳",
+            "description": "WINNEMAC (23 acres) 0.14 mi away · 10 parks nearby"
+          },
+          "propertySales": {
+            "score": 4.4,
+            "count": 353,
+            "label": "Property Market",
+            "emoji": "🏠",
+            "description": "Residential – 2-Flat · 353 sales in assessor nbhd (3 yr) · median $585,000 · parcel last sold 2018 at $828,000"
+          }
+        },
+        "timings": {
+          "parks": 276,
+          "foodInspections": 470,
+          "crime": 470,
+          "bizTotal": 480,
+          "permits": 514,
+          "footTraffic6w": 523,
+          "bizHighImpact": 566,
+          "cta": 797,
+          "propertySales": 798,
+          "rideshare": 959,
+          "streetClosures": 1015,
+          "footTraffic": 4990,
+          "_total": 4991
+        },
+        "error": null
+      }
+    ]
+  }
+]

@@ -1,0 +1,62 @@
+<div class="chat-wrapper">
+  <!-- Header -->
+  <div class="chat-header">
+    <div class="header-icon">⚾</div>
+    <div class="header-info">
+      <div class="header-title">Chicago Public Data</div>
+      <div class="header-sub">AI assistant · Open datasets</div>
+    </div>
+    <div class="live-badge">
+      <span class="live-dot"></span>
+      <span>Live</span>
+    </div>
+  </div>
+
+  <!-- Messages -->
+  <div class="chat-messages">
+    @if (messages.length === 1 && !loading) {
+      <div class="suggestions">
+        @for (s of suggestions; track s) {
+          <button class="suggestion-pill" (click)="input = s">{{ s }}</button>
+        }
+      </div>
+    }
+
+    @for (msg of messages; track $index) {
+      <div class="message-wrap" [class.user-wrap]="msg.role === 'user'">
+        @if (msg.role === 'bot') {
+          <div class="msg-byline">Assistant</div>
+        }
+        <div class="message" [class.user]="msg.role === 'user'" [class.bot]="msg.role === 'bot'">
+          <pre>{{ msg.text }}</pre>
+        </div>
+      </div>
+    }
+
+    @if (loading) {
+      <div class="typing-dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    }
+  </div>
+
+  <!-- Input -->
+  <div class="chat-input-row">
+    <div class="input-card">
+      <textarea
+        [(ngModel)]="input"
+        (keydown)="onKeydown($event)"
+        placeholder="Ask about Chicago data…"
+        rows="1"
+      ></textarea>
+      <button class="send-btn" (click)="send()" [disabled]="loading || !input.trim()" [class.ready]="input.trim() && !loading">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>

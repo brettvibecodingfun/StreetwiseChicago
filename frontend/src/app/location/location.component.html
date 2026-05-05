@@ -1,0 +1,313 @@
+<div class="loc-wrapper">
+
+  <!-- Search Bar -->
+  <div class="search-bar">
+    <div class="search-inner">
+      <span class="search-pin">📍</span>
+      <input
+        class="address-input"
+        type="text"
+        [(ngModel)]="address"
+        placeholder="Address or business — e.g. Rannalli's Lincoln Park, 1925 N Lincoln Ave"
+        (keydown.enter)="analyze()"
+      />
+      <button
+        class="weights-btn"
+        [class.weights-active]="hasCustomWeights"
+        (click)="openWeightsModal()"
+        title="Customize score weights"
+      >
+        ⚖️ Weights
+        @if (hasCustomWeights) {
+          <span class="weights-dot"></span>
+        }
+      </button>
+      <button
+        class="analyze-btn"
+        (click)="analyze()"
+        [disabled]="loading || !address.trim()"
+      >
+        {{ loading ? '···' : 'Analyze' }}
+      </button>
+    </div>
+
+    @if (error) {
+      <div class="error-banner">⚠️ {{ error }}</div>
+    }
+
+    <!-- Candidate picker — shown when resolve returns multiple matches -->
+    @if (candidates.length > 0) {
+      <div class="candidate-picker">
+        <div class="picker-label">Multiple locations found — pick one:</div>
+        @for (c of candidates; track c.lat) {
+          <button class="candidate-btn" (click)="scoreCandidate(c)">
+            <span class="cand-icon">📍</span>
+            <span class="cand-info">
+              <span class="cand-name">{{ c.name }}</span>
+              <span class="cand-addr">{{ c.address }}</span>
+            </span>
+          </button>
+        }
+      </div>
+    }
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+
+    <!-- Left: Score Panel -->
+    <div class="score-panel">
+
+      <!-- Empty hint -->
+      @if (!result && !loading) {
+        <div class="panel-hint">
+          <div class="hint-icon">🏙️</div>
+          <div class="hint-title">Chicago Location Intelligence</div>
+          <div class="hint-body">
+            Get a data-driven score (0–50) for any Chicago address based on
+            rideshare demand, business density, foot traffic, crime safety, transit access, parks &amp; green space, and more.
+          </div>
+        </div>
+      }
+
+      <!-- Loading state -->
+      @if (loading) {
+        <div class="panel-loading">
+          <div class="spinner"></div>
+          <div class="loading-title">Analyzing location…</div>
+          <div class="loading-sub">Querying Chicago &amp; Cook County datasets</div>
+        </div>
+      }
+
+      <!-- Score result -->
+      @if (result && !loading) {
+        <div class="panel-score">
+          <div class="gauge-wrap">
+            <svg width="180" height="180" viewBox="0 0 180 180">
+              <circle cx="90" cy="90" r="70" fill="none"
+                      stroke="rgba(255,255,255,0.1)" stroke-width="14"/>
+              <circle cx="90" cy="90" r="70" fill="none"
+                      [attr.stroke]="gaugeColor"
+                      stroke-width="14"
+                      stroke-linecap="round"
+                      [attr.stroke-dasharray]="circumference"
+                      [attr.stroke-dashoffset]="gaugeOffset"
+                      transform="rotate(-90 90 90)"
+                      class="gauge-arc"/>
+              <text x="90" y="84" text-anchor="middle"
+                    [attr.fill]="gaugeColor"
+                    font-size="38" font-weight="700"
+                    font-family="DM Sans, sans-serif">{{ weightedTotalScore }}</text>
+              <text x="90" y="108" text-anchor="middle"
+                    fill="rgba(255,255,255,0.45)"
+                    font-size="13"
+                    font-family="DM Sans, sans-serif">out of 50</text>
+            </svg>
+            <div class="grade-badge"
+                 [class.grade-green]="weightedTotalScore >= 29"
+                 [class.grade-amber]="weightedTotalScore >= 19 && weightedTotalScore < 29"
+                 [class.grade-red]="weightedTotalScore < 19">
+              {{ scoreGrade }}
+            </div>
+          </div>
+
+          @if (hasCustomWeights) {
+            <div class="custom-weights-note">
+              ⚖️ Custom weights active
+            </div>
+          }
+
+          <div class="result-address">
+            <div class="result-label">ANALYZED LOCATION</div>
+            <div class="result-name">{{ shortAddress }}</div>
+            <div class="result-coords">{{ selectedAddress || result.lat.toFixed(5) + ', ' + result.lng.toFixed(5) }}</div>
+          </div>
+
+          <div class="verdict"
+               [class.verdict-good]="weightedTotalScore >= 29"
+               [class.verdict-mid]="weightedTotalScore >= 19 && weightedTotalScore < 29"
+               [class.verdict-bad]="weightedTotalScore < 19">
+            @if (weightedTotalScore >= 29) {
+              <span>✅ Strong business location</span>
+            } @else if (weightedTotalScore >= 19) {
+              <span>⚠️ Moderate potential — review details</span>
+            } @else {
+              <span>❌ Challenging conditions nearby</span>
+            }
+          </div>
+        </div>
+      }
+
+      <!-- Methodology (always shown when not loading) -->
+      @if (!loading) {
+        <div class="methodology">
+          <div class="meth-title">How We Score</div>
+          <div class="meth-row"><span>🚗</span> Rideshare pickups (0.4-mile radius, 10 AM–10 PM sample)</div>
+          <div class="meth-row"><span>🏪</span> Active business licenses (1-mile radius)</div>
+          <div class="meth-row"><span>🚶</span> 311 requests as foot traffic proxy (1-mile radius)</div>
+          <div class="meth-row"><span>🚧</span> Street closure permits (0.5-mile radius, since Jan 1)</div>
+          <div class="meth-row"><span>🔒</span> Crime rate vs. local 311 activity (0.5-mile radius, last 6 weeks) — normalized for foot traffic</div>
+          <div class="meth-row"><span>🏗️</span> Building permits — new construction &amp; renovations (0.5-mile radius, last 5 years)</div>
+          <div class="meth-row"><span>🚇</span> CTA L ridership — nearest station avg monthly riders (1-mile radius; full score within 0.5 mi)</div>
+          <div class="meth-row"><span>🌳</span> Outdoor &amp; green space — nearest park size + proximity (1-mile radius); Lake Michigan shore access (independent 0–5 scale)</div>
+          <div class="meth-row"><span>🏠</span> Cook County property market — qualifying sales in assessor neighborhood (past 3 yrs), scored on volume</div>
+          <div class="meth-note">Each dimension: 0–5 pts · Total: 0–50 · Sources: City of Chicago &amp; Cook County Open Data</div>
+        </div>
+      }
+    </div>
+
+    <!-- Right: Breakdown Panel -->
+    <div class="breakdown-panel">
+
+      <!-- Empty state with example addresses -->
+      @if (!result && !loading) {
+        <div class="breakdown-empty">
+          <div class="empty-headline">Try an example address</div>
+          <div class="examples-grid">
+            @for (ex of examples; track ex) {
+              <button class="example-btn" (click)="setExample(ex)">
+                <span class="ex-pin">📍</span>
+                <span class="ex-text">{{ ex }}, Chicago</span>
+              </button>
+            }
+          </div>
+          <div class="empty-sub">Or enter any Chicago address in the search bar above</div>
+        </div>
+      }
+
+      <!-- Skeleton while loading -->
+      @if (loading) {
+        <div class="cards-grid">
+          @for (n of skeletonItems; track n) {
+            <div class="category-card skel">
+              <div class="skel-line skel-head"></div>
+              <div class="skel-line skel-bar"></div>
+              <div class="skel-line skel-desc"></div>
+            </div>
+          }
+        </div>
+      }
+
+      <!-- Real category cards -->
+      @if (result && !loading) {
+        <div class="cards-grid">
+          @for (item of enrichedCategoryList; track item.weightKey) {
+            <div class="category-card"
+                 [class.card-dimmed]="hasCustomWeights && weights[item.weightKey] === 0">
+              <div class="card-top">
+                <div class="card-left">
+                  <span class="card-emoji">{{ item.cat.emoji }}</span>
+                  <span class="card-label">{{ item.cat.label }}</span>
+                  @if (hasCustomWeights && weights[item.weightKey] !== 1) {
+                    <span class="card-weight-badge"
+                          [class.badge-off]="weights[item.weightKey] === 0"
+                          [class.badge-boost]="weights[item.weightKey] > 1">
+                      {{ formatWeight(weights[item.weightKey]) }}
+                    </span>
+                  }
+                </div>
+                <div class="card-score-wrap">
+                  <span class="card-score" [style.color]="catColor(item.cat.score)">
+                    {{ item.cat.score.toFixed(1) }}
+                  </span>
+                  <span class="card-max">/5.0</span>
+                </div>
+              </div>
+
+              <div class="progress-track">
+                <div
+                  class="progress-fill"
+                  [style.width.%]="catBarWidth(item.cat.score)"
+                  [style.background-color]="catColor(item.cat.score)"
+                ></div>
+              </div>
+
+              <div class="card-bottom">
+                <span class="cat-level" [style.color]="catColor(item.cat.score)">
+                  {{ catLabel(item.cat.score) }}
+                </span>
+                <span class="cat-sep">·</span>
+                <span class="cat-desc">{{ item.cat.description }}</span>
+              </div>
+            </div>
+          }
+        </div>
+      }
+
+    </div>
+  </div>
+
+  <!-- Weights Modal -->
+  @if (showWeightsModal) {
+    <div class="modal-backdrop" (click)="closeWeightsModal()">
+      <div class="modal-panel" (click)="$event.stopPropagation()">
+
+        <div class="modal-header">
+          <div class="modal-title">⚖️ Customize Score Weights</div>
+          <button class="modal-close" (click)="closeWeightsModal()">✕</button>
+        </div>
+
+        <div class="modal-presets">
+          <div class="preset-section-label">Quick Presets</div>
+          <div class="preset-chips">
+            @for (p of presets; track p.id) {
+              <button
+                class="preset-chip"
+                [class.preset-active]="activePreset === p.id"
+                (click)="applyPreset(p)"
+              >
+                {{ p.emoji }} {{ p.label }}
+              </button>
+            }
+          </div>
+        </div>
+
+        <div class="modal-desc">
+          Fine-tune each weight or pick a preset above. Changes apply to the score instantly.
+        </div>
+
+        <div class="modal-body">
+          @for (cfg of weightConfig; track cfg.key) {
+            <div class="weight-row">
+              <div class="weight-label">
+                <span class="weight-emoji">{{ cfg.emoji }}</span>
+                <div class="weight-label-text">
+                  <span class="weight-name">{{ cfg.label }}</span>
+                  <span class="weight-hint">{{ cfg.hint }}</span>
+                </div>
+                <span class="weight-value"
+                      [class.weight-off]="weights[cfg.key] === 0"
+                      [class.weight-boosted]="weights[cfg.key] > 1">
+                  {{ formatWeight(weights[cfg.key]) }}
+                </span>
+              </div>
+              <input
+                class="weight-slider"
+                type="range"
+                min="0"
+                max="3"
+                step="0.1"
+                [(ngModel)]="weights[cfg.key]"
+                (input)="onWeightChange()"
+              />
+              <div class="weight-scale">
+                <span>Off</span>
+                <span>Normal</span>
+                <span>3×</span>
+              </div>
+            </div>
+          }
+        </div>
+
+        <div class="modal-footer">
+          <button class="modal-reset" (click)="resetWeights()" [disabled]="!hasCustomWeights">
+            Reset to Default
+          </button>
+          <button class="modal-done" (click)="closeWeightsModal()">Done</button>
+        </div>
+
+      </div>
+    </div>
+  }
+
+</div>
