@@ -1,6 +1,8 @@
 import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
+import path from 'path';
+import fs from 'fs';
 import restaurantsRouter from './routes/restaurants';
 import analysisRouter from './routes/analysis';
 import queryRouter from './routes/query';
@@ -22,6 +24,14 @@ app.use('/api/map', mapRouter);
 app.use('/api/location-score', locationScoreRouter);
 app.use('/api/location-resolve', locationResolveRouter);
 app.use('/api/property-sales', propertySalesRouter);
+
+const frontendDist = path.join(__dirname, '..', '..', 'frontend', 'dist', 'frontend', 'browser');
+if (fs.existsSync(frontendDist)) {
+  app.use(express.static(frontendDist));
+  app.get('*', (_req, res) => {
+    res.sendFile(path.join(frontendDist, 'index.html'));
+  });
+}
 
 export { app };
 
