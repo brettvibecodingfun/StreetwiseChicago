@@ -1,58 +1,102 @@
-<tr class="participant-row" [class.expanded]="expanded" (click)="toggle()">
+<!-- Table row -->
+<tr class="participant-row" (click)="openModal()">
   <td class="col-rank">{{ rankDisplay }}</td>
   <td class="col-name">{{ participant.name }}</td>
   <td class="col-pts">{{ participant.points }}</td>
   <td class="col-champion">
-    <span class="badge badge-champion">{{ participant.champion_pick || '—' }}</span>
+    <span class="badge badge-champion">
+      {{ flag(participant.champion_pick) }} {{ participant.champion_pick || '—' }}
+    </span>
   </td>
-  <td class="col-t1 hide-mobile">
-    <span class="badge badge-t1">{{ participant.tier1_team || '—' }}</span>
-  </td>
-  <td class="col-t2 hide-mobile">
-    <span class="badge badge-t2">{{ participant.tier2_team_a || '—' }}</span>
-    <span class="badge badge-t2">{{ participant.tier2_team_b || '—' }}</span>
-  </td>
-  <td class="col-t3 hide-mobile">
-    <span class="badge badge-t3">{{ participant.tier3_team_a || '—' }}</span>
-    <span class="badge badge-t3">{{ participant.tier3_team_b || '—' }}</span>
-  </td>
-  <td class="col-t4 hide-mobile">
-    <span class="badge badge-t4">{{ participant.tier4_team_a || '—' }}</span>
-    <span class="badge badge-t4">{{ participant.tier4_team_b || '—' }}</span>
-    <span class="badge badge-t4">{{ participant.tier4_team_c || '—' }}</span>
-  </td>
-  <td class="col-toggle">
-    <span class="chevron" [class.open]="expanded">›</span>
+  <td class="col-cta">
+    <span class="view-btn">View picks ›</span>
   </td>
 </tr>
 
-@if (expanded) {
-  <tr class="detail-row">
-    <td colspan="9">
-      <div class="detail-panel">
-        <div class="detail-group">
-          <span class="detail-label">Champion</span>
-          <span class="badge badge-champion">{{ participant.champion_pick || '—' }}</span>
-        </div>
-        <div class="detail-group">
-          <span class="detail-label">Tier 1</span>
-          <span class="badge badge-t1">{{ participant.tier1_team || '—' }}</span>
-        </div>
-        <div class="detail-group">
-          <span class="detail-label">Tier 2</span>
-          <span class="badge badge-t2">{{ participant.tier2_team_a || '—' }}</span>
-          <span class="badge badge-t2">{{ participant.tier2_team_b || '—' }}</span>
-        </div>
-        <div class="detail-group">
-          <span class="detail-label">Tier 3</span>
-          <span class="badge badge-t3">{{ participant.tier3_team_a || '—' }}</span>
-          <span class="badge badge-t3">{{ participant.tier3_team_b || '—' }}</span>
-        </div>
-        <div class="detail-group">
-          <span class="detail-label">Flyer</span>
-          <span class="badge badge-t4">{{ participant.tier4_team_a || '—' }}</span>
-          <span class="badge badge-t4">{{ participant.tier4_team_b || '—' }}</span>
-          <span class="badge badge-t4">{{ participant.tier4_team_c || '—' }}</span>
+<!-- Modal -->
+@if (modalOpen) {
+  <tr class="modal-host">
+    <td colspan="5">
+      <div class="modal-backdrop" (click)="closeModal()">
+        <div class="modal-card" (click)="$event.stopPropagation()">
+
+          <button class="modal-close" (click)="closeModal()">✕</button>
+
+          <div class="modal-header">
+            <span class="modal-rank">{{ rankDisplay }}</span>
+            <div>
+              <h2 class="modal-name">{{ participant.name }}</h2>
+              <span class="modal-points">{{ participant.points }} pts</span>
+            </div>
+          </div>
+
+          <div class="modal-section champion-section">
+            <span class="tier-label champion-label">Champion Pick</span>
+            <div class="team-pill pill-champion">
+              <span class="team-flag">{{ flag(participant.champion_pick) }}</span>
+              <span class="team-name">{{ participant.champion_pick || '—' }}</span>
+            </div>
+          </div>
+
+          <div class="modal-tiers">
+
+            <div class="modal-section">
+              <span class="tier-label">Tier 1</span>
+              <div class="team-row">
+                <div class="team-pill pill-t1">
+                  <span class="team-flag">{{ flag(participant.tier1_team) }}</span>
+                  <span class="team-name">{{ participant.tier1_team || '—' }}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-section">
+              <span class="tier-label">Tier 2</span>
+              <div class="team-row">
+                <div class="team-pill pill-t2">
+                  <span class="team-flag">{{ flag(participant.tier2_team_a) }}</span>
+                  <span class="team-name">{{ participant.tier2_team_a || '—' }}</span>
+                </div>
+                <div class="team-pill pill-t2">
+                  <span class="team-flag">{{ flag(participant.tier2_team_b) }}</span>
+                  <span class="team-name">{{ participant.tier2_team_b || '—' }}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-section">
+              <span class="tier-label">Tier 3</span>
+              <div class="team-row">
+                <div class="team-pill pill-t3">
+                  <span class="team-flag">{{ flag(participant.tier3_team_a) }}</span>
+                  <span class="team-name">{{ participant.tier3_team_a || '—' }}</span>
+                </div>
+                <div class="team-pill pill-t3">
+                  <span class="team-flag">{{ flag(participant.tier3_team_b) }}</span>
+                  <span class="team-name">{{ participant.tier3_team_b || '—' }}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-section">
+              <span class="tier-label">Tier 4</span>
+              <div class="team-row">
+                <div class="team-pill pill-t4">
+                  <span class="team-flag">{{ flag(participant.tier4_team_a) }}</span>
+                  <span class="team-name">{{ participant.tier4_team_a || '—' }}</span>
+                </div>
+                <div class="team-pill pill-t4">
+                  <span class="team-flag">{{ flag(participant.tier4_team_b) }}</span>
+                  <span class="team-name">{{ participant.tier4_team_b || '—' }}</span>
+                </div>
+                <div class="team-pill pill-t4">
+                  <span class="team-flag">{{ flag(participant.tier4_team_c) }}</span>
+                  <span class="team-name">{{ participant.tier4_team_c || '—' }}</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </td>
