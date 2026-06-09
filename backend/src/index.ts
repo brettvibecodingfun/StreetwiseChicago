@@ -13,35 +13,12 @@ import propertySalesRouter from './routes/propertySales';
 import worldcupRouter from './routes/worldcup';
 import swaggerUi from 'swagger-ui-express';
 import { worldcupSpec } from './worldcupSwagger';
-import pool from './db';
+import { runMigrations } from './migrations';
 
 const app = express();
 const PORT = process.env.PORT ?? 3000;
 
-async function initDb(): Promise<void> {
-  if (!pool) return;
-  await pool.query(`
-    CREATE TABLE IF NOT EXISTS participants (
-      id             SERIAL PRIMARY KEY,
-      name           VARCHAR(100) NOT NULL UNIQUE,
-      points         INTEGER NOT NULL DEFAULT 0,
-      champion_pick  VARCHAR(100),
-      tier1_team     VARCHAR(100),
-      tier2_team_a   VARCHAR(100),
-      tier2_team_b   VARCHAR(100),
-      tier3_team_a   VARCHAR(100),
-      tier3_team_b   VARCHAR(100),
-      tier4_team_a   VARCHAR(100),
-      tier4_team_b   VARCHAR(100),
-      tier4_team_c   VARCHAR(100),
-      created_at     TIMESTAMPTZ DEFAULT NOW(),
-      updated_at     TIMESTAMPTZ DEFAULT NOW()
-    )
-  `);
-  console.log('[db] participants table ready');
-}
-
-initDb().catch(err => console.error('[db] init failed:', err));
+runMigrations().catch(err => console.error('[migrate] Startup migration failed:', err));
 
 app.use(cors());
 app.use(express.json());
