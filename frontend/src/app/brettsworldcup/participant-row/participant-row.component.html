@@ -2,8 +2,10 @@
 <tr class="participant-row" (click)="openModal()">
   <td class="col-rank">{{ rankDisplay }}</td>
   <td class="col-name">
-    <span class="name-text">{{ participant.name }}</span>
-    <span class="row-chevron">›</span>
+    <div class="name-inner">
+      <span class="name-text">{{ participant.name }}</span>
+      <span class="row-chevron">›</span>
+    </div>
   </td>
   <td class="col-pts">{{ participant.points }}</td>
   <td class="col-champion">

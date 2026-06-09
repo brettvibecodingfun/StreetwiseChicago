@@ -238,6 +238,29 @@
   color: #1a1a1a;
 }
 
+.legend-section--bonus p:not(.legend-heading) {
+  margin: 4px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.bonus-tier {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 900;
+  padding: 2px 7px;
+  border-radius: 20px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.bonus-t1 { background: #e3f2fd; color: #1565c0; border: 1px solid #bbdefb; }
+.bonus-t2 { background: #f3e5f5; color: #6a1b9a; border: 1px solid #e1bee7; }
+.bonus-t3 { background: #fce4ec; color: #ad1457; border: 1px solid #f8bbd0; }
+.bonus-t4 { background: #fff3e0; color: #d84315; border: 1px solid #ffe0b2; }
+
 // Table
 .table-wrap {
   background: #ffffff;
