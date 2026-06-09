@@ -1,4 +1,5 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { interval, startWith, switchMap, catchError, of } from 'rxjs';
 import { WorldcupService } from './worldcup.service';
@@ -11,8 +12,10 @@ import { ParticipantRowComponent } from './participant-row/participant-row.compo
   templateUrl: './brettsworldcup.component.html',
   styleUrl: './brettsworldcup.component.scss',
 })
-export class BrettsworldcupComponent implements OnInit {
+export class BrettsworldcupComponent implements OnInit, OnDestroy {
   private readonly service = inject(WorldcupService);
+  private readonly titleService = inject(Title);
+  private readonly previousTitle = this.titleService.getTitle();
 
   participants: Participant[] = [];
   todaysMatches: WorldCupMatch[] = [];
@@ -32,6 +35,7 @@ export class BrettsworldcupComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle('World Cup Pool');
     this.service.getParticipants().subscribe({
       next: p => {
         this.participants = p;
@@ -42,6 +46,10 @@ export class BrettsworldcupComponent implements OnInit {
         this.loading = false;
       },
     });
+  }
+
+  ngOnDestroy(): void {
+    this.titleService.setTitle(this.previousTitle);
   }
 
   trackByFn(_i: number, p: Participant): number {

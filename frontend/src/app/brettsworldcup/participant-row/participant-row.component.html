@@ -1,22 +1,22 @@
 <!-- Table row -->
 <tr class="participant-row" (click)="openModal()">
   <td class="col-rank">{{ rankDisplay }}</td>
-  <td class="col-name">{{ participant.name }}</td>
+  <td class="col-name">
+    <span class="name-text">{{ participant.name }}</span>
+    <span class="row-chevron">›</span>
+  </td>
   <td class="col-pts">{{ participant.points }}</td>
   <td class="col-champion">
     <span class="badge badge-champion">
       {{ flag(participant.champion_pick) }} {{ participant.champion_pick || '—' }}
     </span>
   </td>
-  <td class="col-cta">
-    <span class="view-btn">View picks ›</span>
-  </td>
 </tr>
 
 <!-- Modal -->
 @if (modalOpen) {
   <tr class="modal-host">
-    <td colspan="5">
+    <td colspan="4">
       <div class="modal-backdrop" (click)="closeModal()">
         <div class="modal-card" (click)="$event.stopPropagation()">
 
