@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { LocationComponent } from './location/location.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [LocationComponent],
+  imports: [RouterOutlet],
   template: `
     <div class="app-shell">
       <header class="app-header">
@@ -19,7 +19,7 @@ import { LocationComponent } from './location/location.component';
         </div>
       </header>
       <main class="app-body">
-        <app-location />
+        <router-outlet />
       </main>
     </div>
   `,

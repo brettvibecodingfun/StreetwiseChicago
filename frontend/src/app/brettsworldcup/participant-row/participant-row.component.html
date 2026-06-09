@@ -1,0 +1,56 @@
+<tr class="participant-row" [class.expanded]="expanded" (click)="toggle()">
+  <td class="col-rank">{{ rankDisplay }}</td>
+  <td class="col-name">{{ participant.name }}</td>
+  <td class="col-pts">{{ participant.points }}</td>
+  <td class="col-champion">
+    <span class="badge badge-champion">{{ participant.champion_pick || '—' }}</span>
+  </td>
+  <td class="col-t1 hide-mobile">
+    <span class="badge badge-t1">{{ participant.tier1_team || '—' }}</span>
+  </td>
+  <td class="col-t2 hide-mobile">
+    <span class="badge badge-t2">{{ participant.tier2_team_a || '—' }}</span>
+    <span class="badge badge-t2">{{ participant.tier2_team_b || '—' }}</span>
+  </td>
+  <td class="col-t3 hide-mobile">
+    <span class="badge badge-t3">{{ participant.tier3_team_a || '—' }}</span>
+    <span class="badge badge-t3">{{ participant.tier3_team_b || '—' }}</span>
+  </td>
+  <td class="col-t4 hide-mobile">
+    <span class="badge badge-t4">{{ participant.tier4_team || '—' }}</span>
+  </td>
+  <td class="col-toggle">
+    <span class="chevron" [class.open]="expanded">›</span>
+  </td>
+</tr>
+
+@if (expanded) {
+  <tr class="detail-row">
+    <td colspan="9">
+      <div class="detail-panel">
+        <div class="detail-group">
+          <span class="detail-label">Champion</span>
+          <span class="badge badge-champion">{{ participant.champion_pick || '—' }}</span>
+        </div>
+        <div class="detail-group">
+          <span class="detail-label">Tier 1</span>
+          <span class="badge badge-t1">{{ participant.tier1_team || '—' }}</span>
+        </div>
+        <div class="detail-group">
+          <span class="detail-label">Tier 2</span>
+          <span class="badge badge-t2">{{ participant.tier2_team_a || '—' }}</span>
+          <span class="badge badge-t2">{{ participant.tier2_team_b || '—' }}</span>
+        </div>
+        <div class="detail-group">
+          <span class="detail-label">Tier 3</span>
+          <span class="badge badge-t3">{{ participant.tier3_team_a || '—' }}</span>
+          <span class="badge badge-t3">{{ participant.tier3_team_b || '—' }}</span>
+        </div>
+        <div class="detail-group">
+          <span class="detail-label">Flyer</span>
+          <span class="badge badge-t4">{{ participant.tier4_team || '—' }}</span>
+        </div>
+      </div>
+    </td>
+  </tr>
+}

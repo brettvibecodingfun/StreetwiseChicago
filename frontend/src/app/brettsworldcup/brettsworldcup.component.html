@@ -1,0 +1,132 @@
+<div class="wc-page">
+
+  <!-- Header -->
+  <header class="wc-header">
+    <div class="wc-title-row">
+      <span class="wc-icon">⚽</span>
+      <div>
+        <h1 class="wc-title">Brett's World Cup 2026 Pool</h1>
+        <p class="wc-subtitle">June 11 – July 19, 2026 · USA, Canada & Mexico</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Live matches strip -->
+  @if (todaysMatches.length > 0) {
+    <section class="matches-strip">
+      <div class="matches-scroll">
+        @for (m of todaysMatches; track m.id) {
+          <div class="match-card" [class.live]="isLive(m)">
+            @if (isLive(m)) {
+              <span class="live-dot"></span>
+            }
+            <span class="match-status-badge" [class.live]="isLive(m)">
+              {{ matchStatusLabel(m) }}
+            </span>
+            <div class="match-teams">
+              <span class="team">{{ m.homeTeam.name }}</span>
+              <span class="score">{{ matchScore(m) }}</span>
+              <span class="team">{{ m.awayTeam.name }}</span>
+            </div>
+          </div>
+        }
+      </div>
+    </section>
+  }
+
+  <!-- Scoring legend -->
+  <details class="scoring-legend">
+    <summary>Scoring Rules</summary>
+    <div class="legend-grid">
+      <div class="legend-section">
+        <p class="legend-heading">Group Stage</p>
+        <p>Win = 3 pts · Draw = 1 pt · Loss = 0</p>
+      </div>
+      <div class="legend-section">
+        <p class="legend-heading">Knockout Rounds</p>
+        <p>R32 = 5 · R16 = 10 · QF = 15 · SF = 20 · Final = 25</p>
+      </div>
+      <div class="legend-section">
+        <p class="legend-heading">Champion Pick Bonus</p>
+        <p>Winner = +40 pts · Runner-up = +15 pts</p>
+      </div>
+      <div class="legend-section">
+        <p class="legend-heading">Buy-in</p>
+        <p>$10 per entry</p>
+      </div>
+    </div>
+  </details>
+
+  <!-- Loading state -->
+  @if (loading) {
+    <div class="table-wrap">
+      <table class="leaderboard-table">
+        <thead>
+          <tr>
+            <th>#</th><th>Name</th><th>Pts</th><th>Champion</th>
+            <th class="hide-mobile">T1</th>
+            <th class="hide-mobile">T2</th>
+            <th class="hide-mobile">T3</th>
+            <th class="hide-mobile">Flyer</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (i of [1,2,3,4,5]; track i) {
+            <tr class="skeleton-row">
+              <td><div class="skel skel-sm"></div></td>
+              <td><div class="skel skel-md"></div></td>
+              <td><div class="skel skel-sm"></div></td>
+              <td><div class="skel skel-lg"></div></td>
+              <td class="hide-mobile"><div class="skel skel-lg"></div></td>
+              <td class="hide-mobile"><div class="skel skel-xl"></div></td>
+              <td class="hide-mobile"><div class="skel skel-xl"></div></td>
+              <td class="hide-mobile"><div class="skel skel-lg"></div></td>
+              <td></td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+
+  <!-- Error state -->
+  @if (error) {
+    <div class="empty-state">{{ error }}</div>
+  }
+
+  <!-- Leaderboard -->
+  @if (!loading && !error) {
+    @if (participants.length === 0) {
+      <div class="empty-state">No participants yet — check back soon!</div>
+    } @else {
+      <div class="table-wrap">
+        <table class="leaderboard-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Pts</th>
+              <th>Champion</th>
+              <th class="hide-mobile">T1</th>
+              <th class="hide-mobile">T2</th>
+              <th class="hide-mobile">T3</th>
+              <th class="hide-mobile">Flyer</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (p of participants; track trackByFn($index, p); let i = $index) {
+              <app-participant-row [participant]="p" [rank]="i + 1" />
+            }
+          </tbody>
+        </table>
+      </div>
+
+      @if (getLastUpdated()) {
+        <p class="last-updated">Last updated: {{ getLastUpdated() }}</p>
+      }
+    }
+  }
+
+</div>

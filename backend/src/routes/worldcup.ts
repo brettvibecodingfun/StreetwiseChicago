@@ -1,0 +1,161 @@
+import { Router, Request, Response, NextFunction } from 'express';
+import pool from '../db';
+
+const router = Router();
+
+// Free API key: https://www.football-data.org/
+let matchesCache: { data: unknown; fetchedAt: number } | null = null;
+const MATCHES_CACHE_TTL = 60_000;
+
+function requireAdminKey(req: Request, res: Response, next: NextFunction): void {
+  const key = req.headers['x-admin-key'];
+  if (!key || key !== process.env.WORLDCUP_ADMIN_KEY) {
+    res.status(401).json({ error: 'Unauthorized' });
+    return;
+  }
+  next();
+}
+
+function dbRequired(res: Response): boolean {
+  if (!pool) {
+    res.status(503).json({ error: 'Database not configured' });
+    return true;
+  }
+  return false;
+}
+
+// GET /api/brettsworldcup/participants
+router.get('/participants', async (_req, res) => {
+  if (dbRequired(res)) return;
+  try {
+    const result = await pool!.query(
+      'SELECT * FROM participants ORDER BY points DESC, name ASC'
+    );
+    res.json(result.rows);
+  } catch (err) {
+    console.error('[worldcup] GET /participants:', err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// GET /api/brettsworldcup/participants/:id
+router.get('/participants/:id', async (req, res) => {
+  if (dbRequired(res)) return;
+  try {
+    const result = await pool!.query('SELECT * FROM participants WHERE id = $1', [req.params['id']]);
+    if (result.rows.length === 0) {
+      res.status(404).json({ error: 'Not found' });
+      return;
+    }
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error('[worldcup] GET /participants/:id:', err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// POST /api/brettsworldcup/participants (admin)
+router.post('/participants', requireAdminKey, async (req, res) => {
+  if (dbRequired(res)) return;
+  const {
+    name, points = 0,
+    champion_pick, tier1_team,
+    tier2_team_a, tier2_team_b,
+    tier3_team_a, tier3_team_b,
+    tier4_team,
+  } = req.body as Record<string, string | number>;
+
+  if (!name) {
+    res.status(400).json({ error: 'name is required' });
+    return;
+  }
+
+  try {
+    const result = await pool!.query(
+      `INSERT INTO participants
+         (name, points, champion_pick, tier1_team, tier2_team_a, tier2_team_b, tier3_team_a, tier3_team_b, tier4_team)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+       RETURNING *`,
+      [name, points, champion_pick, tier1_team, tier2_team_a, tier2_team_b, tier3_team_a, tier3_team_b, tier4_team]
+    );
+    res.status(201).json(result.rows[0]);
+  } catch (err: unknown) {
+    if (typeof err === 'object' && err !== null && 'code' in err && (err as { code: string }).code === '23505') {
+      res.status(409).json({ error: 'Name already exists' });
+      return;
+    }
+    console.error('[worldcup] POST /participants:', err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// PATCH /api/brettsworldcup/participants/:id (admin)
+router.patch('/participants/:id', requireAdminKey, async (req, res) => {
+  if (dbRequired(res)) return;
+
+  const allowed = [
+    'name', 'points', 'champion_pick',
+    'tier1_team', 'tier2_team_a', 'tier2_team_b',
+    'tier3_team_a', 'tier3_team_b', 'tier4_team',
+  ];
+
+  const fields = Object.keys(req.body).filter(k => allowed.includes(k));
+  if (fields.length === 0) {
+    res.status(400).json({ error: 'No valid fields to update' });
+    return;
+  }
+
+  const setClauses = fields.map((f, i) => `${f} = $${i + 1}`);
+  setClauses.push(`updated_at = NOW()`);
+  const values = fields.map(f => (req.body as Record<string, unknown>)[f]);
+  values.push(req.params['id']);
+
+  try {
+    const result = await pool!.query(
+      `UPDATE participants SET ${setClauses.join(', ')} WHERE id = $${values.length} RETURNING *`,
+      values
+    );
+    if (result.rows.length === 0) {
+      res.status(404).json({ error: 'Not found' });
+      return;
+    }
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error('[worldcup] PATCH /participants/:id:', err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// GET /api/brettsworldcup/matches
+router.get('/matches', async (_req, res) => {
+  const apiKey = process.env.FOOTBALL_DATA_API_KEY;
+  if (!apiKey) {
+    res.json({ matches: [] });
+    return;
+  }
+
+  const now = Date.now();
+  if (matchesCache && now - matchesCache.fetchedAt < MATCHES_CACHE_TTL) {
+    res.json(matchesCache.data);
+    return;
+  }
+
+  try {
+    const r = await fetch(
+      'https://api.football-data.org/v4/competitions/WC/matches?season=2026',
+      { headers: { 'X-Auth-Token': apiKey } }
+    );
+    if (!r.ok) {
+      res.json({ matches: [] });
+      return;
+    }
+    const data = await r.json();
+    matchesCache = { data, fetchedAt: now };
+    res.json(data);
+  } catch (err) {
+    console.error('[worldcup] GET /matches:', err);
+    res.json({ matches: [] });
+  }
+});
+
+export default router;
