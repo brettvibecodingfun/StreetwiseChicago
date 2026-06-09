@@ -62,7 +62,7 @@ router.post('/participants', requireAdminKey, async (req, res) => {
     champion_pick, tier1_team,
     tier2_team_a, tier2_team_b,
     tier3_team_a, tier3_team_b,
-    tier4_team,
+    tier4_team_a, tier4_team_b, tier4_team_c,
   } = req.body as Record<string, string | number>;
 
   if (!name) {
@@ -73,10 +73,10 @@ router.post('/participants', requireAdminKey, async (req, res) => {
   try {
     const result = await pool!.query(
       `INSERT INTO participants
-         (name, points, champion_pick, tier1_team, tier2_team_a, tier2_team_b, tier3_team_a, tier3_team_b, tier4_team)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+         (name, points, champion_pick, tier1_team, tier2_team_a, tier2_team_b, tier3_team_a, tier3_team_b, tier4_team_a, tier4_team_b, tier4_team_c)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
        RETURNING *`,
-      [name, points, champion_pick, tier1_team, tier2_team_a, tier2_team_b, tier3_team_a, tier3_team_b, tier4_team]
+      [name, points, champion_pick, tier1_team, tier2_team_a, tier2_team_b, tier3_team_a, tier3_team_b, tier4_team_a, tier4_team_b, tier4_team_c]
     );
     res.status(201).json(result.rows[0]);
   } catch (err: unknown) {
@@ -96,7 +96,8 @@ router.patch('/participants/:id', requireAdminKey, async (req, res) => {
   const allowed = [
     'name', 'points', 'champion_pick',
     'tier1_team', 'tier2_team_a', 'tier2_team_b',
-    'tier3_team_a', 'tier3_team_b', 'tier4_team',
+    'tier3_team_a', 'tier3_team_b',
+    'tier4_team_a', 'tier4_team_b', 'tier4_team_c',
   ];
 
   const fields = Object.keys(req.body).filter(k => allowed.includes(k));
@@ -122,6 +123,25 @@ router.patch('/participants/:id', requireAdminKey, async (req, res) => {
     res.json(result.rows[0]);
   } catch (err) {
     console.error('[worldcup] PATCH /participants/:id:', err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// DELETE /api/brettsworldcup/participants/:id (admin)
+router.delete('/participants/:id', requireAdminKey, async (req, res) => {
+  if (dbRequired(res)) return;
+  try {
+    const result = await pool!.query(
+      'DELETE FROM participants WHERE id = $1 RETURNING id, name',
+      [req.params['id']]
+    );
+    if (result.rows.length === 0) {
+      res.status(404).json({ error: 'Not found' });
+      return;
+    }
+    res.json({ deleted: result.rows[0] });
+  } catch (err) {
+    console.error('[worldcup] DELETE /participants/:id:', err);
     res.status(500).json({ error: 'Internal server error' });
   }
 });

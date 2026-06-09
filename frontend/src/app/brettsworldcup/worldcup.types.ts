@@ -8,7 +8,9 @@ export interface Participant {
   tier2_team_b: string;
   tier3_team_a: string;
   tier3_team_b: string;
-  tier4_team: string;
+  tier4_team_a: string;
+  tier4_team_b: string;
+  tier4_team_c: string;
   updated_at: string;
 }
 

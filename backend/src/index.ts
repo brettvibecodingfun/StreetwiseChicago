@@ -31,7 +31,9 @@ async function initDb(): Promise<void> {
       tier2_team_b   VARCHAR(100),
       tier3_team_a   VARCHAR(100),
       tier3_team_b   VARCHAR(100),
-      tier4_team     VARCHAR(100),
+      tier4_team_a   VARCHAR(100),
+      tier4_team_b   VARCHAR(100),
+      tier4_team_c   VARCHAR(100),
       created_at     TIMESTAMPTZ DEFAULT NOW(),
       updated_at     TIMESTAMPTZ DEFAULT NOW()
     )

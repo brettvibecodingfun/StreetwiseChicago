@@ -17,7 +17,9 @@
     <span class="badge badge-t3">{{ participant.tier3_team_b || '—' }}</span>
   </td>
   <td class="col-t4 hide-mobile">
-    <span class="badge badge-t4">{{ participant.tier4_team || '—' }}</span>
+    <span class="badge badge-t4">{{ participant.tier4_team_a || '—' }}</span>
+    <span class="badge badge-t4">{{ participant.tier4_team_b || '—' }}</span>
+    <span class="badge badge-t4">{{ participant.tier4_team_c || '—' }}</span>
   </td>
   <td class="col-toggle">
     <span class="chevron" [class.open]="expanded">›</span>
@@ -48,7 +50,9 @@
         </div>
         <div class="detail-group">
           <span class="detail-label">Flyer</span>
-          <span class="badge badge-t4">{{ participant.tier4_team || '—' }}</span>
+          <span class="badge badge-t4">{{ participant.tier4_team_a || '—' }}</span>
+          <span class="badge badge-t4">{{ participant.tier4_team_b || '—' }}</span>
+          <span class="badge badge-t4">{{ participant.tier4_team_c || '—' }}</span>
         </div>
       </div>
     </td>

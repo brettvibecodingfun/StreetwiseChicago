@@ -12,7 +12,9 @@ const participantSchema: OpenAPIV3.SchemaObject = {
     tier2_team_b:  { type: 'string',  example: 'Morocco' },
     tier3_team_a:  { type: 'string',  example: 'USA' },
     tier3_team_b:  { type: 'string',  example: 'Japan' },
-    tier4_team:    { type: 'string',  example: 'Canada' },
+    tier4_team_a:  { type: 'string',  example: 'Canada' },
+    tier4_team_b:  { type: 'string',  example: 'Saudi Arabia' },
+    tier4_team_c:  { type: 'string',  example: 'Ghana' },
     created_at:    { type: 'string',  format: 'date-time' },
     updated_at:    { type: 'string',  format: 'date-time' },
   },
@@ -30,7 +32,9 @@ const participantWriteSchema: OpenAPIV3.SchemaObject = {
     tier2_team_b:  { type: 'string',  example: 'Morocco' },
     tier3_team_a:  { type: 'string',  example: 'USA' },
     tier3_team_b:  { type: 'string',  example: 'Japan' },
-    tier4_team:    { type: 'string',  example: 'Canada' },
+    tier4_team_a:  { type: 'string',  example: 'Canada' },
+    tier4_team_b:  { type: 'string',  example: 'Saudi Arabia' },
+    tier4_team_c:  { type: 'string',  example: 'Ghana' },
   },
 };
 
@@ -46,7 +50,9 @@ const participantPatchSchema: OpenAPIV3.SchemaObject = {
     tier2_team_b:  { type: 'string',  example: 'Morocco' },
     tier3_team_a:  { type: 'string',  example: 'USA' },
     tier3_team_b:  { type: 'string',  example: 'Japan' },
-    tier4_team:    { type: 'string',  example: 'Canada' },
+    tier4_team_a:  { type: 'string',  example: 'Canada' },
+    tier4_team_b:  { type: 'string',  example: 'Saudi Arabia' },
+    tier4_team_c:  { type: 'string',  example: 'Ghana' },
   },
 };
 
@@ -180,6 +186,36 @@ export const worldcupSpec: OpenAPIV3.Document = {
           '400': {
             description: 'No valid fields provided',
             content: { 'application/json': { schema: { type: 'object', properties: { error: { type: 'string', example: 'No valid fields to update' } } } } },
+          },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '404': { $ref: '#/components/responses/NotFound' },
+          '503': { $ref: '#/components/responses/DbNotConfigured' },
+        },
+      },
+      delete: {
+        summary: 'Delete a participant',
+        description: 'Permanently removes a participant from the pool. Requires admin key.',
+        tags: ['Participants'],
+        parameters: [adminKeyHeader],
+        responses: {
+          '200': {
+            description: 'Deleted',
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: {
+                    deleted: {
+                      type: 'object',
+                      properties: {
+                        id:   { type: 'integer', example: 3 },
+                        name: { type: 'string',  example: 'Brett' },
+                      },
+                    },
+                  },
+                },
+              },
+            },
           },
           '401': { $ref: '#/components/responses/Unauthorized' },
           '404': { $ref: '#/components/responses/NotFound' },
