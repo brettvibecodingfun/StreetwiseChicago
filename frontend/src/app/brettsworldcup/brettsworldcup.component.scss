@@ -22,6 +22,41 @@
   padding: 40px 20px 80px;
 }
 
+// Tab bar
+.tab-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 28px;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 6px;
+  border-radius: 20px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+  }
+
+  &.active {
+    background: #ffffff;
+    color: #1a1a1a;
+  }
+}
+
 // Header
 .wc-header {
   text-align: center;

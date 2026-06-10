@@ -5,6 +5,7 @@ import { interval, startWith, switchMap, catchError, of } from 'rxjs';
 import { WorldcupService } from './worldcup.service';
 import { Participant, WorldCupMatch } from './worldcup.types';
 import { ParticipantRowComponent } from './participant-row/participant-row.component';
+import { SimulatorComponent } from './simulator/simulator.component';
 import { getFlag } from './flag.util';
 
 export interface TierEntry {
@@ -15,7 +16,7 @@ export interface TierEntry {
 
 @Component({
   selector: 'app-brettsworldcup',
-  imports: [ParticipantRowComponent],
+  imports: [ParticipantRowComponent, SimulatorComponent],
   templateUrl: './brettsworldcup.component.html',
   styleUrl: './brettsworldcup.component.scss',
 })
@@ -23,6 +24,8 @@ export class BrettsworldcupComponent implements OnInit, OnDestroy {
   private readonly service = inject(WorldcupService);
   private readonly titleService = inject(Title);
   private readonly previousTitle = this.titleService.getTitle();
+
+  activeTab: 'leaderboard' | 'simulator' = 'leaderboard';
 
   participants: Participant[] = [];
   todaysMatches: WorldCupMatch[] = [];

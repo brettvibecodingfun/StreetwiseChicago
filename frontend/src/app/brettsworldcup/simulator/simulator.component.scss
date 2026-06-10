@@ -1,0 +1,350 @@
+:host {
+  display: block;
+}
+
+.simulator {
+  padding: 0 0 60px;
+}
+
+// ── Date strip ────────────────────────────────────────────────────────────────
+
+.date-strip-wrap {
+  margin-bottom: 20px;
+  // bleed to page edge on mobile
+  margin-left: -20px;
+  margin-right: -20px;
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+.date-strip {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 4px 0 16px;
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+.date-chip {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, border-color 0.15s;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  &.active {
+    background: #ffffff;
+    color: #1a1a1a;
+    border-color: #ffffff;
+  }
+}
+
+.date-chip-count {
+  font-size: 0.7rem;
+  font-weight: 900;
+  opacity: 0.7;
+
+  .active & {
+    opacity: 0.5;
+  }
+}
+
+// ── Matches section ────────────────────────────────────────────────────────────
+
+.matches-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+}
+
+.clear-btn {
+  align-self: flex-end;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background: transparent;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.15s;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+}
+
+// ── Match card ────────────────────────────────────────────────────────────────
+
+.match-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 14px 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  position: relative;
+  transition: box-shadow 0.15s;
+
+  &.has-outcome {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
+    outline: 2px solid #2e7d32;
+  }
+}
+
+.group-badge {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-size: 0.65rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #aaa;
+}
+
+.match-body {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.team-side {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  transition: opacity 0.2s;
+
+  &.loser {
+    opacity: 0.35;
+  }
+
+  &.winner .team-name {
+    color: #2e7d32;
+    font-weight: 900;
+  }
+}
+
+.team-side--away {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.team-flag {
+  font-size: 1.3rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.team-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// ── Outcome buttons ────────────────────────────────────────────────────────────
+
+.outcome-btns {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.outcome-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #e0e0e0;
+  background: #fafafa;
+  font-size: 0.7rem;
+  font-weight: 900;
+  color: #999;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.1s;
+
+  &:hover {
+    border-color: #bbb;
+    color: #555;
+    transform: scale(1.08);
+  }
+
+  &.selected {
+    border-color: transparent;
+    color: #ffffff;
+    transform: scale(1.12);
+  }
+}
+
+.btn-win.selected  { background: #2e7d32; }
+.btn-draw.selected { background: #f59e0b; }
+
+// ── Hypothetical standings ────────────────────────────────────────────────────
+
+.standings-section {
+  margin-top: 32px;
+}
+
+.standings-title {
+  margin: 0 0 16px;
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+.standings-table-wrap {
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+.standings-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  thead {
+    background: #1a1a1a;
+    color: #ffffff;
+
+    th {
+      padding: 12px 14px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-align: left;
+      white-space: nowrap;
+    }
+  }
+
+  tbody tr {
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.1s;
+
+    &:last-child { border-bottom: none; }
+    &.gained { background: #f1fdf2; }
+  }
+
+  td {
+    padding: 14px;
+    vertical-align: middle;
+  }
+}
+
+.col-rank {
+  font-size: 1.1rem;
+  text-align: center;
+  width: 36px;
+  padding-left: 10px !important;
+  padding-right: 6px !important;
+}
+
+.col-name {
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rank-arrow {
+  flex-shrink: 0;
+}
+
+.arrow {
+  font-size: 0.85rem;
+  font-weight: 900;
+
+  &.up   { color: #2e7d32; }
+  &.down { color: #d32f2f; }
+  &.flat { color: #bbb; }
+}
+
+.col-base {
+  color: #888;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.col-delta {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.delta-badge {
+  display: inline-block;
+  background: #e8f5e9;
+  color: #2e7d32;
+  font-size: 0.8rem;
+  font-weight: 900;
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid #c8e6c9;
+}
+
+.delta-zero {
+  color: #ccc;
+  font-size: 0.85rem;
+}
+
+.col-total {
+  font-weight: 900;
+  color: #2e7d32;
+  font-size: 1.05rem;
+  text-align: right;
+  padding-right: 14px !important;
+  white-space: nowrap;
+}
+
+.standings-prompt {
+  margin-top: 32px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 40px 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  border: 2px dashed rgba(255, 255, 255, 0.25);
+}
+
+// ── Responsive ────────────────────────────────────────────────────────────────
+
+@media (max-width: 480px) {
+  .team-name {
+    font-size: 0.78rem;
+  }
+
+  .outcome-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 0.65rem;
+  }
+
+  .outcome-btns {
+    gap: 3px;
+  }
+}

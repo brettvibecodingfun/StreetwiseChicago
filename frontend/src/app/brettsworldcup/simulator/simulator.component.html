@@ -1,0 +1,121 @@
+<div class="simulator">
+
+  <!-- Date strip -->
+  <div class="date-strip-wrap">
+    <div class="date-strip">
+      <button
+        class="date-chip"
+        [class.active]="selectedDate === null"
+        (click)="selectDate(null)">
+        All
+        <span class="date-chip-count">72</span>
+      </button>
+      @for (d of allDates; track d) {
+        <button
+          class="date-chip"
+          [class.active]="selectedDate === d"
+          (click)="selectDate(d)">
+          {{ formatDate(d) }}
+          <span class="date-chip-count">×{{ countForDate(d) }}</span>
+        </button>
+      }
+    </div>
+  </div>
+
+  <!-- Match cards -->
+  <div class="matches-section">
+    @if (hasSelections) {
+      <button class="clear-btn" (click)="clearAll()">Clear All</button>
+    }
+
+    @for (fixture of visibleFixtures; track fixture.id) {
+      <div class="match-card" [class.has-outcome]="getOutcome(fixture.id) !== null">
+
+        <span class="group-badge">Group {{ fixture.group }}</span>
+
+        <div class="match-body">
+          <div class="team-side" [class.winner]="getOutcome(fixture.id) === 'home'" [class.loser]="getOutcome(fixture.id) === 'away'">
+            <span class="team-flag">{{ flag(fixture.home) }}</span>
+            <span class="team-name">{{ fixture.home }}</span>
+          </div>
+
+          <div class="outcome-btns">
+            <button
+              class="outcome-btn btn-win"
+              [class.selected]="getOutcome(fixture.id) === 'home'"
+              (click)="setOutcome(fixture.id, 'home')">
+              W
+            </button>
+            <button
+              class="outcome-btn btn-draw"
+              [class.selected]="getOutcome(fixture.id) === 'draw'"
+              (click)="setOutcome(fixture.id, 'draw')">
+              D
+            </button>
+            <button
+              class="outcome-btn btn-win"
+              [class.selected]="getOutcome(fixture.id) === 'away'"
+              (click)="setOutcome(fixture.id, 'away')">
+              W
+            </button>
+          </div>
+
+          <div class="team-side team-side--away" [class.winner]="getOutcome(fixture.id) === 'away'" [class.loser]="getOutcome(fixture.id) === 'home'">
+            <span class="team-name">{{ fixture.away }}</span>
+            <span class="team-flag">{{ flag(fixture.away) }}</span>
+          </div>
+        </div>
+
+      </div>
+    }
+  </div>
+
+  <!-- Hypothetical standings -->
+  @if (hasSelections) {
+    <div class="standings-section">
+      <h3 class="standings-title">Hypothetical Standings</h3>
+      <div class="standings-table-wrap">
+        <table class="standings-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Base</th>
+              <th>+Pts</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (e of hypotheticalStandings; track e.participant.id; let i = $index) {
+              <tr [class.gained]="e.delta > 0">
+                <td class="col-rank">{{ rankDisplay(i) }}</td>
+                <td class="col-name">
+                  <span class="rank-arrow">
+                    @if (e.rankChange > 0) { <span class="arrow up">↑</span> }
+                    @else if (e.rankChange < 0) { <span class="arrow down">↓</span> }
+                    @else { <span class="arrow flat">→</span> }
+                  </span>
+                  {{ e.participant.name }}
+                </td>
+                <td class="col-base">{{ e.participant.points }}</td>
+                <td class="col-delta">
+                  @if (e.delta > 0) {
+                    <span class="delta-badge">+{{ e.delta }}</span>
+                  } @else {
+                    <span class="delta-zero">—</span>
+                  }
+                </td>
+                <td class="col-total">{{ e.hypotheticalTotal }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  } @else {
+    <div class="standings-prompt">
+      Pick some results above to see hypothetical standings
+    </div>
+  }
+
+</div>

@@ -11,180 +11,206 @@
     </div>
   </header>
 
-  <!-- Live matches strip -->
-  @if (todaysMatches.length > 0) {
-    <section class="matches-strip">
-      <div class="matches-scroll">
-        @for (m of todaysMatches; track m.id) {
-          <div class="match-card" [class.live]="isLive(m)">
-            @if (isLive(m)) {
-              <span class="live-dot"></span>
-            }
-            <span class="match-status-badge" [class.live]="isLive(m)">
-              {{ matchStatusLabel(m) }}
-            </span>
-            <div class="match-teams">
-              <span class="team">{{ m.homeTeam.name }}</span>
-              <span class="score">{{ matchScore(m) }}</span>
-              <span class="team">{{ m.awayTeam.name }}</span>
+  <!-- Tab bar -->
+  <div class="tab-bar">
+    <button
+      class="tab-btn"
+      [class.active]="activeTab === 'leaderboard'"
+      (click)="activeTab = 'leaderboard'">
+      🏆 Leaderboard
+    </button>
+    <button
+      class="tab-btn"
+      [class.active]="activeTab === 'simulator'"
+      (click)="activeTab = 'simulator'">
+      🎯 What If
+    </button>
+  </div>
+
+  <!-- ─── LEADERBOARD TAB ─────────────────────────────────────────────────── -->
+  @if (activeTab === 'leaderboard') {
+
+    <!-- Live matches strip -->
+    @if (todaysMatches.length > 0) {
+      <section class="matches-strip">
+        <div class="matches-scroll">
+          @for (m of todaysMatches; track m.id) {
+            <div class="match-card" [class.live]="isLive(m)">
+              @if (isLive(m)) {
+                <span class="live-dot"></span>
+              }
+              <span class="match-status-badge" [class.live]="isLive(m)">
+                {{ matchStatusLabel(m) }}
+              </span>
+              <div class="match-teams">
+                <span class="team">{{ m.homeTeam.name }}</span>
+                <span class="score">{{ matchScore(m) }}</span>
+                <span class="team">{{ m.awayTeam.name }}</span>
+              </div>
             </div>
-          </div>
-        }
-      </div>
-    </section>
-  }
-
-  <!-- Scoring legend -->
-  <details class="scoring-legend">
-    <summary>Scoring Rules</summary>
-    <div class="legend-grid">
-      <div class="legend-section">
-        <p class="legend-heading">Group Stage</p>
-        <p>Win = 3 pts · Draw = 1 pt · Loss = 0</p>
-      </div>
-      <div class="legend-section">
-        <p class="legend-heading">Knockout Rounds</p>
-        <p>R32 = 5 · R16 = 10 · QF = 20 · SF = 40 · Final = 80</p>
-      </div>
-      <div class="legend-section legend-section--bonus">
-        <p class="legend-heading">Champion Pick Bonus</p>
-        <p><span class="bonus-tier bonus-t1">T1</span> winner = +25 pts</p>
-        <p><span class="bonus-tier bonus-t2">T2</span> winner = +50 pts</p>
-        <p><span class="bonus-tier bonus-t3">T3</span> winner = +100 pts</p>
-        <p><span class="bonus-tier bonus-t4">T4</span> winner = +200 pts</p>
-      </div>
-      <div class="legend-section">
-        <p class="legend-heading">Buy-in</p>
-        <p>$10 per entry</p>
-      </div>
-    </div>
-  </details>
-
-  <!-- Loading state -->
-  @if (loading) {
-    <div class="table-wrap">
-      <table class="leaderboard-table">
-        <thead>
-          <tr>
-            <th>#</th><th>Name</th><th>Pts</th><th>Champion</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for (i of [1,2,3,4,5]; track i) {
-            <tr class="skeleton-row">
-              <td><div class="skel skel-sm"></div></td>
-              <td><div class="skel skel-md"></div></td>
-              <td><div class="skel skel-sm"></div></td>
-              <td><div class="skel skel-lg"></div></td>
-            </tr>
           }
-        </tbody>
-      </table>
-    </div>
-  }
+        </div>
+      </section>
+    }
 
-  <!-- Error state -->
-  @if (error) {
-    <div class="empty-state">{{ error }}</div>
-  }
+    <!-- Scoring legend -->
+    <details class="scoring-legend">
+      <summary>Scoring Rules</summary>
+      <div class="legend-grid">
+        <div class="legend-section">
+          <p class="legend-heading">Group Stage</p>
+          <p>Win = 3 pts · Draw = 1 pt · Loss = 0</p>
+        </div>
+        <div class="legend-section">
+          <p class="legend-heading">Knockout Rounds</p>
+          <p>R32 = 5 · R16 = 10 · QF = 20 · SF = 40 · Final = 80</p>
+        </div>
+        <div class="legend-section legend-section--bonus">
+          <p class="legend-heading">Champion Pick Bonus</p>
+          <p><span class="bonus-tier bonus-t1">T1</span> winner = +25 pts</p>
+          <p><span class="bonus-tier bonus-t2">T2</span> winner = +50 pts</p>
+          <p><span class="bonus-tier bonus-t3">T3</span> winner = +100 pts</p>
+          <p><span class="bonus-tier bonus-t4">T4</span> winner = +200 pts</p>
+        </div>
+        <div class="legend-section">
+          <p class="legend-heading">Buy-in</p>
+          <p>$10 per entry</p>
+        </div>
+      </div>
+    </details>
 
-  <!-- Leaderboard -->
-  @if (!loading && !error) {
-    @if (participants.length === 0) {
-      <div class="empty-state">No participants yet — check back soon!</div>
-    } @else {
+    <!-- Loading state -->
+    @if (loading) {
       <div class="table-wrap">
         <table class="leaderboard-table">
           <thead>
             <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Pts</th>
-              <th>Champion</th>
+              <th>#</th><th>Name</th><th>Pts</th><th>Champion</th>
             </tr>
           </thead>
           <tbody>
-            @for (p of participants; track trackByFn($index, p); let i = $index) {
-              <app-participant-row [participant]="p" [rank]="i + 1" />
+            @for (i of [1,2,3,4,5]; track i) {
+              <tr class="skeleton-row">
+                <td><div class="skel skel-sm"></div></td>
+                <td><div class="skel skel-md"></div></td>
+                <td><div class="skel skel-sm"></div></td>
+                <td><div class="skel skel-lg"></div></td>
+              </tr>
             }
           </tbody>
         </table>
       </div>
-
-      @if (getLastUpdated()) {
-        <p class="last-updated">Last updated: {{ getLastUpdated() }}</p>
-      }
-
-      <!-- Country distribution -->
-      <div class="dist-card">
-        <h3 class="dist-title">Country Distribution</h3>
-
-        <div class="dist-tier">
-          <div class="dist-tier-header">
-            <span class="dist-tier-label dist-label-t1">Tier 1</span>
-            <span class="dist-tier-count">{{ tier1Dist.length }} countries</span>
-          </div>
-          <div class="dist-pills">
-            @for (e of tier1Dist; track e.team) {
-              <div class="dist-pill dist-pill-t1">
-                @if (e.flag) { <span class="dist-flag">{{ e.flag }}</span> }
-                <span class="dist-team">{{ e.team }}</span>
-                @if (e.count > 1) { <span class="dist-badge">×{{ e.count }}</span> }
-              </div>
-            }
-          </div>
-        </div>
-
-        <div class="dist-tier">
-          <div class="dist-tier-header">
-            <span class="dist-tier-label dist-label-t2">Tier 2</span>
-            <span class="dist-tier-count">{{ tier2Dist.length }} countries</span>
-          </div>
-          <div class="dist-pills">
-            @for (e of tier2Dist; track e.team) {
-              <div class="dist-pill dist-pill-t2">
-                @if (e.flag) { <span class="dist-flag">{{ e.flag }}</span> }
-                <span class="dist-team">{{ e.team }}</span>
-                @if (e.count > 1) { <span class="dist-badge">×{{ e.count }}</span> }
-              </div>
-            }
-          </div>
-        </div>
-
-        <div class="dist-tier">
-          <div class="dist-tier-header">
-            <span class="dist-tier-label dist-label-t3">Tier 3</span>
-            <span class="dist-tier-count">{{ tier3Dist.length }} countries</span>
-          </div>
-          <div class="dist-pills">
-            @for (e of tier3Dist; track e.team) {
-              <div class="dist-pill dist-pill-t3">
-                @if (e.flag) { <span class="dist-flag">{{ e.flag }}</span> }
-                <span class="dist-team">{{ e.team }}</span>
-                @if (e.count > 1) { <span class="dist-badge">×{{ e.count }}</span> }
-              </div>
-            }
-          </div>
-        </div>
-
-        <div class="dist-tier">
-          <div class="dist-tier-header">
-            <span class="dist-tier-label dist-label-t4">Tier 4</span>
-            <span class="dist-tier-count">{{ tier4Dist.length }} countries</span>
-          </div>
-          <div class="dist-pills">
-            @for (e of tier4Dist; track e.team) {
-              <div class="dist-pill dist-pill-t4">
-                @if (e.flag) { <span class="dist-flag">{{ e.flag }}</span> }
-                <span class="dist-team">{{ e.team }}</span>
-                @if (e.count > 1) { <span class="dist-badge">×{{ e.count }}</span> }
-              </div>
-            }
-          </div>
-        </div>
-      </div>
-
     }
+
+    <!-- Error state -->
+    @if (error) {
+      <div class="empty-state">{{ error }}</div>
+    }
+
+    <!-- Leaderboard -->
+    @if (!loading && !error) {
+      @if (participants.length === 0) {
+        <div class="empty-state">No participants yet — check back soon!</div>
+      } @else {
+        <div class="table-wrap">
+          <table class="leaderboard-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Pts</th>
+                <th>Champion</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (p of participants; track trackByFn($index, p); let i = $index) {
+                <app-participant-row [participant]="p" [rank]="i + 1" />
+              }
+            </tbody>
+          </table>
+        </div>
+
+        @if (getLastUpdated()) {
+          <p class="last-updated">Last updated: {{ getLastUpdated() }}</p>
+        }
+
+        <!-- Country distribution -->
+        <div class="dist-card">
+          <h3 class="dist-title">Country Distribution</h3>
+
+          <div class="dist-tier">
+            <div class="dist-tier-header">
+              <span class="dist-tier-label dist-label-t1">Tier 1</span>
+              <span class="dist-tier-count">{{ tier1Dist.length }} countries</span>
+            </div>
+            <div class="dist-pills">
+              @for (e of tier1Dist; track e.team) {
+                <div class="dist-pill dist-pill-t1">
+                  @if (e.flag) { <span class="dist-flag">{{ e.flag }}</span> }
+                  <span class="dist-team">{{ e.team }}</span>
+                  @if (e.count > 1) { <span class="dist-badge">×{{ e.count }}</span> }
+                </div>
+              }
+            </div>
+          </div>
+
+          <div class="dist-tier">
+            <div class="dist-tier-header">
+              <span class="dist-tier-label dist-label-t2">Tier 2</span>
+              <span class="dist-tier-count">{{ tier2Dist.length }} countries</span>
+            </div>
+            <div class="dist-pills">
+              @for (e of tier2Dist; track e.team) {
+                <div class="dist-pill dist-pill-t2">
+                  @if (e.flag) { <span class="dist-flag">{{ e.flag }}</span> }
+                  <span class="dist-team">{{ e.team }}</span>
+                  @if (e.count > 1) { <span class="dist-badge">×{{ e.count }}</span> }
+                </div>
+              }
+            </div>
+          </div>
+
+          <div class="dist-tier">
+            <div class="dist-tier-header">
+              <span class="dist-tier-label dist-label-t3">Tier 3</span>
+              <span class="dist-tier-count">{{ tier3Dist.length }} countries</span>
+            </div>
+            <div class="dist-pills">
+              @for (e of tier3Dist; track e.team) {
+                <div class="dist-pill dist-pill-t3">
+                  @if (e.flag) { <span class="dist-flag">{{ e.flag }}</span> }
+                  <span class="dist-team">{{ e.team }}</span>
+                  @if (e.count > 1) { <span class="dist-badge">×{{ e.count }}</span> }
+                </div>
+              }
+            </div>
+          </div>
+
+          <div class="dist-tier">
+            <div class="dist-tier-header">
+              <span class="dist-tier-label dist-label-t4">Tier 4</span>
+              <span class="dist-tier-count">{{ tier4Dist.length }} countries</span>
+            </div>
+            <div class="dist-pills">
+              @for (e of tier4Dist; track e.team) {
+                <div class="dist-pill dist-pill-t4">
+                  @if (e.flag) { <span class="dist-flag">{{ e.flag }}</span> }
+                  <span class="dist-team">{{ e.team }}</span>
+                  @if (e.count > 1) { <span class="dist-badge">×{{ e.count }}</span> }
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+
+      }
+    }
+
+  }
+
+  <!-- ─── SIMULATOR TAB ───────────────────────────────────────────────────── -->
+  @if (activeTab === 'simulator') {
+    <app-simulator [participants]="participants" />
   }
 
 </div>
