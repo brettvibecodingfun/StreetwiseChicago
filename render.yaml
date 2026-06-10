@@ -1,0 +1,12 @@
+services:
+  - type: cron
+    name: worldcup-etl
+    runtime: node
+    schedule: "*/30 * * * *"
+    buildCommand: cd backend && npm install && npm run build
+    startCommand: node backend/dist/scripts/etl.js
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: FOOTBALL_DATA_API_KEY
+        sync: false

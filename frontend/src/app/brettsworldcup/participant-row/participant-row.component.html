@@ -99,6 +99,21 @@
             </div>
 
           </div>
+
+          @if (breakdownEntries.length) {
+            <details class="breakdown-details">
+              <summary>Points breakdown ({{ participant.points }} total)</summary>
+              <div class="breakdown-list">
+                @for (e of breakdownEntries; track e.key) {
+                  <div class="breakdown-row">
+                    <span class="breakdown-label">{{ e.label }}</span>
+                    <span class="breakdown-pts">+{{ e.value }}</span>
+                  </div>
+                }
+              </div>
+            </details>
+          }
+
         </div>
       </div>
     </td>

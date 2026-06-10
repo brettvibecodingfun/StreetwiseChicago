@@ -12,6 +12,8 @@ export interface Participant {
   tier4_team_b: string;
   tier4_team_c: string;
   updated_at: string;
+  points_breakdown: Record<string, number>;
+  last_etl_updated_at: string | null;
 }
 
 export interface WorldCupMatch {

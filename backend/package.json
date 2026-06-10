@@ -8,6 +8,7 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "migrate": "ts-node src/migrations.ts",
+    "etl": "ts-node src/scripts/etl.ts",
     "test": "jest"
   },
   "jest": {

@@ -46,6 +46,30 @@ const migrations: Migration[] = [
       ALTER TABLE participants ADD COLUMN IF NOT EXISTS tier4_team_c VARCHAR(100);
     `,
   },
+  {
+    id: 3,
+    name: 'add_etl_columns_to_participants',
+    sql: `
+      ALTER TABLE participants
+        ADD COLUMN IF NOT EXISTS points_breakdown JSONB NOT NULL DEFAULT '{}',
+        ADD COLUMN IF NOT EXISTS last_etl_updated_at TIMESTAMPTZ;
+    `,
+  },
+  {
+    id: 4,
+    name: 'create_etl_log_table',
+    sql: `
+      CREATE TABLE IF NOT EXISTS etl_log (
+        id                   SERIAL PRIMARY KEY,
+        run_at               TIMESTAMPTZ DEFAULT NOW(),
+        matches_checked      INTEGER DEFAULT 0,
+        matches_scored       INTEGER DEFAULT 0,
+        participants_updated INTEGER DEFAULT 0,
+        status               VARCHAR(20) DEFAULT 'success',
+        error_message        TEXT
+      );
+    `,
+  },
 ];
 
 export async function runMigrations(): Promise<void> {

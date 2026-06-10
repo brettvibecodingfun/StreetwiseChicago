@@ -1,5 +1,6 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import pool from '../db';
+import { runETL } from '../scripts/etl';
 
 const router = Router();
 
@@ -175,6 +176,33 @@ router.get('/matches', async (_req, res) => {
   } catch (err) {
     console.error('[worldcup] GET /matches:', err);
     res.json({ matches: [] });
+  }
+});
+
+// GET /api/brettsworldcup/etl/status
+router.get('/etl/status', async (_req, res) => {
+  if (dbRequired(res)) return;
+  try {
+    const result = await pool!.query(
+      `SELECT id, run_at, matches_checked, matches_scored, participants_updated, status, error_message
+       FROM etl_log ORDER BY run_at DESC LIMIT 10`
+    );
+    const runs = result.rows;
+    res.json({ last_run: runs[0] ?? null, recent_runs: runs });
+  } catch (err) {
+    console.error('[worldcup] GET /etl/status:', err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// POST /api/brettsworldcup/etl/trigger (admin)
+router.post('/etl/trigger', requireAdminKey, async (_req, res) => {
+  try {
+    const summary = await runETL();
+    res.json({ message: 'ETL completed', ...summary });
+  } catch (err) {
+    console.error('[worldcup] POST /etl/trigger:', err);
+    res.status(500).json({ error: String((err as Error).message ?? err) });
   }
 });
 

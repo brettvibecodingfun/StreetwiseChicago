@@ -340,8 +340,118 @@
   text-align: center;
 }
 
+// Country Distribution
+.dist-card {
+  margin-top: 40px;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  padding: 30px;
+}
+
+.dist-title {
+  margin: 0 0 24px;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  &::before {
+    content: '🌍';
+    font-size: 1.8rem;
+  }
+}
+
+.dist-tier {
+  margin-bottom: 24px;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.dist-tier-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px dashed #eee;
+}
+
+.dist-tier-label {
+  font-size: 0.85rem;
+  font-weight: 900;
+  padding: 4px 12px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.dist-label-t1 { background: #e3f2fd; color: #1565c0; border: 1px solid #bbdefb; }
+.dist-label-t2 { background: #f3e5f5; color: #6a1b9a; border: 1px solid #e1bee7; }
+.dist-label-t3 { background: #fce4ec; color: #ad1457; border: 1px solid #f8bbd0; }
+.dist-label-t4 { background: #fff3e0; color: #d84315; border: 1px solid #ffe0b2; }
+
+.dist-tier-count {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #888;
+}
+
+.dist-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.dist-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fafafa;
+  border: 1px solid #eee;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  }
+}
+
+.dist-pill-t1 { border-color: #bbdefb; background: #f5faff; }
+.dist-pill-t2 { border-color: #e1bee7; background: #faf5fb; }
+.dist-pill-t3 { border-color: #f8bbd0; background: #fef5f8; }
+.dist-pill-t4 { border-color: #ffe0b2; background: #fffaf5; }
+
+.dist-flag {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.dist-badge {
+  background: #1a1a1a;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 900;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: 4px;
+}
+
 @media (max-width: 767px) {
   .wc-title { font-size: 1.8rem; }
   .hide-mobile { display: none; }
   .wc-header { padding: 20px; }
+  .dist-card { padding: 20px; }
 }
