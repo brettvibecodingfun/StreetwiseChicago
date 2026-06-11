@@ -72,8 +72,9 @@ export const worldcupSpec: OpenAPIV3.Document = {
     description:
       'Manage pool participants and view live match data.\n\n' +
       '**Public endpoints** (GET) require no authentication.\n\n' +
-      '**Admin endpoints** (POST, PATCH) require the `x-admin-key` header ' +
-      'matching `WORLDCUP_ADMIN_KEY` in the server environment.',
+      '**Admin endpoints** (POST, PATCH, DELETE) require the `x-admin-key` header ' +
+      'matching `WORLDCUP_ADMIN_KEY` in the server environment.\n\n' +
+      '**ETL** — use `POST /etl/trigger` to manually run the scoring pipeline against football-data.org.',
   },
   servers: [
     { url: '/api/brettsworldcup', description: 'This server' },
@@ -220,6 +221,96 @@ export const worldcupSpec: OpenAPIV3.Document = {
           '401': { $ref: '#/components/responses/Unauthorized' },
           '404': { $ref: '#/components/responses/NotFound' },
           '503': { $ref: '#/components/responses/DbNotConfigured' },
+        },
+      },
+    },
+
+    '/etl/status': {
+      get: {
+        summary: 'ETL run history',
+        description: 'Returns the last 10 ETL runs with match counts and status.',
+        tags: ['ETL'],
+        responses: {
+          '200': {
+            description: 'Recent ETL runs',
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: {
+                    last_run: {
+                      nullable: true,
+                      type: 'object',
+                      properties: {
+                        id:                   { type: 'integer' },
+                        run_at:               { type: 'string', format: 'date-time' },
+                        matches_checked:      { type: 'integer' },
+                        matches_scored:       { type: 'integer' },
+                        participants_updated: { type: 'integer' },
+                        status:               { type: 'string', enum: ['success', 'error'] },
+                        error_message:        { type: 'string', nullable: true },
+                      },
+                    },
+                    recent_runs: {
+                      type: 'array',
+                      items: {
+                        type: 'object',
+                        properties: {
+                          id:                   { type: 'integer' },
+                          run_at:               { type: 'string', format: 'date-time' },
+                          matches_checked:      { type: 'integer' },
+                          matches_scored:       { type: 'integer' },
+                          participants_updated: { type: 'integer' },
+                          status:               { type: 'string', enum: ['success', 'error'] },
+                          error_message:        { type: 'string', nullable: true },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+          '503': { $ref: '#/components/responses/DbNotConfigured' },
+        },
+      },
+    },
+
+    '/etl/trigger': {
+      post: {
+        summary: 'Manually trigger the ETL',
+        description:
+          'Fetches all finished World Cup matches from football-data.org, ' +
+          'calculates points for each participant\'s team picks, and updates the DB idempotently. ' +
+          'Safe to run multiple times — already-credited matches are skipped. Requires admin key.',
+        tags: ['ETL'],
+        parameters: [adminKeyHeader],
+        responses: {
+          '200': {
+            description: 'ETL completed successfully',
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: {
+                    message:              { type: 'string', example: 'ETL completed' },
+                    matchesChecked:       { type: 'integer', example: 36 },
+                    matchesScored:        { type: 'integer', example: 36 },
+                    participantsUpdated:  { type: 'integer', example: 8 },
+                  },
+                },
+              },
+            },
+          },
+          '401': { $ref: '#/components/responses/Unauthorized' },
+          '500': {
+            description: 'ETL failed (e.g. API key missing or football-data.org error)',
+            content: {
+              'application/json': {
+                schema: { type: 'object', properties: { error: { type: 'string' } } },
+              },
+            },
+          },
         },
       },
     },
