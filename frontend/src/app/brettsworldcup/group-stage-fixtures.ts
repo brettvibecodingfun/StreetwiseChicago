@@ -36,7 +36,7 @@ export const GROUP_FIXTURES: GroupFixture[] = [
   { id: 24, date: '2026-06-17', group: 'K', home: 'Uzbekistan',   away: 'Colombia' },
   // ── Matchday 2 ────────────────────────────────────────────────────────────
   { id: 25, date: '2026-06-18', group: 'A', home: 'Czechia',      away: 'South Africa' },
-  { id: 26, date: '2026-06-18', group: 'B', home: 'Switzerland',  away: 'Bosnia & Herz.' },
+  { id: 26, date: '2026-06-18', group: 'B', home: 'Switzerland',  away: 'Bosnia & Herzegovina' },
   { id: 27, date: '2026-06-18', group: 'B', home: 'Canada',       away: 'Qatar' },
   { id: 28, date: '2026-06-18', group: 'A', home: 'Mexico',       away: 'South Korea' },
   { id: 29, date: '2026-06-19', group: 'D', home: 'USA',          away: 'Australia' },
@@ -61,7 +61,7 @@ export const GROUP_FIXTURES: GroupFixture[] = [
   { id: 48, date: '2026-06-23', group: 'K', home: 'Colombia',     away: 'DR Congo' },
   // ── Matchday 3 ────────────────────────────────────────────────────────────
   { id: 49, date: '2026-06-24', group: 'B', home: 'Switzerland',  away: 'Canada' },
-  { id: 50, date: '2026-06-24', group: 'B', home: 'Bosnia & Herz.', away: 'Qatar' },
+  { id: 50, date: '2026-06-24', group: 'B', home: 'Bosnia & Herzegovina', away: 'Qatar' },
   { id: 51, date: '2026-06-24', group: 'C', home: 'Scotland',     away: 'Brazil' },
   { id: 52, date: '2026-06-24', group: 'C', home: 'Morocco',      away: 'Haiti' },
   { id: 53, date: '2026-06-24', group: 'A', home: 'Czechia',      away: 'Mexico' },
