@@ -29,12 +29,20 @@
     }
 
     @for (fixture of visibleFixtures; track fixture.id) {
-      <div class="match-card" [class.has-outcome]="getOutcome(fixture.id) !== null">
+      <div class="match-card"
+           [class.has-outcome]="getOutcome(fixture.id) !== null && !isLocked(fixture)"
+           [class.locked]="isLocked(fixture)">
 
         <span class="group-badge">Group {{ fixture.group }}</span>
 
+        @if (isLocked(fixture)) {
+          <span class="lock-badge">🔒 Locked</span>
+        }
+
         <div class="match-body">
-          <div class="team-side" [class.winner]="getOutcome(fixture.id) === 'home'" [class.loser]="getOutcome(fixture.id) === 'away'">
+          <div class="team-side"
+               [class.winner]="!isLocked(fixture) && getOutcome(fixture.id) === 'home'"
+               [class.loser]="!isLocked(fixture) && getOutcome(fixture.id) === 'away'">
             <span class="team-flag">{{ flag(fixture.home) }}</span>
             <span class="team-name">{{ fixture.home }}</span>
           </div>
@@ -42,25 +50,30 @@
           <div class="outcome-btns">
             <button
               class="outcome-btn btn-win"
-              [class.selected]="getOutcome(fixture.id) === 'home'"
+              [class.selected]="!isLocked(fixture) && getOutcome(fixture.id) === 'home'"
+              [disabled]="isLocked(fixture)"
               (click)="setOutcome(fixture.id, 'home')">
               W
             </button>
             <button
               class="outcome-btn btn-draw"
-              [class.selected]="getOutcome(fixture.id) === 'draw'"
+              [class.selected]="!isLocked(fixture) && getOutcome(fixture.id) === 'draw'"
+              [disabled]="isLocked(fixture)"
               (click)="setOutcome(fixture.id, 'draw')">
               D
             </button>
             <button
               class="outcome-btn btn-win"
-              [class.selected]="getOutcome(fixture.id) === 'away'"
+              [class.selected]="!isLocked(fixture) && getOutcome(fixture.id) === 'away'"
+              [disabled]="isLocked(fixture)"
               (click)="setOutcome(fixture.id, 'away')">
               W
             </button>
           </div>
 
-          <div class="team-side team-side--away" [class.winner]="getOutcome(fixture.id) === 'away'" [class.loser]="getOutcome(fixture.id) === 'home'">
+          <div class="team-side team-side--away"
+               [class.winner]="!isLocked(fixture) && getOutcome(fixture.id) === 'away'"
+               [class.loser]="!isLocked(fixture) && getOutcome(fixture.id) === 'home'">
             <span class="team-name">{{ fixture.away }}</span>
             <span class="team-flag">{{ flag(fixture.away) }}</span>
           </div>

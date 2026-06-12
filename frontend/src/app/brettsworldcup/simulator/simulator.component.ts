@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { Participant } from '../worldcup.types';
-import { GroupFixture, MatchOutcome, GROUP_FIXTURES, FIXTURES_BY_DATE, ALL_DATES } from '../group-stage-fixtures';
+import { GroupFixture, MatchOutcome, GROUP_FIXTURES, FIXTURES_BY_DATE, ALL_DATES, isFixtureLocked } from '../group-stage-fixtures';
 import { getFlag } from '../flag.util';
 
 interface HypotheticalEntry {
@@ -45,7 +45,11 @@ export class SimulatorComponent implements OnChanges {
   }
 
   get hasSelections(): boolean {
-    return Object.keys(this.outcomes).length > 0;
+    // Only count outcomes for unlocked fixtures
+    return Object.keys(this.outcomes).some(idStr => {
+      const f = GROUP_FIXTURES[Number(idStr) - 1];
+      return f && !isFixtureLocked(f);
+    });
   }
 
   get hypotheticalStandings(): HypotheticalEntry[] {
@@ -54,7 +58,8 @@ export class SimulatorComponent implements OnChanges {
 
     for (const [idStr, outcome] of Object.entries(this.outcomes)) {
       const fixture = GROUP_FIXTURES[Number(idStr) - 1];
-      if (!fixture) continue;
+      // Skip locked fixtures — they can't be predicted
+      if (!fixture || isFixtureLocked(fixture)) continue;
 
       for (const p of this.participants) {
         const picks = PICK_FIELDS
@@ -81,16 +86,22 @@ export class SimulatorComponent implements OnChanges {
 
     entries.sort((a, b) => b.hypotheticalTotal - a.hypotheticalTotal || a.participant.name.localeCompare(b.participant.name));
 
-    // Compute rank change vs real order
     entries.forEach((e, i) => {
       const realRank = this.realRankOrder.indexOf(e.participant.id);
-      e.rankChange = realRank - i; // positive = moved up
+      e.rankChange = realRank - i;
     });
 
     return entries;
   }
 
+  isLocked(fixture: GroupFixture): boolean {
+    return isFixtureLocked(fixture);
+  }
+
   setOutcome(fixtureId: number, outcome: MatchOutcome): void {
+    const fixture = GROUP_FIXTURES[fixtureId - 1];
+    if (fixture && isFixtureLocked(fixture)) return;
+
     if (this.outcomes[fixtureId] === outcome) {
       delete this.outcomes[fixtureId];
     } else {
