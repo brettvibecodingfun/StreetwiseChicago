@@ -8,9 +8,10 @@ const NAME_MAP: Record<string, string> = {
   'United States': 'USA',
   'Korea Republic': 'South Korea',
   'Türkiye': 'Turkey',
-  'Bosnia and Herzegovina': 'Bosnia & Herz.',
+  'Bosnia-Herzegovina': 'Bosnia & Herzegovina',
   "Côte d'Ivoire": 'Ivory Coast',
-  'DR Congo': 'DR Congo',
+  'Congo DR': 'DR Congo',
+  'Cape Verde Islands': 'Cape Verde',
 };
 
 function normalize(name: string): string {
