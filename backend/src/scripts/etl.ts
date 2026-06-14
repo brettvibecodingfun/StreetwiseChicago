@@ -56,6 +56,20 @@ const TIER_PICK_FIELDS: (keyof DbParticipant)[] = [
   'tier4_team_a', 'tier4_team_b', 'tier4_team_c',
 ];
 
+async function fetchWithRetry(url: string, options: RequestInit, retries = 3): Promise<Response> {
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      return await fetch(url, options);
+    } catch (err) {
+      if (attempt === retries) throw err;
+      const delay = attempt * 5000;
+      console.log(`[etl] Fetch attempt ${attempt} failed (${(err as Error).message}), retrying in ${delay / 1000}s…`);
+      await new Promise(resolve => setTimeout(resolve, delay));
+    }
+  }
+  throw new Error('unreachable');
+}
+
 export async function runETL(): Promise<EtlSummary> {
   await runMigrations();
 
@@ -63,7 +77,7 @@ export async function runETL(): Promise<EtlSummary> {
   if (!apiKey) throw new Error('FOOTBALL_DATA_API_KEY not set');
   if (!pool) throw new Error('DATABASE_URL not set');
 
-  const r = await fetch(
+  const r = await fetchWithRetry(
     'https://api.football-data.org/v4/competitions/WC/matches?status=FINISHED&season=2026',
     { headers: { 'X-Auth-Token': apiKey } }
   );
