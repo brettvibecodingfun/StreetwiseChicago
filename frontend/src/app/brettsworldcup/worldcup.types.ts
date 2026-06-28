@@ -23,6 +23,7 @@ export interface WorldCupMatch {
   homeTeam: { name: string; crest?: string };
   awayTeam: { name: string; crest?: string };
   score: {
+    winner?: 'HOME_TEAM' | 'AWAY_TEAM' | 'DRAW' | null;
     fullTime: { home: number | null; away: number | null };
     halfTime: { home: number | null; away: number | null };
   };

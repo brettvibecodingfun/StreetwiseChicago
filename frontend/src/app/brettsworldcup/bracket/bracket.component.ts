@@ -1,4 +1,6 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { catchError, interval, of, startWith, switchMap } from 'rxjs';
 import { getFlag } from '../flag.util';
 import {
   CHAMPION_BONUS,
@@ -11,7 +13,8 @@ import {
   ROUNDS_ORDER,
   getTeamTier,
 } from '../knockout-bracket';
-import { Participant } from '../worldcup.types';
+import { Participant, WorldCupMatch } from '../worldcup.types';
+import { WorldcupService } from '../worldcup.service';
 
 interface HypotheticalEntry {
   participant: Participant;
@@ -38,6 +41,16 @@ const PICK_FIELDS: (keyof Participant)[] = [
   'tier4_team_c',
 ];
 
+const API_NAME_MAP: Record<string, string> = {
+  'United States': 'USA',
+  'Korea Republic': 'South Korea',
+  Türkiye: 'Turkey',
+  'Bosnia-Herzegovina': 'Bosnia & Herzegovina',
+  "Côte d'Ivoire": 'Ivory Coast',
+  'Congo DR': 'DR Congo',
+  'Cape Verde Islands': 'Cape Verde',
+};
+
 @Component({
   selector: 'app-bracket',
   imports: [],
@@ -45,9 +58,12 @@ const PICK_FIELDS: (keyof Participant)[] = [
   styleUrl: './bracket.component.scss',
 })
 export class BracketComponent implements OnChanges {
+  private readonly service = inject(WorldcupService);
+
   @Input() participants: Participant[] = [];
 
   picks: Record<string, string> = {};
+  officialPicks: Record<string, string> = {};
 
   readonly roundColumns: RoundColumn[] = ROUNDS_ORDER.map(round => ({
     round,
@@ -57,6 +73,18 @@ export class BracketComponent implements OnChanges {
   }));
 
   private realRankOrder: number[] = [];
+
+  constructor() {
+    interval(60_000)
+      .pipe(
+        startWith(0),
+        switchMap(() => this.service.getLiveMatches().pipe(catchError(() => of([])))),
+        takeUntilDestroyed()
+      )
+      .subscribe(matches => {
+        this.syncOfficialResults(matches);
+      });
+  }
 
   ngOnChanges(): void {
     this.realRankOrder = [...this.participants]
@@ -69,7 +97,7 @@ export class BracketComponent implements OnChanges {
   }
 
   get champion(): string | null {
-    return this.picks['f_1'] ?? null;
+    return this.getWinner('f_1');
   }
 
   get championBonus(): number {
@@ -87,7 +115,7 @@ export class BracketComponent implements OnChanges {
 
     for (const [matchId, winner] of Object.entries(this.picks)) {
       const match = MATCH_BY_ID[matchId];
-      if (!match || winner === 'TBD') continue;
+      if (!match || winner === 'TBD' || this.isLocked(match)) continue;
 
       for (const participant of this.participants) {
         const participantPicks = PICK_FIELDS
@@ -126,9 +154,9 @@ export class BracketComponent implements OnChanges {
   }
 
   pickWinner(match: KnockoutMatch, team: string): void {
-    if (team === 'TBD') return;
+    if (team === 'TBD' || this.isLocked(match)) return;
 
-    const currentWinner = this.picks[match.id];
+    const currentWinner = this.getWinner(match.id);
 
     if (currentWinner === team) {
       const nextPicks = { ...this.picks };
@@ -149,24 +177,32 @@ export class BracketComponent implements OnChanges {
   }
 
   resolveSlot(match: KnockoutMatch, slot: 1 | 2): string {
-    const upstreamMatchId = slot === 1 ? match.slot1From : match.slot2From;
-    if (upstreamMatchId && this.picks[upstreamMatchId]) {
-      return this.picks[upstreamMatchId];
-    }
+    return this.resolveSlotFromPicks(match, slot, this.combinedPicks);
+  }
 
-    return slot === 1 ? match.slot1.team : match.slot2.team;
+  isPicked(match: KnockoutMatch, team: string): boolean {
+    return this.getWinner(match.id) === team;
+  }
+
+  isLoser(match: KnockoutMatch, team: string): boolean {
+    const winner = this.getWinner(match.id);
+    return Boolean(winner) && winner !== team && team !== 'TBD';
+  }
+
+  isLocked(match: KnockoutMatch): boolean {
+    return this.officialPicks[match.id] !== undefined;
+  }
+
+  getWinner(matchId: string): string | null {
+    return this.officialPicks[matchId] ?? this.picks[matchId] ?? null;
+  }
+
+  get hasOfficialResults(): boolean {
+    return Object.keys(this.officialPicks).length > 0;
   }
 
   clearAll(): void {
     this.picks = {};
-  }
-
-  isPicked(match: KnockoutMatch, team: string): boolean {
-    return this.picks[match.id] === team;
-  }
-
-  isLoser(match: KnockoutMatch, team: string): boolean {
-    return Boolean(this.picks[match.id]) && this.picks[match.id] !== team && team !== 'TBD';
   }
 
   flag(team: string): string {
@@ -184,6 +220,42 @@ export class BracketComponent implements OnChanges {
     return match.id;
   }
 
+  private get combinedPicks(): Record<string, string> {
+    return {
+      ...this.picks,
+      ...this.officialPicks,
+    };
+  }
+
+  private resolveSlotFromPicks(match: KnockoutMatch, slot: 1 | 2, picks: Record<string, string>): string {
+    const upstreamMatchId = slot === 1 ? match.slot1From : match.slot2From;
+    if (upstreamMatchId && picks[upstreamMatchId]) {
+      return picks[upstreamMatchId];
+    }
+
+    return slot === 1 ? match.slot1.team : match.slot2.team;
+  }
+
+  private syncOfficialResults(matches: WorldCupMatch[]): void {
+    const nextOfficialPicks: Record<string, string> = {};
+    const finishedKnockoutMatches = matches
+      .filter(match => match.status === 'FINISHED' && ROUNDS_ORDER.includes(match.stage as KnockoutRound))
+      .sort((a, b) => ROUNDS_ORDER.indexOf(a.stage as KnockoutRound) - ROUNDS_ORDER.indexOf(b.stage as KnockoutRound));
+
+    for (const apiMatch of finishedKnockoutMatches) {
+      const winner = this.getOfficialWinner(apiMatch);
+      if (!winner) continue;
+
+      const bracketMatch = this.findBracketMatch(apiMatch, nextOfficialPicks);
+      if (bracketMatch) {
+        nextOfficialPicks[bracketMatch.id] = winner;
+      }
+    }
+
+    this.officialPicks = nextOfficialPicks;
+    this.removeInvalidUserPicks();
+  }
+
   private clearDownstreamWinner(match: KnockoutMatch, winner: string): void {
     const downstreamMatch = match.feedsInto ? MATCH_BY_ID[match.feedsInto.matchId] : null;
     if (!downstreamMatch || this.picks[downstreamMatch.id] !== winner) return;
@@ -192,5 +264,64 @@ export class BracketComponent implements OnChanges {
     delete nextPicks[downstreamMatch.id];
     this.picks = nextPicks;
     this.clearDownstreamWinner(downstreamMatch, winner);
+  }
+
+  private findBracketMatch(apiMatch: WorldCupMatch, officialPicks: Record<string, string>): KnockoutMatch | null {
+    const byId = KNOCKOUT_MATCHES.find(match => match.footballDataId === apiMatch.id);
+    if (byId) return byId;
+
+    const home = this.normalizeTeam(apiMatch.homeTeam?.name);
+    const away = this.normalizeTeam(apiMatch.awayTeam?.name);
+    if (!home || !away) return null;
+
+    return KNOCKOUT_MATCHES.find(match => {
+      if (match.round !== apiMatch.stage) return false;
+
+      const slot1 = this.resolveSlotFromPicks(match, 1, officialPicks);
+      const slot2 = this.resolveSlotFromPicks(match, 2, officialPicks);
+      return (slot1 === home && slot2 === away) || (slot1 === away && slot2 === home);
+    }) ?? null;
+  }
+
+  private getOfficialWinner(match: WorldCupMatch): string | null {
+    if (match.score.winner === 'HOME_TEAM') return this.normalizeTeam(match.homeTeam?.name);
+    if (match.score.winner === 'AWAY_TEAM') return this.normalizeTeam(match.awayTeam?.name);
+    return null;
+  }
+
+  private normalizeTeam(team: string | null | undefined): string {
+    if (!team) return '';
+    return API_NAME_MAP[team] ?? team;
+  }
+
+  private removeInvalidUserPicks(): void {
+    let nextPicks = { ...this.picks };
+
+    for (const matchId of Object.keys(this.officialPicks)) {
+      delete nextPicks[matchId];
+    }
+
+    let changed = true;
+    while (changed) {
+      changed = false;
+
+      for (const [matchId, pick] of Object.entries(nextPicks)) {
+        const match = MATCH_BY_ID[matchId];
+        if (!match) {
+          delete nextPicks[matchId];
+          changed = true;
+          continue;
+        }
+
+        const slot1 = this.resolveSlotFromPicks(match, 1, { ...nextPicks, ...this.officialPicks });
+        const slot2 = this.resolveSlotFromPicks(match, 2, { ...nextPicks, ...this.officialPicks });
+        if (pick !== slot1 && pick !== slot2) {
+          delete nextPicks[matchId];
+          changed = true;
+        }
+      }
+    }
+
+    this.picks = nextPicks;
   }
 }

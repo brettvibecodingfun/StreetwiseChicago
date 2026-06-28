@@ -4,7 +4,7 @@
       <p class="eyebrow">Knockout Simulator</p>
       <h2>Build the road to the trophy</h2>
       <p class="bracket-copy">
-        Pick winners round by round to preview knockout points and champion bonuses.
+        Completed matches lock automatically from the official feed. Pick the remaining winners to preview knockout points and champion bonuses.
       </p>
     </div>
 
@@ -24,13 +24,20 @@
 
           <div class="round-matches">
             @for (match of column.matches; track match.id) {
-              <article class="bracket-match" [class.has-pick]="picks[match.id] !== undefined">
+              <article
+                class="bracket-match"
+                [class.has-pick]="getWinner(match.id) !== null"
+                [class.locked]="isLocked(match)">
+                @if (isLocked(match)) {
+                  <span class="official-badge">Final</span>
+                }
+
                 <button
                   class="slot-btn"
                   [class.selected]="isPicked(match, resolveSlot(match, 1))"
                   [class.loser]="isLoser(match, resolveSlot(match, 1))"
                   [class.tbd]="resolveSlot(match, 1) === 'TBD'"
-                  [disabled]="resolveSlot(match, 1) === 'TBD'"
+                  [disabled]="resolveSlot(match, 1) === 'TBD' || isLocked(match)"
                   (click)="pickWinner(match, resolveSlot(match, 1))">
                   <span class="slot-flag">{{ flag(resolveSlot(match, 1)) || '🏳' }}</span>
                   <span class="slot-team">{{ resolveSlot(match, 1) }}</span>
@@ -41,7 +48,7 @@
                   [class.selected]="isPicked(match, resolveSlot(match, 2))"
                   [class.loser]="isLoser(match, resolveSlot(match, 2))"
                   [class.tbd]="resolveSlot(match, 2) === 'TBD'"
-                  [disabled]="resolveSlot(match, 2) === 'TBD'"
+                  [disabled]="resolveSlot(match, 2) === 'TBD' || isLocked(match)"
                   (click)="pickWinner(match, resolveSlot(match, 2))">
                   <span class="slot-flag">{{ flag(resolveSlot(match, 2)) || '🏳' }}</span>
                   <span class="slot-team">{{ resolveSlot(match, 2) }}</span>
@@ -132,7 +139,11 @@
     </div>
   } @else {
     <div class="standings-prompt">
-      Fill in bracket winners to see hypothetical knockout standings.
+      @if (hasOfficialResults) {
+        Official results are locked in. Pick upcoming winners to preview the rest of the bracket.
+      } @else {
+        Fill in bracket winners to see hypothetical knockout standings.
+      }
     </div>
   }
 </div>

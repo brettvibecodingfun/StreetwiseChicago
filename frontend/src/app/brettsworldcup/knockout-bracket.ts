@@ -7,6 +7,7 @@ export interface KnockoutSlot {
 
 export interface KnockoutMatch {
   id: string;
+  footballDataId?: number;
   round: KnockoutRound;
   slot1: KnockoutSlot;
   slot2: KnockoutSlot;
@@ -120,10 +121,12 @@ function match(
   slot1From: string | null = null,
   slot2From: string | null = null,
   slot1: KnockoutSlot = tbd(),
-  slot2: KnockoutSlot = tbd()
+  slot2: KnockoutSlot = tbd(),
+  footballDataId?: number
 ): KnockoutMatch {
   return {
     id,
+    footballDataId,
     round,
     slot1,
     slot2,
@@ -135,30 +138,31 @@ function match(
 
 function r32(
   id: string,
+  footballDataId: number,
   feedsInto: { matchId: string; slot: 1 | 2 },
   slot1Team: string,
   slot2Team: string
 ): KnockoutMatch {
-  return match(id, 'LAST_32', feedsInto, null, null, slot(slot1Team), slot(slot2Team));
+  return match(id, 'LAST_32', feedsInto, null, null, slot(slot1Team), slot(slot2Team), footballDataId);
 }
 
 export const KNOCKOUT_MATCHES: KnockoutMatch[] = [
-  r32('r32_1', { matchId: 'r16_1', slot: 1 }, 'Germany', 'Paraguay'),
-  r32('r32_2', { matchId: 'r16_1', slot: 2 }, 'France', 'Sweden'),
-  r32('r32_3', { matchId: 'r16_2', slot: 1 }, 'South Africa', 'Canada'),
-  r32('r32_4', { matchId: 'r16_2', slot: 2 }, 'Netherlands', 'Morocco'),
-  r32('r32_5', { matchId: 'r16_3', slot: 1 }, 'Portugal', 'Croatia'),
-  r32('r32_6', { matchId: 'r16_3', slot: 2 }, 'Spain', 'Austria'),
-  r32('r32_7', { matchId: 'r16_4', slot: 1 }, 'USA', 'Bosnia & Herzegovina'),
-  r32('r32_8', { matchId: 'r16_4', slot: 2 }, 'Belgium', 'Senegal'),
-  r32('r32_9', { matchId: 'r16_5', slot: 1 }, 'Brazil', 'Japan'),
-  r32('r32_10', { matchId: 'r16_5', slot: 2 }, 'Ivory Coast', 'Norway'),
-  r32('r32_11', { matchId: 'r16_6', slot: 1 }, 'Mexico', 'Ecuador'),
-  r32('r32_12', { matchId: 'r16_6', slot: 2 }, 'England', 'DR Congo'),
-  r32('r32_13', { matchId: 'r16_7', slot: 1 }, 'Argentina', 'Cape Verde'),
-  r32('r32_14', { matchId: 'r16_7', slot: 2 }, 'Australia', 'Egypt'),
-  r32('r32_15', { matchId: 'r16_8', slot: 1 }, 'Switzerland', 'Algeria'),
-  r32('r32_16', { matchId: 'r16_8', slot: 2 }, 'Colombia', 'Ghana'),
+  r32('r32_1', 537415, { matchId: 'r16_1', slot: 1 }, 'Germany', 'Paraguay'),
+  r32('r32_2', 537416, { matchId: 'r16_1', slot: 2 }, 'France', 'Sweden'),
+  r32('r32_3', 537417, { matchId: 'r16_2', slot: 1 }, 'South Africa', 'Canada'),
+  r32('r32_4', 537418, { matchId: 'r16_2', slot: 2 }, 'Netherlands', 'Morocco'),
+  r32('r32_5', 537419, { matchId: 'r16_3', slot: 1 }, 'Portugal', 'Croatia'),
+  r32('r32_6', 537420, { matchId: 'r16_3', slot: 2 }, 'Spain', 'Austria'),
+  r32('r32_7', 537421, { matchId: 'r16_4', slot: 1 }, 'USA', 'Bosnia & Herzegovina'),
+  r32('r32_8', 537422, { matchId: 'r16_4', slot: 2 }, 'Belgium', 'Senegal'),
+  r32('r32_9', 537423, { matchId: 'r16_5', slot: 1 }, 'Brazil', 'Japan'),
+  r32('r32_10', 537424, { matchId: 'r16_5', slot: 2 }, 'Ivory Coast', 'Norway'),
+  r32('r32_11', 537425, { matchId: 'r16_6', slot: 1 }, 'Mexico', 'Ecuador'),
+  r32('r32_12', 537426, { matchId: 'r16_6', slot: 2 }, 'England', 'DR Congo'),
+  r32('r32_13', 537427, { matchId: 'r16_7', slot: 1 }, 'Argentina', 'Cape Verde'),
+  r32('r32_14', 537428, { matchId: 'r16_7', slot: 2 }, 'Australia', 'Egypt'),
+  r32('r32_15', 537429, { matchId: 'r16_8', slot: 1 }, 'Switzerland', 'Algeria'),
+  r32('r32_16', 537430, { matchId: 'r16_8', slot: 2 }, 'Colombia', 'Ghana'),
   match('r16_1', 'LAST_16', { matchId: 'qf_1', slot: 1 }, 'r32_1', 'r32_2'),
   match('r16_2', 'LAST_16', { matchId: 'qf_1', slot: 2 }, 'r32_3', 'r32_4'),
   match('r16_3', 'LAST_16', { matchId: 'qf_2', slot: 1 }, 'r32_5', 'r32_6'),
