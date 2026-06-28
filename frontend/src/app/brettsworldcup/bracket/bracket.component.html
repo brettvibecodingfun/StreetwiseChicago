@@ -1,0 +1,138 @@
+<div class="bracket">
+  <div class="bracket-header">
+    <div>
+      <p class="eyebrow">Knockout Simulator</p>
+      <h2>Build the road to the trophy</h2>
+      <p class="bracket-copy">
+        Pick winners round by round to preview knockout points and champion bonuses.
+      </p>
+    </div>
+
+    @if (hasAnyPick) {
+      <button class="clear-btn" (click)="clearAll()">Clear All</button>
+    }
+  </div>
+
+  <div class="bracket-scroll">
+    <div class="bracket-grid">
+      @for (column of roundColumns; track column.round; let columnIndex = $index) {
+        <section class="round-column" [class.final-column]="column.round === 'FINAL'">
+          <div class="round-heading">
+            <span class="round-label">{{ column.label }}</span>
+            <span class="round-points">+{{ column.points }} pts</span>
+          </div>
+
+          <div class="round-matches">
+            @for (match of column.matches; track match.id) {
+              <article class="bracket-match" [class.has-pick]="picks[match.id] !== undefined">
+                <button
+                  class="slot-btn"
+                  [class.selected]="isPicked(match, resolveSlot(match, 1))"
+                  [class.loser]="isLoser(match, resolveSlot(match, 1))"
+                  [class.tbd]="resolveSlot(match, 1) === 'TBD'"
+                  [disabled]="resolveSlot(match, 1) === 'TBD'"
+                  (click)="pickWinner(match, resolveSlot(match, 1))">
+                  <span class="slot-flag">{{ flag(resolveSlot(match, 1)) || '🏳' }}</span>
+                  <span class="slot-team">{{ resolveSlot(match, 1) }}</span>
+                </button>
+
+                <button
+                  class="slot-btn"
+                  [class.selected]="isPicked(match, resolveSlot(match, 2))"
+                  [class.loser]="isLoser(match, resolveSlot(match, 2))"
+                  [class.tbd]="resolveSlot(match, 2) === 'TBD'"
+                  [disabled]="resolveSlot(match, 2) === 'TBD'"
+                  (click)="pickWinner(match, resolveSlot(match, 2))">
+                  <span class="slot-flag">{{ flag(resolveSlot(match, 2)) || '🏳' }}</span>
+                  <span class="slot-team">{{ resolveSlot(match, 2) }}</span>
+                </button>
+
+                @if (columnIndex < roundColumns.length - 1) {
+                  <span class="connector"></span>
+                }
+              </article>
+            }
+          </div>
+        </section>
+      }
+
+      <section class="champion-column">
+        <div class="round-heading">
+          <span class="round-label">Champion</span>
+          <span class="round-points">Bonus</span>
+        </div>
+
+        <div class="champion-card" [class.has-champion]="champion !== null">
+          <span class="trophy">🏆</span>
+          <span class="champion-name">{{ champion ?? '?' }}</span>
+
+          @if (champion) {
+            <p class="champion-note">
+              {{ championBonus }} bonus points for champion picks
+            </p>
+
+            @if (championBackers.length > 0) {
+              <div class="champion-backers">
+                <span class="backers-label">Backed by</span>
+                @for (participant of championBackers; track participant.id) {
+                  <span class="backer-pill">{{ participant.name }} +{{ championBonus }}</span>
+                }
+              </div>
+            } @else {
+              <p class="no-backers">No pool entries picked this champion.</p>
+            }
+          } @else {
+            <p class="champion-note">Pick the Final winner to reveal bonus impact.</p>
+          }
+        </div>
+      </section>
+    </div>
+  </div>
+
+  @if (hasAnyPick) {
+    <div class="standings-section">
+      <h3 class="standings-title">Hypothetical Standings</h3>
+      <div class="standings-table-wrap">
+        <table class="standings-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Base</th>
+              <th>+Pts</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (entry of hypotheticalStandings; track entry.participant.id; let i = $index) {
+              <tr [class.gained]="entry.delta > 0">
+                <td class="col-rank">{{ rankDisplay(i) }}</td>
+                <td class="col-name">
+                  <span class="rank-arrow">
+                    @if (entry.rankChange > 0) { <span class="arrow up">↑</span> }
+                    @else if (entry.rankChange < 0) { <span class="arrow down">↓</span> }
+                    @else { <span class="arrow flat">→</span> }
+                  </span>
+                  {{ entry.participant.name }}
+                </td>
+                <td class="col-base">{{ entry.participant.points }}</td>
+                <td class="col-delta">
+                  @if (entry.delta > 0) {
+                    <span class="delta-badge">+{{ entry.delta }}</span>
+                  } @else {
+                    <span class="delta-zero">—</span>
+                  }
+                </td>
+                <td class="col-total">{{ entry.hypotheticalTotal }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  } @else {
+    <div class="standings-prompt">
+      Fill in bracket winners to see hypothetical knockout standings.
+    </div>
+  }
+</div>

@@ -56,6 +56,17 @@ const TIER_PICK_FIELDS: (keyof DbParticipant)[] = [
   'tier4_team_a', 'tier4_team_b', 'tier4_team_c',
 ];
 
+function formatStageCounts(matches: FDMatch[]): string {
+  const counts = matches.reduce<Record<string, number>>((acc, match) => {
+    acc[match.stage] = (acc[match.stage] ?? 0) + 1;
+    return acc;
+  }, {});
+
+  return Object.entries(counts)
+    .map(([stage, count]) => `${stage}=${count}`)
+    .join(', ');
+}
+
 async function fetchWithRetry(url: string, options: RequestInit, retries = 3): Promise<Response> {
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
@@ -96,6 +107,8 @@ export async function runETL(): Promise<EtlSummary> {
     return { matchesChecked: 0, matchesScored: 0, participantsUpdated: 0 };
   }
 
+  console.log(`[etl] Finished match stages: ${formatStageCounts(finishedMatches)}`);
+
   const { rows: participants } = await pool.query<DbParticipant>(
     `SELECT id, champion_pick, tier1_team, tier2_team_a, tier2_team_b,
             tier3_team_a, tier3_team_b, tier4_team_a, tier4_team_b, tier4_team_c,
@@ -123,7 +136,12 @@ export async function runETL(): Promise<EtlSummary> {
       else if (h < a) { homePoints = GROUP_LOSS; awayPoints = GROUP_WIN; }
       else            { homePoints = GROUP_DRAW; awayPoints = GROUP_DRAW; }
     } else {
-      const stagePoints = KNOCKOUT_POINTS[match.stage] ?? 0;
+      const stagePoints = KNOCKOUT_POINTS[match.stage];
+      if (stagePoints === undefined) {
+        console.warn(`[etl] Skipping match ${match.id}: unsupported knockout stage "${match.stage}"`);
+        continue;
+      }
+
       if (match.score.winner === 'HOME_TEAM')      { homePoints = stagePoints; awayPoints = 0; }
       else if (match.score.winner === 'AWAY_TEAM') { homePoints = 0; awayPoints = stagePoints; }
       else continue; // winner not determined yet

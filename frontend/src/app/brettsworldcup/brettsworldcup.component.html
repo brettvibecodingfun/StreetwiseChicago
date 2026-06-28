@@ -21,9 +21,9 @@
     </button>
     <button
       class="tab-btn"
-      [class.active]="activeTab === 'simulator'"
-      (click)="activeTab = 'simulator'">
-      🎯 What If
+      [class.active]="activeTab === 'bracket'"
+      (click)="activeTab = 'bracket'">
+      🗂️ Bracket
     </button>
   </div>
 
@@ -204,9 +204,9 @@
 
   }
 
-  <!-- ─── SIMULATOR TAB ───────────────────────────────────────────────────── -->
-  @if (activeTab === 'simulator') {
-    <app-simulator [participants]="participants" />
+  <!-- ─── BRACKET TAB ─────────────────────────────────────────────────────── -->
+  @if (activeTab === 'bracket') {
+    <app-bracket [participants]="participants" />
   }
 
 </div>
