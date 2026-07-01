@@ -14,6 +14,8 @@ export interface Participant {
   updated_at: string;
   points_breakdown: Record<string, number>;
   last_etl_updated_at: string | null;
+  teams_remaining: number;
+  points_remaining: number;
 }
 
 export interface WorldCupMatch {

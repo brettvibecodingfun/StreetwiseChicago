@@ -83,21 +83,28 @@
     @if (loading) {
       <div class="table-wrap">
         <table class="leaderboard-table">
-          <thead>
-            <tr>
-              <th>#</th><th>Name</th><th>Pts</th><th>Champion</th>
-            </tr>
-          </thead>
-          <tbody>
-            @for (i of [1,2,3,4,5]; track i) {
-              <tr class="skeleton-row">
-                <td><div class="skel skel-sm"></div></td>
-                <td><div class="skel skel-md"></div></td>
-                <td><div class="skel skel-sm"></div></td>
-                <td><div class="skel skel-lg"></div></td>
+            <thead>
+              <tr>
+                <th class="col-rank">#</th>
+                <th class="col-name">Name</th>
+                <th class="col-pts">Pts</th>
+                <th class="col-remaining">Max Pts</th>
+                <th class="col-teams">Alive</th>
+                <th class="col-champion">Champion</th>
               </tr>
-            }
-          </tbody>
+            </thead>
+            <tbody>
+              @for (i of [1,2,3,4,5]; track i) {
+                <tr class="skeleton-row">
+                  <td class="col-rank"><div class="skel skel-sm" style="margin: 0 auto;"></div></td>
+                  <td class="col-name"><div class="skel skel-md"></div></td>
+                  <td class="col-pts"><div class="skel skel-sm" style="margin: 0 auto;"></div></td>
+                  <td class="col-remaining"><div class="skel skel-sm" style="margin: 0 auto;"></div></td>
+                  <td class="col-teams"><div class="skel skel-sm" style="margin: 0 auto;"></div></td>
+                  <td class="col-champion"><div class="skel skel-lg"></div></td>
+                </tr>
+              }
+            </tbody>
         </table>
       </div>
     }
@@ -112,14 +119,17 @@
       @if (participants.length === 0) {
         <div class="empty-state">No participants yet — check back soon!</div>
       } @else {
+        <div class="swipe-hint hide-desktop">← Swipe to see more →</div>
         <div class="table-wrap">
           <table class="leaderboard-table">
             <thead>
               <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Pts</th>
-                <th>Champion</th>
+                <th class="col-rank">#</th>
+                <th class="col-name">Name</th>
+                <th class="col-pts">Pts</th>
+                <th class="col-remaining">Max Pts</th>
+                <th class="col-teams">Alive</th>
+                <th class="col-champion">Champion</th>
               </tr>
             </thead>
             <tbody>

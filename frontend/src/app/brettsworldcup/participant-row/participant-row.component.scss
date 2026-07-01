@@ -14,7 +14,7 @@
   }
 
   td {
-    padding: 16px 20px;
+    padding: 16px 12px;
     vertical-align: middle;
     border-bottom: 1px solid #eee;
     white-space: nowrap;
@@ -24,10 +24,9 @@
 .col-rank {
   font-size: 1.2rem;
   text-align: center;
-  width: 40px;
-  padding-left: 10px !important;
-  padding-right: 6px !important;
   font-weight: 900;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
 }
 
 .col-name {
@@ -69,15 +68,20 @@
   font-weight: 900;
   color: #2e7d32;
   font-size: 1.1rem;
-  text-align: right;
-  width: 44px;
-  padding-left: 6px !important;
-  padding-right: 10px !important;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.col-remaining,
+.col-teams {
+  font-weight: 800;
+  color: #555;
+  font-size: 0.95rem;
+  text-align: center;
   white-space: nowrap;
 }
 
 .col-champion {
-  width: auto;
   padding-left: 6px !important;
   padding-right: 14px !important;
 }

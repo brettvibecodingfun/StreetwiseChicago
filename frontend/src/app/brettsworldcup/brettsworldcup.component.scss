@@ -296,18 +296,42 @@
 .bonus-t3 { background: #fce4ec; color: #ad1457; border: 1px solid #f8bbd0; }
 .bonus-t4 { background: #fff3e0; color: #d84315; border: 1px solid #ffe0b2; }
 
+.swipe-hint {
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 12px;
+  animation: pulse-swipe 2.5s infinite ease-in-out;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+@keyframes pulse-swipe {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.hide-desktop {
+  display: none;
+}
+
 // Table
 .table-wrap {
   background: #ffffff;
   border-radius: 24px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 .leaderboard-table {
   width: 100%;
+  min-width: 600px;
   border-collapse: collapse;
   font-size: 1rem;
+  table-layout: fixed;
 
   thead {
     background: #1a1a1a;
@@ -315,19 +339,25 @@
   }
 
   th {
-    padding: 16px 20px;
-    text-align: left;
+    padding: 16px 12px;
     font-size: 0.85rem;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     white-space: nowrap;
   }
+
+  th.col-rank { text-align: center; width: 8%; }
+  th.col-name { text-align: left; width: 24%; }
+  th.col-pts { text-align: center; width: 14%; }
+  th.col-remaining { text-align: center; width: 16%; }
+  th.col-teams { text-align: center; width: 13%; }
+  th.col-champion { text-align: left; width: 25%; }
 }
 
 // Skeleton rows
 .skeleton-row td {
-  padding: 16px 20px;
+  padding: 16px 12px;
   border-bottom: 1px solid #eee;
 }
 
@@ -487,6 +517,7 @@
 @media (max-width: 767px) {
   .wc-title { font-size: 1.8rem; }
   .hide-mobile { display: none; }
+  .hide-desktop { display: block; }
   .wc-header { padding: 20px; }
   .dist-card { padding: 20px; }
 }

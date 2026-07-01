@@ -1,6 +1,8 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import pool from '../db';
+import { FDMatch } from '../config/footballData';
 import { runETL } from '../scripts/etl';
+import { computeParticipantRemaining, resolveBracket } from '../services/remainingPoints';
 
 const router = Router();
 
@@ -25,14 +27,65 @@ function dbRequired(res: Response): boolean {
   return false;
 }
 
+async function fetchLiveMatches(): Promise<FDMatch[]> {
+  const apiKey = process.env.FOOTBALL_DATA_API_KEY;
+  if (!apiKey) return [];
+
+  const now = Date.now();
+  if (!matchesCache || now - matchesCache.fetchedAt >= MATCHES_CACHE_TTL) {
+    try {
+      const r = await fetch(
+        'https://api.football-data.org/v4/competitions/WC/matches?season=2026',
+        { headers: { 'X-Auth-Token': apiKey } }
+      );
+      if (r.ok) {
+        matchesCache = { data: await r.json(), fetchedAt: now };
+      }
+    } catch (err) {
+      console.error('[worldcup] fetchLiveMatches:', err);
+    }
+  }
+
+  const cached = matchesCache?.data as { matches?: FDMatch[] } | undefined;
+  return cached?.matches ?? [];
+}
+
+function enrichParticipant<T extends Record<string, unknown>>(
+  row: T,
+  resolution: ReturnType<typeof resolveBracket>
+): T & { teams_remaining: number; points_remaining: number } {
+  const remaining = computeParticipantRemaining(
+    {
+      champion_pick: (row['champion_pick'] as string | null) ?? null,
+      tier1_team: (row['tier1_team'] as string | null) ?? null,
+      tier2_team_a: (row['tier2_team_a'] as string | null) ?? null,
+      tier2_team_b: (row['tier2_team_b'] as string | null) ?? null,
+      tier3_team_a: (row['tier3_team_a'] as string | null) ?? null,
+      tier3_team_b: (row['tier3_team_b'] as string | null) ?? null,
+      tier4_team_a: (row['tier4_team_a'] as string | null) ?? null,
+      tier4_team_b: (row['tier4_team_b'] as string | null) ?? null,
+      tier4_team_c: (row['tier4_team_c'] as string | null) ?? null,
+    },
+    resolution
+  );
+
+  return {
+    ...row,
+    teams_remaining: remaining.teamsRemaining,
+    points_remaining: remaining.pointsRemaining,
+  };
+}
+
 // GET /api/brettsworldcup/participants
 router.get('/participants', async (_req, res) => {
   if (dbRequired(res)) return;
   try {
-    const result = await pool!.query(
-      'SELECT * FROM participants ORDER BY points DESC, name ASC'
-    );
-    res.json(result.rows);
+    const [result, liveMatches] = await Promise.all([
+      pool!.query('SELECT * FROM participants ORDER BY points DESC, name ASC'),
+      fetchLiveMatches(),
+    ]);
+    const resolution = resolveBracket(liveMatches);
+    res.json(result.rows.map(row => enrichParticipant(row, resolution)));
   } catch (err) {
     console.error('[worldcup] GET /participants:', err);
     res.status(500).json({ error: 'Internal server error' });
@@ -43,12 +96,16 @@ router.get('/participants', async (_req, res) => {
 router.get('/participants/:id', async (req, res) => {
   if (dbRequired(res)) return;
   try {
-    const result = await pool!.query('SELECT * FROM participants WHERE id = $1', [req.params['id']]);
+    const [result, liveMatches] = await Promise.all([
+      pool!.query('SELECT * FROM participants WHERE id = $1', [req.params['id']]),
+      fetchLiveMatches(),
+    ]);
     if (result.rows.length === 0) {
       res.status(404).json({ error: 'Not found' });
       return;
     }
-    res.json(result.rows[0]);
+    const resolution = resolveBracket(liveMatches);
+    res.json(enrichParticipant(result.rows[0], resolution));
   } catch (err) {
     console.error('[worldcup] GET /participants/:id:', err);
     res.status(500).json({ error: 'Internal server error' });

@@ -8,6 +8,8 @@
     </div>
   </td>
   <td class="col-pts">{{ participant.points }}</td>
+  <td class="col-remaining">{{ participant.points_remaining }}</td>
+  <td class="col-teams">{{ participant.teams_remaining }}</td>
   <td class="col-champion">
     <span class="badge badge-champion">
       {{ flag(participant.champion_pick) }} {{ participant.champion_pick || '—' }}
@@ -18,7 +20,7 @@
 <!-- Modal -->
 @if (modalOpen) {
   <tr class="modal-host">
-    <td colspan="4">
+    <td colspan="6">
       <div class="modal-backdrop" (click)="closeModal()">
         <div class="modal-card" (click)="$event.stopPropagation()">
 
